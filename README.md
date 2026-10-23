@@ -2,6 +2,8 @@
 
 Hybrid Quantum-Classical AI system for bladder endoscopy image classification with optional LLM-powered explainability.
 
+![Architecture Overview](assets/images/architecture.svg)
+
 This repository contains a full pipeline:
 - Dataset acquisition from Kaggle
 - Binary relabeling from 4 tissue classes to Cancer vs No Cancer
@@ -9,6 +11,20 @@ This repository contains a full pipeline:
 - Hybrid quantum-classical refinement (Qiskit + PyTorch)
 - Flask inference API + modern web UI
 - Optional Groq XAI narrative generation
+
+## Visual Overview
+
+### 1) End-to-End System Architecture
+
+![System Architecture](assets/images/architecture.svg)
+
+### 2) Dataset Distribution (Prepared Binary Set)
+
+![Dataset Distribution](assets/images/data_distribution.svg)
+
+### 3) Runtime Inference and Safety Decision Flow
+
+![Inference Decision Flow](assets/images/inference_flow.svg)
 
 ## Clinical Scope
 
@@ -32,6 +48,8 @@ flowchart LR
     G --> H[Prediction + Confidence]
     H --> I[Optional Groq XAI Explanation]
 ```
+
+See the rendered architecture diagram above for a publication-style visual summary.
 
 ## Repository Structure
 
@@ -65,6 +83,8 @@ Prepared dataset currently in repo:
 - Cancer images: 1116
 - No Cancer images: 638
 - Total images: 1754
+
+Class balance visualization is shown in the dataset chart above.
 
 ## Models and Training Details
 

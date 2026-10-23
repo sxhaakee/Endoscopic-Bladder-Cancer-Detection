@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Hybrid Quantum-Classical Architecture</title>
+  <desc id="desc">Pipeline from endoscopic image to cancer prediction and optional XAI explanation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#071226"/>
+      <stop offset="100%" stop-color="#0f1f3a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#173a6a"/>
+      <stop offset="100%" stop-color="#1c4f8f"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#1f4f3d"/>
+      <stop offset="100%" stop-color="#2a7a5d"/>
+    </linearGradient>
+    <linearGradient id="card3" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#533a87"/>
+      <stop offset="100%" stop-color="#6e48b8"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto">
+      <path d="M0,0 L14,5 L0,10 z" fill="#b7d7ff"/>
+    </marker>
+    <style>
+      .h1 { font: 700 46px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #f2f7ff; }
+      .h2 { font: 600 24px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #f2f7ff; }
+      .p { font: 400 20px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #d7e6ff; }
+      .mini { font: 500 18px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #d7e6ff; }
+      .badge { font: 700 16px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #041122; }
+      .stroke { stroke: #b7d7ff; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="130" cy="90" r="220" fill="#2f6fcf" opacity="0.15"/>
+  <circle cx="1510" cy="830" r="260" fill="#6f4ac4" opacity="0.16"/>
+
+  <text x="70" y="92" class="h1">Endoscopic Bladder Cancer Detection: System Architecture</text>
+  <text x="70" y="130" class="p">Research pipeline combining CNN + Quantum VQC + safety-first ensemble + optional LLM explainability</text>
+
+  <rect x="70" y="190" rx="18" ry="18" width="280" height="130" fill="url(#card)"/>
+  <text x="100" y="245" class="h2">1) Endoscopic Image</text>
+  <text x="100" y="279" class="mini">Input image (.jpg/.png/.webp)</text>
+
+  <rect x="430" y="190" rx="18" ry="18" width="300" height="130" fill="url(#card)"/>
+  <text x="460" y="245" class="h2">2) Preprocessing</text>
+  <text x="460" y="279" class="mini">Resize 128x128, RGB, normalize</text>
+
+  <rect x="820" y="190" rx="18" ry="18" width="320" height="130" fill="url(#card)"/>
+  <text x="850" y="245" class="h2">3) CNN Inference</text>
+  <text x="850" y="279" class="mini">Outputs P(No Cancer)</text>
+
+  <rect x="430" y="390" rx="18" ry="18" width="340" height="130" fill="url(#card2)"/>
+  <text x="460" y="445" class="h2">4) Feature Extractor</text>
+  <text x="460" y="479" class="mini">GAP(128) -&gt; Dense(8) projection</text>
+
+  <rect x="860" y="390" rx="18" ry="18" width="330" height="130" fill="url(#card3)"/>
+  <text x="890" y="445" class="h2">5) Quantum VQC</text>
+  <text x="890" y="479" class="mini">4 qubits, 2 layers, EstimatorQNN</text>
+
+  <rect x="1220" y="300" rx="18" ry="18" width="300" height="220" fill="#1f3e5f"/>
+  <text x="1250" y="360" class="h2">6) Ensemble Rule</text>
+  <text x="1250" y="398" class="mini">Cancer if CNN or QML flags</text>
+  <text x="1250" y="430" class="mini">Threshold: P(No Cancer) &lt; 0.42</text>
+  <rect x="1250" y="454" rx="10" ry="10" width="220" height="38" fill="#9ce5c3"/>
+  <text x="1294" y="480" class="badge">Safety-First Design</text>
+
+  <rect x="70" y="650" rx="18" ry="18" width="540" height="150" fill="#18486c"/>
+  <text x="100" y="713" class="h2">7) Clinical Output</text>
+  <text x="100" y="748" class="mini">Prediction: Cancer / No Cancer, confidence, recommendation</text>
+
+  <rect x="680" y="650" rx="18" ry="18" width="840" height="150" fill="#1e5e49"/>
+  <text x="710" y="713" class="h2">8) Optional XAI via Groq</text>
+  <text x="710" y="748" class="mini">Structured patient-facing explanation from model scores and context</text>
+
+  <path d="M350 255 L430 255" class="stroke"/>
+  <path d="M730 255 L820 255" class="stroke"/>
+  <path d="M980 320 L980 390" class="stroke"/>
+  <path d="M770 455 L860 455" class="stroke"/>
+  <path d="M1140 255 L1220 360" class="stroke"/>
+  <path d="M1190 455 L1220 430" class="stroke"/>
+  <path d="M1370 520 L1370 650" class="stroke"/>
+  <path d="M1220 760 L610 760" class="stroke"/>
+
+  <rect x="70" y="838" rx="10" ry="10" width="640" height="42" fill="#b6d6ff" opacity="0.2"/>
+  <text x="88" y="865" class="mini">Dataset: Kaggle endoscopic bladder tissue | Binary mapping: HGC/LGC -&gt; Cancer, NST/NTL -&gt; No Cancer</text>
+</svg>

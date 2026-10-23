@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="880" viewBox="0 0 1500 880" role="img" aria-labelledby="title desc">
+  <title id="title">Inference and Decision Flow</title>
+  <desc id="desc">Detailed runtime decision process from uploaded image to output and XAI.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08172c"/>
+      <stop offset="100%" stop-color="#0e2748"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto">
+      <path d="M0,0 L14,5 L0,10 z" fill="#c7e0ff"/>
+    </marker>
+    <style>
+      .title { font: 700 44px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #f3f8ff; }
+      .txt { font: 500 20px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #e7f0ff; }
+      .small { font: 500 18px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #d4e2ff; }
+      .box { fill: #214a79; }
+      .box2 { fill: #2d5f97; }
+      .decision { fill: #7552b7; }
+      .out { fill: #2f7b5d; }
+      .arrow { stroke: #c7e0ff; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1500" height="880" fill="url(#bg)"/>
+  <text x="60" y="82" class="title">Runtime Inference + Safety Decision Flow</text>
+
+  <rect x="70" y="150" width="280" height="110" rx="14" ry="14" class="box"/>
+  <text x="98" y="214" class="txt">Upload Endoscopic Image</text>
+
+  <rect x="420" y="150" width="280" height="110" rx="14" ry="14" class="box"/>
+  <text x="458" y="214" class="txt">Preprocess 128x128</text>
+
+  <rect x="770" y="80" width="300" height="120" rx="14" ry="14" class="box2"/>
+  <text x="815" y="142" class="txt">CNN -&gt; P(No Cancer)</text>
+
+  <rect x="770" y="240" width="300" height="120" rx="14" ry="14" class="box2"/>
+  <text x="806" y="302" class="txt">QML (if available)</text>
+
+  <rect x="1160" y="150" width="260" height="140" rx="16" ry="16" class="decision"/>
+  <text x="1188" y="218" class="txt">OR-Rule Decision</text>
+  <text x="1188" y="250" class="small">Cancer if CNN or QML</text>
+
+  <rect x="1160" y="380" width="260" height="120" rx="16" ry="16" class="out"/>
+  <text x="1188" y="444" class="txt">Prediction + Confidence</text>
+
+  <rect x="1160" y="560" width="260" height="120" rx="16" ry="16" class="out"/>
+  <text x="1188" y="624" class="txt">Optional Groq XAI</text>
+
+  <path d="M350 205 L420 205" class="arrow"/>
+  <path d="M700 205 L770 140" class="arrow"/>
+  <path d="M700 205 L770 300" class="arrow"/>
+  <path d="M1070 140 L1160 200" class="arrow"/>
+  <path d="M1070 300 L1160 240" class="arrow"/>
+  <path d="M1290 290 L1290 380" class="arrow"/>
+  <path d="M1290 500 L1290 560" class="arrow"/>
+
+  <rect x="70" y="360" width="1000" height="300" rx="18" ry="18" fill="#102946" opacity="0.75"/>
+  <text x="100" y="420" class="txt">Decision thresholds used in app.py</text>
+  <text x="100" y="462" class="small">- Cancer threshold: P(No Cancer) &lt; 0.42</text>
+  <text x="100" y="498" class="small">- OR-rule increases sensitivity (safer for screening workflows)</text>
+  <text x="100" y="534" class="small">- Confidence shown as P(Cancer)=1-P(No Cancer) or P(No Cancer)</text>
+  <text x="100" y="570" class="small">- If GROQ_API_KEY is missing, the app returns a safe fallback explanation text</text>
+</svg>

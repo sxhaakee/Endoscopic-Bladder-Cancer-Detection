@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800" role="img" aria-labelledby="title desc">
+  <title id="title">Dataset Distribution</title>
+  <desc id="desc">Binary class distribution for bladder cancer detection dataset.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1222"/>
+      <stop offset="100%" stop-color="#172642"/>
+    </linearGradient>
+    <style>
+      .h1 { font: 700 44px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #f5f8ff; }
+      .p  { font: 400 24px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #dbe6ff; }
+      .lab { font: 600 24px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #eef4ff; }
+      .num { font: 700 30px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .small { font: 500 20px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #d0ddff; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="800" fill="url(#bg)"/>
+  <circle cx="1300" cy="50" r="260" fill="#6f4ac4" opacity="0.18"/>
+  <circle cx="40" cy="740" r="300" fill="#34b489" opacity="0.16"/>
+
+  <text x="70" y="84" class="h1">Prepared Binary Dataset Distribution</text>
+  <text x="70" y="122" class="p">Total images: 1754 | Split source: Kaggle endoscopic bladder tissue dataset</text>
+
+  <line x1="140" y1="660" x2="1240" y2="660" stroke="#9eb6df" stroke-width="3"/>
+  <line x1="140" y1="660" x2="140" y2="190" stroke="#9eb6df" stroke-width="3"/>
+
+  <rect x="260" y="210" width="340" height="450" rx="16" ry="16" fill="#f04545"/>
+  <rect x="780" y="402" width="340" height="258" rx="16" ry="16" fill="#2ac495"/>
+
+  <text x="332" y="700" class="lab">Cancer (HGC + LGC)</text>
+  <text x="858" y="700" class="lab">No Cancer (NST + NTL)</text>
+
+  <text x="368" y="270" class="num">1116 images</text>
+  <text x="890" y="462" class="num">638 images</text>
+
+  <text x="330" y="310" class="small">63.63% of dataset</text>
+  <text x="848" y="502" class="small">36.37% of dataset</text>
+
+  <rect x="70" y="730" width="1260" height="42" rx="10" ry="10" fill="#9ab9eb" opacity="0.2"/>
+  <text x="92" y="757" class="small">Class ratio (Cancer:No Cancer) = 1.75:1 | Class weights are applied during CNN training</text>
+</svg>
