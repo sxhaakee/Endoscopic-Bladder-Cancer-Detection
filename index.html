@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BladderVision QML — Quantum Cancer Detection + XAI</title>
+  <meta name="description" content="Hybrid Quantum-Classical AI for endoscopic bladder cancer detection with Explainable AI powered by LLM." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080c17;
+      --surface:  #0e1423;
+      --surface2: #141c2e;
+      --border:   rgba(255,255,255,0.07);
+      --accent:   #5b9cf9;
+      --quantum:  #a78bfa;    /* purple for quantum */
+      --groq:     #22d3ae;    /* teal for XAI/Groq */
+      --danger:   #f04040;
+      --success:  #22d3ae;
+      --warn:     #f59e0b;
+      --text:     #e2e8f0;
+      --muted:    #7c8a9e;
+      --r:        16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 15% 5%,  rgba(91,156,249,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 85% 90%, rgba(167,139,250,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(34,211,174,0.04) 0%, transparent 80%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* dot grid */
+    .dot-grid {
+      position: fixed; inset: 0;
+      background-image: radial-gradient(rgba(91,156,249,0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 920px;
+      padding: 56px 24px 28px;
+      text-align: center;
+    }
+
+    .tag-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 22px; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      border-radius: 99px; padding: 5px 14px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+    }
+    .tag.quantum { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.3); color: var(--quantum); }
+    .tag.xai     { background: rgba(34,211,174,0.10);  border: 1px solid rgba(34,211,174,0.25); color: var(--groq); }
+    .tag.live    { background: rgba(91,156,249,0.10);  border: 1px solid rgba(91,156,249,0.3);  color: var(--accent); }
+    .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+                animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.5)} }
+
+    h1 {
+      font-size: clamp(2rem, 5.5vw, 3.4rem);
+      font-weight: 900; line-height: 1.1;
+      background: linear-gradient(135deg, #e2e8f0 0%, var(--accent) 40%, var(--quantum) 75%, var(--groq) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 14px;
+    }
+    .subtitle { color: var(--muted); font-size: 1rem; max-width: 620px; margin: 0 auto; line-height: 1.65; }
+
+    /* ── MAIN ── */
+    main { position: relative; z-index: 1; width: 100%; max-width: 860px; padding: 0 24px 80px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 32px;
+      margin-bottom: 20px;
+      transition: border-color .3s;
+    }
+    .card:hover { border-color: rgba(255,255,255,0.11); }
+
+    .card-title {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card-title span { font-size: 15px; }
+
+    /* ── UPLOAD ── */
+    .upload-zone {
+      border: 2px dashed rgba(91,156,249,0.3);
+      border-radius: 12px; padding: 44px 24px;
+      text-align: center; cursor: pointer;
+      transition: all .3s; position: relative;
+      background: rgba(91,156,249,0.03);
+    }
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: var(--accent);
+      background: rgba(91,156,249,0.08);
+      transform: translateY(-2px);
+    }
+    .upload-zone input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .upload-icon {
+      width: 64px; height: 64px; margin: 0 auto 16px;
+      background: linear-gradient(135deg, rgba(91,156,249,0.2), rgba(167,139,250,0.2));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 28px;
+    }
+    .upload-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+    .upload-sub   { color: var(--muted); font-size: .875rem; }
+    .upload-types { color: var(--accent); font-size: .78rem; margin-top: 10px; font-weight: 600; }
+
+    #preview-container { display: none; margin-top: 20px; border-radius: 12px; overflow: hidden; position: relative; }
+    #preview-container img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 12px; display: block; }
+    .preview-label {
+      position: absolute; bottom: 10px; left: 10px;
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
+      border-radius: 8px; padding: 5px 10px;
+      font-size: .78rem; color: var(--muted);
+    }
+
+    /* ── BUTTONS ── */
+    #analyze-btn {
+      display: none; width: 100%; margin-top: 20px; padding: 16px;
+      border: none; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--quantum));
+      color: #fff; font-size: 1rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; transition: all .25s; position: relative; overflow: hidden;
+    }
+    #analyze-btn::before { content:''; position:absolute; inset:0; background:rgba(255,255,255,0); transition:background .25s; }
+    #analyze-btn:hover:not(:disabled)::before { background: rgba(255,255,255,0.08); }
+    #analyze-btn:active:not(:disabled) { transform: scale(0.98); }
+    #analyze-btn:disabled { opacity: .6; cursor: not-allowed; }
+    .btn-inner { display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .spinner { display: none; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,.3);
+               border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    #reset-btn {
+      display: none; background: none; border: 1px solid var(--border);
+      color: var(--muted); border-radius: 8px; padding: 10px 20px;
+      margin-top: 14px; cursor: pointer; font-family: inherit;
+      font-size: .875rem; transition: all .2s; width: 100%;
+    }
+    #reset-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── MODE BADGE ── */
+    #mode-badge {
+      display: none;
+      align-items: center; gap: 8px;
+      background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.25);
+      border-radius: 8px; padding: 10px 16px;
+      font-size: .82rem; color: var(--quantum); margin-bottom: 16px;
+    }
+    #mode-badge .mode-icon { font-size: 18px; }
+
+    /* ── RESULT ── */
+    #result-card { display: none; }
+
+    .result-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+    .result-icon {
+      width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 26px;
+    }
+    .result-icon.cancer    { background: rgba(240,64,64,.15); border: 2px solid rgba(240,64,64,.35); }
+    .result-icon.no_cancer { background: rgba(34,211,174,.15); border: 2px solid rgba(34,211,174,.35); }
+
+    .result-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; }
+    .result-title.cancer    { color: var(--danger); }
+    .result-title.no_cancer { color: var(--success); }
+    .result-subtitle { color: var(--muted); font-size: .85rem; line-height: 1.5; }
+
+    /* confidence bar */
+    .conf-section { margin-bottom: 20px; }
+    .conf-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .conf-label { font-size: .78rem; font-weight: 700; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+    .conf-value { font-size: 1.7rem; font-weight: 900; }
+    .conf-value.cancer    { color: var(--danger); }
+    .conf-value.no_cancer { color: var(--success); }
+    .progress-track { height: 10px; background: rgba(255,255,255,.07); border-radius: 99px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 99px; width: 0%; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+    .progress-fill.cancer    { background: linear-gradient(90deg, #c0392b, var(--danger)); }
+    .progress-fill.no_cancer { background: linear-gradient(90deg, #0f9e7b, var(--success)); }
+
+    /* info box */
+    .info-box {
+      background: var(--surface2); border-radius: 10px;
+      padding: 16px; margin-bottom: 16px; border-left: 3px solid;
+    }
+    .info-box.cancer    { border-color: var(--danger); }
+    .info-box.no_cancer { border-color: var(--success); }
+    .info-box p { font-size: .88rem; line-height: 1.6; }
+
+    /* rec */
+    .rec-box {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: rgba(245,158,11,.07); border: 1px solid rgba(245,158,11,.2);
+      border-radius: 10px; padding: 14px; margin-bottom: 0;
+    }
+    .rec-box .rec-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .rec-box p { font-size: .875rem; line-height: 1.55; }
+    .rec-box strong { color: var(--warn); }
+
+    /* ── XAI PANEL ── */
+    #xai-card { display: none; }
+
+    .xai-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .xai-logo {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(34,211,174,.2), rgba(91,156,249,.2));
+      border: 1px solid rgba(34,211,174,.3);
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+    }
+    .xai-title { font-size: 1rem; font-weight: 700; color: var(--groq); }
+    .xai-sub   { font-size: .78rem; color: var(--muted); margin-top: 2px; }
+
+    .xai-skeleton {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .skeleton-line {
+      height: 14px; background: rgba(255,255,255,.06);
+      border-radius: 6px;
+      animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer {
+      0%   { opacity: .5; }
+      50%  { opacity: 1;  }
+      100% { opacity: .5; }
+    }
+
+    #xai-content {
+      font-size: .895rem; line-height: 1.8; color: var(--text);
+      white-space: pre-wrap;
+    }
+    /* Markdown-style bold within XAI */
+    #xai-content strong { color: var(--groq); font-weight: 700; }
+
+    /* quantum circuit diagram */
+    .qc-diagram {
+      background: var(--surface2);
+      border: 1px solid rgba(167,139,250,.2);
+      border-radius: 12px; padding: 18px; margin-top: 20px;
+    }
+    .qc-diagram .qc-title {
+      font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--quantum); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .qc-row {
+      display: flex; align-items: center; gap: 6px;
+      margin-bottom: 8px; font-family: monospace; font-size: .8rem;
+    }
+    .qc-qubit {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; font-weight: 700; color: var(--quantum); flex-shrink: 0;
+    }
+    .qc-wire { flex: 1; height: 2px; background: rgba(167,139,250,.25); position: relative; }
+    .qc-gate {
+      width: 28px; height: 22px; border-radius: 4px;
+      border: 1px solid rgba(167,139,250,.5);
+      background: rgba(167,139,250,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; font-weight: 700; color: var(--quantum);
+      flex-shrink: 0;
+    }
+    .qc-measure {
+      width: 28px; height: 22px; border-radius: 4px;
+      border: 1px solid rgba(91,156,249,.5);
+      background: rgba(91,156,249,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; flex-shrink: 0;
+    }
+
+    /* ── ERROR ── */
+    #error-card {
+      display: none;
+      background: rgba(240,64,64,.08);
+      border: 1px solid rgba(240,64,64,.3);
+      border-radius: 12px; padding: 18px 22px;
+      color: var(--danger); font-size: .9rem;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 22px;
+      font-size: .78rem; color: var(--muted); line-height: 1.6; text-align: center;
+    }
+    .disclaimer strong { color: var(--warn); }
+
+    /* ── FOOTER ── */
+    footer { position: relative; z-index:1; color: var(--muted); font-size: .75rem; padding: 0 24px 36px; text-align: center; }
+    footer span { color: var(--quantum); font-weight: 600; }
+
+    @media (max-width: 600px) {
+      .card { padding: 22px 18px; }
+      header { padding: 36px 20px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dot-grid"></div>
+
+  <header>
+    <div class="tag-row">
+      <div class="tag quantum"><div class="dot"></div> Quantum ML (VQC)</div>
+      <div class="tag xai"><div class="dot"></div> Explainable AI · Groq LLM</div>
+      <div class="tag live"><div class="dot"></div> Live Analysis</div>
+    </div>
+    <h1>BladderVision QML</h1>
+    <p class="subtitle">
+      Hybrid Quantum-Classical neural network for endoscopic bladder tissue analysis.
+      Every prediction is explained by a medical LLM for full transparency.
+    </p>
+  </header>
+
+  <main>
+
+    <!-- Upload Card -->
+    <div class="card">
+      <div class="card-title"><span>🔬</span> Upload Endoscopic Image</div>
+
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept=".jpg,.jpeg,.png,.bmp,.webp" />
+        <div class="upload-icon">⚛️</div>
+        <div class="upload-title">Drop your endoscopy image here</div>
+        <div class="upload-sub">or click to browse from your computer</div>
+        <div class="upload-types">JPG · PNG · BMP · WEBP</div>
+      </div>
+
+      <div id="preview-container">
+        <img id="preview-img" src="" alt="Uploaded endoscopy" />
+        <div class="preview-label" id="preview-filename"></div>
+      </div>
+
+      <button id="analyze-btn">
+        <div class="btn-inner">
+          <span class="spinner" id="spinner"></span>
+          <span id="btn-text">⚛️ &nbsp;Run Quantum Analysis + XAI</span>
+        </div>
+      </button>
+      <button id="reset-btn">↩ &nbsp;Analyze another image</button>
+    </div>
+
+    <!-- Error -->
+    <div id="error-card"><strong>⚠️ Error: </strong><span id="error-msg"></span></div>
+
+    <!-- Result Card -->
+    <div class="card" id="result-card">
+
+      <!-- Model mode badge -->
+      <div id="mode-badge">
+        <span class="mode-icon">⚛️</span>
+        <span id="mode-text">Loading…</span>
+      </div>
+
+      <div class="result-header">
+        <div class="result-icon" id="result-icon"></div>
+        <div>
+          <div class="result-title" id="result-title"></div>
+          <div class="result-subtitle" id="result-subtitle"></div>
+        </div>
+      </div>
+
+      <div class="conf-section">
+        <div class="conf-row">
+          <span class="conf-label">Confidence Score</span>
+          <span class="conf-value" id="conf-value">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="info-box" id="info-box"><p id="result-message"></p></div>
+
+      <div class="rec-box">
+        <span class="rec-icon">💡</span>
+        <p><strong>Clinical Recommendation:</strong> <span id="recommendation-text"></span></p>
+      </div>
+
+      <!-- Quantum Circuit Diagram -->
+      <div class="qc-diagram">
+        <div class="qc-title"><span>⚛️</span> Variational Quantum Circuit (4 Qubits · 2 Layers)</div>
+        <div class="qc-row">
+          <div class="qc-qubit">q0</div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-gate">CX</div><div class="qc-wire"></div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-gate">CX</div><div class="qc-wire"></div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-measure">🎯</div>
+        </div>
+        <div class="qc-row">
+          <div class="qc-qubit">q1</div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-gate">CX</div><div class="qc-wire"></div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-gate">CX</div><div class="qc-wire"></div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-measure">🎯</div>
+        </div>
+        <div class="qc-row">
+          <div class="qc-qubit">q2</div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-gate">CX</div><div class="qc-wire"></div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-gate">CX</div><div class="qc-wire"></div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-measure">🎯</div>
+        </div>
+        <div class="qc-row">
+          <div class="qc-qubit">q3</div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-gate">CX</div><div class="qc-wire"></div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-gate">CX</div><div class="qc-wire"></div>
+          <div class="qc-gate">Ry</div><div class="qc-wire"></div>
+          <div class="qc-measure">🎯</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- XAI Card -->
+    <div class="card" id="xai-card">
+      <div class="xai-header">
+        <div class="xai-logo">🧠</div>
+        <div>
+          <div class="xai-title">Explainable AI — Medical Interpretation</div>
+          <div class="xai-sub">Powered by Groq · LLaMA 3.3 70B · Real-time clinical explanation</div>
+        </div>
+      </div>
+
+      <!-- Skeleton while loading -->
+      <div class="xai-skeleton" id="xai-skeleton">
+        <div class="skeleton-line" style="width:95%"></div>
+        <div class="skeleton-line" style="width:85%"></div>
+        <div class="skeleton-line" style="width:90%"></div>
+        <div class="skeleton-line" style="width:70%"></div>
+        <div class="skeleton-line" style="width:88%"></div>
+        <div class="skeleton-line" style="width:60%"></div>
+      </div>
+
+      <!-- Actual content -->
+      <div id="xai-content" style="display:none"></div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+      <strong>⚕️ Medical Disclaimer:</strong> This system is for research &amp; educational
+      purposes only. It does <em>not</em> replace professional medical diagnosis or treatment.
+      The quantum-classical hybrid model and LLM explanations are AI-generated and should always
+      be reviewed by a qualified physician.
+    </div>
+
+  </main>
+
+  <footer>
+    BladderVision QML &nbsp;·&nbsp;
+    <span>⚛️ Qiskit VQC</span> backbone &nbsp;+&nbsp;
+    <span>🧠 Groq LLaMA 3.3</span> XAI &nbsp;·&nbsp;
+    &copy; 2025
+  </footer>
+
+  <script>
+    const fileInput    = document.getElementById('file-input');
+    const uploadZone   = document.getElementById('upload-zone');
+    const previewCont  = document.getElementById('preview-container');
+    const previewImg   = document.getElementById('preview-img');
+    const previewName  = document.getElementById('preview-filename');
+    const analyzeBtn   = document.getElementById('analyze-btn');
+    const resetBtn     = document.getElementById('reset-btn');
+    const resultCard   = document.getElementById('result-card');
+    const xaiCard      = document.getElementById('xai-card');
+    const errorCard    = document.getElementById('error-card');
+    const errorMsg     = document.getElementById('error-msg');
+    const spinner      = document.getElementById('spinner');
+    const btnText      = document.getElementById('btn-text');
+    const modeBadge    = document.getElementById('mode-badge');
+    const modeText     = document.getElementById('mode-text');
+    const xaiSkeleton  = document.getElementById('xai-skeleton');
+    const xaiContent   = document.getElementById('xai-content');
+
+    let selectedFile = null;
+
+    // Drag & drop
+    uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+    uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+    uploadZone.addEventListener('drop', e => {
+      e.preventDefault(); uploadZone.classList.remove('drag-over');
+      if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+    });
+    fileInput.addEventListener('change', () => { if (fileInput.files[0]) handleFile(fileInput.files[0]); });
+
+    function handleFile(file) {
+      selectedFile = file;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        previewImg.src = ev.target.result;
+        previewName.textContent = `📄 ${file.name}  (${(file.size/1024).toFixed(1)} KB)`;
+        previewCont.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+      analyzeBtn.style.display = 'block';
+      resultCard.style.display = 'none';
+      xaiCard.style.display    = 'none';
+      errorCard.style.display  = 'none';
+      resetBtn.style.display   = 'none';
+    }
+
+    // Analyze
+    analyzeBtn.addEventListener('click', async () => {
+      if (!selectedFile) return;
+      analyzeBtn.disabled   = true;
+      spinner.style.display = 'block';
+      btnText.textContent   = 'Running Quantum Analysis…';
+      resultCard.style.display = 'none';
+      xaiCard.style.display    = 'none';
+      errorCard.style.display  = 'none';
+
+      try {
+        const form = new FormData();
+        form.append('image', selectedFile);
+
+        const res  = await fetch('/predict', { method: 'POST', body: form });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Server error');
+
+        showResult(data);
+        showXAI(data.xai_explanation);
+        resetBtn.style.display = 'block';
+
+      } catch (err) {
+        errorMsg.textContent    = err.message;
+        errorCard.style.display = 'block';
+      } finally {
+        analyzeBtn.disabled   = false;
+        spinner.style.display = 'none';
+        btnText.textContent   = '⚛️ \u00a0Run Quantum Analysis + XAI';
+      }
+    });
+
+    function showResult(data) {
+      const cls = data.status;  // 'cancer' or 'no_cancer'
+
+      // Mode badge
+      modeBadge.style.display = 'flex';
+      modeText.textContent    = `Model: ${data.model_mode}`;
+
+      // Icon
+      const iconEl = document.getElementById('result-icon');
+      iconEl.className  = `result-icon ${cls}`;
+      iconEl.textContent = data.icon;
+
+      // Title
+      document.getElementById('result-title').className   = `result-title ${cls}`;
+      document.getElementById('result-title').textContent = data.title;
+      document.getElementById('result-subtitle').textContent =
+        `CNN P(No Cancer): ${data.raw_score}  ·  QML score: ${data.qml_raw ?? 'N/A'}  ·  Prediction: ${data.prediction}`;
+
+      // Confidence
+      const confVal  = document.getElementById('conf-value');
+      const progFill = document.getElementById('progress-fill');
+      confVal.className  = `conf-value ${cls}`;
+      progFill.className = `progress-fill ${cls}`;
+      confVal.textContent = `${data.confidence}%`;
+      setTimeout(() => { progFill.style.width = `${data.confidence}%`; }, 50);
+
+      // Info
+      document.getElementById('info-box').className      = `info-box ${cls}`;
+      document.getElementById('result-message').textContent = data.message;
+
+      // Rec
+      document.getElementById('recommendation-text').textContent = data.recommendation;
+
+      resultCard.style.display = 'block';
+      resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function showXAI(explanation) {
+      xaiCard.style.display    = 'block';
+      xaiSkeleton.style.display = 'none';
+      xaiContent.style.display  = 'block';
+
+      // Convert **bold** markdown to <strong>
+      const formatted = explanation
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      xaiContent.innerHTML = formatted;
+
+      xaiCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Reset
+    resetBtn.addEventListener('click', () => {
+      fileInput.value = '';
+      selectedFile = null;
+      previewCont.style.display  = 'none';
+      analyzeBtn.style.display   = 'none';
+      resetBtn.style.display     = 'none';
+      resultCard.style.display   = 'none';
+      xaiCard.style.display      = 'none';
+      errorCard.style.display    = 'none';
+      modeBadge.style.display    = 'none';
+      xaiSkeleton.style.display  = 'flex';
+      xaiContent.style.display   = 'none';
+      document.getElementById('progress-fill').style.width = '0%';
+    });
+  </script>
+</body>
+</html>

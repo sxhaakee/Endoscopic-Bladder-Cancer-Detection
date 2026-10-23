@@ -1,0 +1,14 @@
+{
+  "classes": [
+    "HGC",
+    "LGC",
+    "NST",
+    "NTL"
+  ],
+  "mapping": {
+    "HGC": "Cancer",
+    "LGC": "Cancer",
+    "NST": "No Cancer",
+    "NTL": "No Cancer"
+  }
+}

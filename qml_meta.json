@@ -1,0 +1,8 @@
+{
+  "n_qubits": 4,
+  "n_layers": 2,
+  "classical_feat": 8,
+  "best_val_acc": 0.6171428571428571,
+  "vqc_trainable_params": 8,
+  "architecture": "Hybrid CNN-VQC (EstimatorQNN)"
+}

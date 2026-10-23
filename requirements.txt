@@ -1,0 +1,10 @@
+flask
+numpy
+pillow
+tensorflow
+torch
+qiskit
+qiskit-machine-learning
+groq
+kagglehub
+python-dotenv
