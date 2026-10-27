@@ -8,3 +8,8 @@ qiskit-machine-learning
 groq
 kagglehub
 python-dotenv
+pandas
+scikit-learn
+joblib
+matplotlib
+seaborn

@@ -251,3 +251,72 @@ If you use this repository academically, cite:
 
 This software is for research and educational purposes only.
 It is not a medical device, and must not be used as a substitute for professional clinical judgment, diagnosis, or treatment.
+
+---
+
+## NEW: Disease Classifier — Numerical CSV Model (Workflow B)
+
+The existing image model is fully preserved. This section explains the new addition.
+
+### What does each model do?
+
+**Workflow A (Image Model):** Takes an endoscopy photo → predicts Cancer or No Cancer using CNN + optional quantum circuit.
+
+**Workflow B (CSV Model):** Takes patient lab test numbers → predicts one of five disease categories using a Random Forest trained on a 1336-row CSV dataset.
+
+These models are kept separate — the image dataset and CSV dataset have no verified patient-level link.
+
+### Disease categories predicted
+
+| Category | Notes |
+|---|---|
+| UrinaryBladder | Most common in this dataset (591 records) |
+| Prostate | 201 records |
+| Kidney | 200 records |
+| Uterus | 200 records |
+| Cystitis | 144 records |
+
+> These are disease categories, NOT five types of cancer.
+
+### Actual evaluation results (honest)
+
+| Metric | Value |
+|---|---|
+| Test Accuracy | **74.6%** |
+| Test F1-macro | **0.70** |
+| 5-fold CV Accuracy | 74.5% ± 3.0% |
+
+Per-class F1: Prostate=0.92, Uterus=0.81, UrinaryBladder=0.79, Cystitis=0.64, Kidney=0.36
+
+### Commands
+
+```bash
+# Install dependencies
+pip3 install -r requirements.txt --break-system-packages
+
+# Train the CSV model (generates models/ folder)
+python3 train_tabular_model.py
+
+# Start the server
+python3 app.py
+# Open: http://127.0.0.1:5050
+```
+
+### Test the API
+
+```bash
+curl -X POST http://127.0.0.1:5050/predict-tabular \
+  -H "Content-Type: application/json" \
+  -d '{"age": 65, "gender": 1, "Creatinine": 1.2}' | python3 -m json.tool
+```
+
+### New files added
+
+| File | Purpose |
+|---|---|
+| `train_tabular_model.py` | Training script |
+| `tabular_predict.py` | Inference module |
+| `inspect_dataset.py` | Dataset inspection |
+| `models/tabular_pipeline.pkl` | Saved model |
+| `models/tabular_meta.json` | Metadata |
+| `models/confusion_matrix.png` | Confusion matrix |

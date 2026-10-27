@@ -4,9 +4,10 @@ Hybrid Quantum-Classical CNN  +  Explainable AI (Groq LLM)
 ===========================================================
 
 Endpoints:
-  GET  /            → index.html
-  POST /predict     → multipart image → JSON result + XAI explanation
-  GET  /health      → server health check
+  GET  /                  → index.html
+  POST /predict           → multipart image → JSON result + XAI explanation
+  POST /predict-tabular   → JSON patient features → disease classification
+  GET  /health            → server health check
 """
 
 import os, io, json
@@ -15,6 +16,7 @@ from flask import Flask, request, jsonify, send_from_directory
 from PIL import Image
 import tensorflow as tf
 from dotenv import load_dotenv
+import tabular_predict
 
 load_dotenv()
 
@@ -284,13 +286,67 @@ def predict():
         import traceback
         return jsonify({"error": str(e), "trace": traceback.format_exc()}), 500
 
+# ── Tabular disease prediction endpoint ──────────────────────────────────────
+TABULAR_REQUIRED = [
+    "age", "gender"
+]
+TABULAR_NUMERIC = [
+    "A/G Ratio", "Albumin", "Alk", "ALT (GPT)", "AST (GOT)", "BUN",
+    "Calcium", "Chloride", "Creatinine", "Direct Bilirubin", "Estimated GFR",
+    "Glucose AC", "Nitrite", "Urine occult Blood", "pH", "Potassium",
+    "Sodium", "Specific Gravity", "Strip WBC", "Total Bilirubin",
+    "Total Cholesterol", "Total Protein", "Triglyceride",
+    "Urine epitheilum (UL)", "Urine epithelium count", "Uric acid",
+    "Urine Bilirubin", "Urine Glucose", "Urine Ketone", "Urine Protein",
+    "Urobilinogen", "age", "gender", "Hyper1en1ion", "Diabe1es",
+    "Smoking", "Drinking", "Bee1leNu1", "FamilyHis1ory",
+]
+
+@app.route("/predict-tabular", methods=["POST"])
+def predict_tabular():
+    data = request.get_json(silent=True)
+    if not data:
+        return jsonify({"error": "JSON body required."}), 400
+
+    # Reject patient identifier
+    if "Patient Number" in data:
+        return jsonify({"error": "Patient Number must not be sent."}), 400
+
+    # Validate required fields
+    missing = [f for f in TABULAR_REQUIRED if data.get(f) is None]
+    if missing:
+        return jsonify({"error": f"Missing required fields: {missing}"}), 400
+
+    # Validate numeric types
+    bad = []
+    for col in TABULAR_NUMERIC:
+        v = data.get(col)
+        if v is not None:
+            try:
+                float(v)
+            except (ValueError, TypeError):
+                bad.append(col)
+    if bad:
+        return jsonify({"error": f"Non-numeric values for: {bad}"}), 400
+
+    try:
+        result = tabular_predict.predict_disease(data)
+        return jsonify(result)
+    except FileNotFoundError as e:
+        return jsonify({"error": str(e)}), 503
+    except Exception:
+        return jsonify({"error": "Prediction failed. Check server logs."}), 500
+
+
 @app.route("/health")
 def health():
+    tabular_ready = os.path.exists("models/tabular_pipeline.pkl")
     return jsonify({
-        "status": "ok",
-        "mode":   "QML" if USE_QML else "CNN",
-        "qubits": qml_meta.get("n_qubits", "N/A"),
-        "classes": class_indices,
+        "status":        "ok",
+        "mode":          "QML" if USE_QML else "CNN",
+        "qubits":        qml_meta.get("n_qubits", "N/A"),
+        "classes":       class_indices,
+        "tabular_model": "ready" if tabular_ready else "not trained",
     })
 
 if __name__ == "__main__":

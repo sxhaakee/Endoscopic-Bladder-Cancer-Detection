@@ -27,3 +27,7 @@ env/
 *.log
 *.tmp
 *.swp
+
+# Raw medical dataset — do NOT commit (privacy protection)
+bladder data.csv
+*.csv

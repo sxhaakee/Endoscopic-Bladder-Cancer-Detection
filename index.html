@@ -317,6 +317,121 @@
     }
     .disclaimer strong { color: var(--warn); }
 
+    /* ── TABS ── */
+    .tab-bar {
+      display: flex; gap: 0; margin-bottom: 24px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 4px; overflow: hidden;
+    }
+    .tab-btn {
+      flex: 1; padding: 11px 16px; border: none; border-radius: 9px;
+      background: transparent; color: var(--muted);
+      font-size: .875rem; font-weight: 600; font-family: inherit;
+      cursor: pointer; transition: all .22s; display: flex; align-items: center;
+      justify-content: center; gap: 8px;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(91,156,249,.18), rgba(167,139,250,.18));
+      color: var(--text); border: 1px solid rgba(91,156,249,.25);
+    }
+    .tab-btn:hover:not(.active) { color: var(--text); background: rgba(255,255,255,.04); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── TABULAR FORM ── */
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: .75rem; font-weight: 700; color: var(--muted);
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+    .form-group .hint { font-size: .68rem; color: rgba(124,138,158,.7); margin-top: 2px; }
+    .form-group input, .form-group select {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 12px;
+      color: var(--text); font-size: .9rem; font-family: inherit;
+      transition: border-color .2s; width: 100%;
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none; border-color: var(--accent);
+    }
+    .form-group input::placeholder { color: var(--muted); }
+    .section-label {
+      font-size: .7rem; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent);
+      margin: 20px 0 10px; padding-bottom: 6px;
+      border-bottom: 1px solid rgba(91,156,249,.15);
+    }
+    #tabular-submit-btn {
+      width: 100%; margin-top: 22px; padding: 15px;
+      border: none; border-radius: 12px;
+      background: linear-gradient(135deg, #22d3ae, var(--accent));
+      color: #fff; font-size: 1rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; transition: all .25s;
+    }
+    #tabular-submit-btn:hover:not(:disabled) { opacity: .88; transform: translateY(-1px); }
+    #tabular-submit-btn:disabled { opacity: .5; cursor: not-allowed; }
+    #tabular-error { display:none; margin-top:14px;
+      background: rgba(240,64,64,.08); border: 1px solid rgba(240,64,64,.3);
+      border-radius:10px; padding:12px 16px; color:var(--danger); font-size:.875rem; }
+    #tabular-result { display:none; margin-top:18px; }
+    .t-result-head {
+      display:flex; align-items:center; gap:14px; margin-bottom:16px;
+    }
+    .t-result-icon {
+      width:52px; height:52px; border-radius:50%; flex-shrink:0;
+      background: rgba(34,211,174,.12); border: 2px solid rgba(34,211,174,.35);
+      display:flex; align-items:center; justify-content:center; font-size:24px;
+    }
+    .t-result-label { font-size:1.3rem; font-weight:900; color:var(--groq); }
+    .t-result-sub { font-size:.82rem; color:var(--muted); margin-top:3px; }
+    .score-bars { display:flex; flex-direction:column; gap:8px; margin-top:14px; }
+    .score-row { display:flex; align-items:center; gap:10px; }
+    .score-name { font-size:.78rem; font-weight:700; width:130px; color:var(--muted); flex-shrink:0; }
+    .score-track { flex:1; height:8px; background:rgba(255,255,255,.07); border-radius:99px; overflow:hidden; }
+    .score-bar { height:100%; border-radius:99px; background: linear-gradient(90deg,#22d3ae,var(--accent)); transition: width 1s cubic-bezier(.4,0,.2,1); width:0%; }
+    .score-pct { font-size:.78rem; font-weight:700; width:44px; text-align:right; color:var(--text); }
+    .t-disclaimer {
+      margin-top:16px; padding:12px 14px;
+      background:rgba(245,158,11,.07); border:1px solid rgba(245,158,11,.2);
+      border-radius:10px; font-size:.78rem; color:var(--warn); line-height:1.55;
+    }
+
+    /* ── QUICK CASES ── */
+    .cases-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px;
+      margin-bottom: 22px;
+    }
+    .case-card {
+      border-radius: 12px; padding: 14px 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: var(--surface2);
+      cursor: pointer; transition: all .2s;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .case-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(91,156,249,.12); }
+    .case-card.active { border-color: var(--groq); background: rgba(34,211,174,.06); }
+    .case-icon { font-size: 22px; }
+    .case-name { font-size: .82rem; font-weight: 800; color: var(--text); }
+    .case-meta { font-size: .7rem; color: var(--muted); line-height: 1.4; }
+    .case-load-btn {
+      margin-top: 6px; padding: 5px 0; border: 1px solid rgba(91,156,249,.3);
+      border-radius: 6px; background: rgba(91,156,249,.08);
+      color: var(--accent); font-size: .7rem; font-weight: 700;
+      cursor: pointer; font-family: inherit; transition: all .18s;
+    }
+    .case-load-btn:hover { background: rgba(91,156,249,.18); }
+    .clear-form-btn {
+      background: none; border: 1px solid var(--border);
+      color: var(--muted); border-radius: 8px; padding: 9px 18px;
+      cursor: pointer; font-family: inherit; font-size: .82rem;
+      transition: all .2s; margin-top: 14px;
+    }
+    .clear-form-btn:hover { border-color: var(--danger); color: var(--danger); }
+
     /* ── FOOTER ── */
     footer { position: relative; z-index:1; color: var(--muted); font-size: .75rem; padding: 0 24px 36px; text-align: center; }
     footer span { color: var(--quantum); font-weight: 600; }
@@ -345,6 +460,15 @@
   </header>
 
   <main>
+
+    <!-- Tab Switcher -->
+    <div class="tab-bar" role="tablist">
+      <button class="tab-btn active" id="tab-image-btn" role="tab" onclick="switchTab('image')">🔬 Image Analysis</button>
+      <button class="tab-btn" id="tab-tabular-btn" role="tab" onclick="switchTab('tabular')">🧬 Disease Classifier</button>
+    </div>
+
+    <!-- Workflow A: Image Analysis -->
+    <div class="tab-panel active" id="panel-image">
 
     <!-- Upload Card -->
     <div class="card">
@@ -482,6 +606,166 @@
       The quantum-classical hybrid model and LLM explanations are AI-generated and should always
       be reviewed by a qualified physician.
     </div>
+
+    </div><!-- /panel-image -->
+
+    <!-- Workflow B: Disease Classifier -->
+    <div class="tab-panel" id="panel-tabular">
+
+      <div class="card">
+        <div class="card-title"><span>🧬</span> Patient Disease Classifier — Numerical Data</div>
+
+        <p style="font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:16px;">
+          Enter patient test results below. The AI model predicts one of five disease categories
+          based on blood tests, urine tests, and clinical history.
+          Only <strong style="color:var(--text)">Age</strong> and
+          <strong style="color:var(--text)">Gender</strong> are required — all other fields are optional.
+          Do <em>not</em> enter a Patient Number.
+        </p>
+
+        <!-- Quick Test Cases -->
+        <div class="section-label" style="margin-top:0">⚡ Quick Test Cases — click to load real patient data</div>
+        <p style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">
+          Each card contains actual values from the training dataset. Click <strong style="color:var(--accent)">Load</strong> to pre-fill the form, then click Predict.
+        </p>
+        <div class="cases-grid">
+
+          <div class="case-card" id="case-cystitis" onclick="loadCase('cystitis')">
+            <div class="case-icon">🔵</div>
+            <div class="case-name">Cystitis</div>
+            <div class="case-meta">Age 69 · Male<br>Urine WBC: 2 · Blood: 3+<br>Creatinine: 1.4 · GFR: 75</div>
+            <button type="button" class="case-load-btn" onclick="event.stopPropagation();loadCase('cystitis')">▶ Load Case</button>
+          </div>
+
+          <div class="case-card" id="case-kidney" onclick="loadCase('kidney')">
+            <div class="case-icon">🟣</div>
+            <div class="case-name">Kidney</div>
+            <div class="case-meta">Age 67 · Male<br>Creatinine: 1.1 · GFR: 77<br>Protein: 0.5+ · Bili: 1.7</div>
+            <button type="button" class="case-load-btn" onclick="event.stopPropagation();loadCase('kidney')">▶ Load Case</button>
+          </div>
+
+          <div class="case-card" id="case-prostate" onclick="loadCase('prostate')">
+            <div class="case-icon">🟠</div>
+            <div class="case-name">Prostate</div>
+            <div class="case-meta">Age 68 · Male<br>Urine Protein: 2+ · Blood: 3+<br>GFR: 43.5 · BUN: 25</div>
+            <button type="button" class="case-load-btn" onclick="event.stopPropagation();loadCase('prostate')">▶ Load Case</button>
+          </div>
+
+          <div class="case-card" id="case-urinarybladder" onclick="loadCase('urinarybladder')">
+            <div class="case-icon">🟡</div>
+            <div class="case-name">Urinary Bladder</div>
+            <div class="case-meta">Age 60 · Male<br>Smoker · Hypertension<br>GFR: 79 · Epi/µL: 36</div>
+            <button type="button" class="case-load-btn" onclick="event.stopPropagation();loadCase('urinarybladder')">▶ Load Case</button>
+          </div>
+
+          <div class="case-card" id="case-uterus" onclick="loadCase('uterus')">
+            <div class="case-icon">🟢</div>
+            <div class="case-name">Uterus</div>
+            <div class="case-meta">Age 79 · Female<br>Creatinine: 0.6 · GFR: 98<br>Cholesterol: 215</div>
+            <button type="button" class="case-load-btn" onclick="event.stopPropagation();loadCase('uterus')">▶ Load Case</button>
+          </div>
+
+        </div><!-- /cases-grid -->
+        <div style="font-size:.72rem;color:rgba(124,138,158,.6);margin-bottom:20px;">⚠️ These are real research dataset values for demonstration only. Not intended for clinical use.</div>
+
+        <form id="tabular-form" onsubmit="return false;">
+
+          <div class="section-label">🧑 Demographics (required)</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="t-age">Age <span style="color:var(--danger)">*</span></label>
+              <input type="number" id="t-age" name="age" min="18" max="100" placeholder="e.g. 65" required />
+              <span class="hint">Years (18–100)</span>
+            </div>
+            <div class="form-group">
+              <label for="t-gender">Gender <span style="color:var(--danger)">*</span></label>
+              <select id="t-gender" name="gender" required>
+                <option value="">Select…</option>
+                <option value="0">Female (0)</option>
+                <option value="1">Male (1)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="section-label">🩸 Blood Tests (optional)</div>
+          <div class="form-grid">
+            <div class="form-group"><label for="t-albumin">Albumin (g/dL)</label><input type="number" step="0.01" id="t-albumin" placeholder="e.g. 4.0" /><span class="hint">Normal: 3.5–5.5</span></div>
+            <div class="form-group"><label for="t-ag">A/G Ratio</label><input type="number" step="0.01" id="t-ag" placeholder="e.g. 1.7" /><span class="hint">Normal: 1.1–2.5</span></div>
+            <div class="form-group"><label for="t-alk">Alkaline Phosphatase (U/L)</label><input type="number" step="1" id="t-alk" placeholder="e.g. 70" /><span class="hint">Normal: 44–147</span></div>
+            <div class="form-group"><label for="t-alt">ALT/GPT (U/L)</label><input type="number" step="1" id="t-alt" placeholder="e.g. 25" /><span class="hint">Normal: 7–56</span></div>
+            <div class="form-group"><label for="t-ast">AST/GOT (U/L)</label><input type="number" step="1" id="t-ast" placeholder="e.g. 28" /><span class="hint">Normal: 10–40</span></div>
+            <div class="form-group"><label for="t-bun">BUN (mg/dL)</label><input type="number" step="0.1" id="t-bun" placeholder="e.g. 15" /><span class="hint">Normal: 7–25</span></div>
+            <div class="form-group"><label for="t-calcium">Calcium (mg/dL)</label><input type="number" step="0.01" id="t-calcium" placeholder="e.g. 9.0" /><span class="hint">Normal: 8.5–10.5</span></div>
+            <div class="form-group"><label for="t-chloride">Chloride (mEq/L)</label><input type="number" step="1" id="t-chloride" placeholder="e.g. 103" /><span class="hint">Normal: 96–106</span></div>
+            <div class="form-group"><label for="t-creatinine">Creatinine (mg/dL)</label><input type="number" step="0.01" id="t-creatinine" placeholder="e.g. 1.0" /><span class="hint">Normal: 0.6–1.3</span></div>
+            <div class="form-group"><label for="t-dbili">Direct Bilirubin (mg/dL)</label><input type="number" step="0.01" id="t-dbili" placeholder="e.g. 0.1" /></div>
+            <div class="form-group"><label for="t-gfr">Estimated GFR (mL/min)</label><input type="number" step="0.1" id="t-gfr" placeholder="e.g. 75" /></div>
+            <div class="form-group"><label for="t-glucose">Glucose AC (mg/dL)</label><input type="number" step="1" id="t-glucose" placeholder="e.g. 110" /></div>
+            <div class="form-group"><label for="t-potassium">Potassium (mEq/L)</label><input type="number" step="0.01" id="t-potassium" placeholder="e.g. 4.1" /></div>
+            <div class="form-group"><label for="t-sodium">Sodium (mEq/L)</label><input type="number" step="1" id="t-sodium" placeholder="e.g. 139" /></div>
+            <div class="form-group"><label for="t-tbili">Total Bilirubin (mg/dL)</label><input type="number" step="0.01" id="t-tbili" placeholder="e.g. 0.8" /></div>
+            <div class="form-group"><label for="t-chol">Total Cholesterol (mg/dL)</label><input type="number" step="1" id="t-chol" placeholder="e.g. 185" /></div>
+            <div class="form-group"><label for="t-protein">Total Protein (g/dL)</label><input type="number" step="0.01" id="t-protein" placeholder="e.g. 6.8" /></div>
+            <div class="form-group"><label for="t-trig">Triglyceride (mg/dL)</label><input type="number" step="1" id="t-trig" placeholder="e.g. 120" /></div>
+            <div class="form-group"><label for="t-uricacid">Uric Acid (mg/dL)</label><input type="number" step="0.01" id="t-uricacid" placeholder="e.g. 5.5" /></div>
+          </div>
+
+          <div class="section-label">🧪 Urine Tests (optional)</div>
+          <div class="form-grid">
+            <div class="form-group"><label for="t-ph">Urine pH</label><input type="number" step="0.1" id="t-ph" min="4" max="9" placeholder="e.g. 6.0" /></div>
+            <div class="form-group"><label for="t-spgravity">Specific Gravity</label><input type="number" step="0.001" id="t-spgravity" placeholder="e.g. 1.015" /></div>
+            <div class="form-group"><label for="t-nitrite">Nitrite (0=neg,1=pos)</label><input type="number" step="1" id="t-nitrite" min="0" max="1" placeholder="0 or 1" /></div>
+            <div class="form-group"><label for="t-occblood">Urine Occult Blood (0–3)</label><input type="number" step="0.5" id="t-occblood" min="0" max="3" placeholder="0–3" /></div>
+            <div class="form-group"><label for="t-stripwbc">Strip WBC (0–3)</label><input type="number" step="0.5" id="t-stripwbc" min="0" max="3" placeholder="0–3" /></div>
+            <div class="form-group"><label for="t-ubili">Urine Bilirubin (0–3)</label><input type="number" step="1" id="t-ubili" min="0" max="3" placeholder="0–3" /></div>
+            <div class="form-group"><label for="t-uglucose">Urine Glucose (0–3)</label><input type="number" step="1" id="t-uglucose" min="0" max="3" placeholder="0–3" /></div>
+            <div class="form-group"><label for="t-uketone">Urine Ketone (0–3)</label><input type="number" step="1" id="t-uketone" min="0" max="3" placeholder="0–3" /></div>
+            <div class="form-group"><label for="t-uprobe">Urine Protein (0–3)</label><input type="number" step="0.5" id="t-uprobe" min="0" max="3" placeholder="0–3" /></div>
+            <div class="form-group"><label for="t-urobilinogen">Urobilinogen</label><input type="number" step="0.1" id="t-urobilinogen" placeholder="e.g. 0.2" /></div>
+            <div class="form-group"><label for="t-uepiL">Urine Epithelium /µL</label><input type="number" step="1" id="t-uepiL" placeholder="e.g. 5" /></div>
+            <div class="form-group"><label for="t-uepiCount">Urine Epithelium Count</label><input type="number" step="1" id="t-uepiCount" placeholder="e.g. 2" /></div>
+          </div>
+
+          <div class="section-label">📋 Clinical History (optional, 0=No 1=Yes)</div>
+          <div class="form-grid">
+            <div class="form-group"><label for="t-htn">Hypertension</label><select id="t-htn"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+            <div class="form-group"><label for="t-dm">Diabetes</label><select id="t-dm"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+            <div class="form-group"><label for="t-smoking">Smoking</label><select id="t-smoking"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+            <div class="form-group"><label for="t-drinking">Drinking</label><select id="t-drinking"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+            <div class="form-group"><label for="t-betel">Betel Nut Use</label><select id="t-betel"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+            <div class="form-group"><label for="t-fhx">Family History</label><select id="t-fhx"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+          </div>
+
+          <div style="display:flex;gap:12px;align-items:center;margin-top:20px;flex-wrap:wrap;">
+            <button type="submit" id="tabular-submit-btn" style="flex:1;min-width:200px;margin-top:0;">🧬 Predict Disease Category</button>
+            <button type="button" class="clear-form-btn" onclick="clearTabularForm()" style="margin-top:0;">✕ Clear All Fields</button>
+          </div>
+        </form>
+
+        <div id="tabular-error"></div>
+
+        <div id="tabular-result">
+          <div class="t-result-head">
+            <div class="t-result-icon">🧬</div>
+            <div>
+              <div class="t-result-label" id="t-pred-label">—</div>
+              <div class="t-result-sub" id="t-pred-sub">Predicted disease category</div>
+            </div>
+          </div>
+          <div class="score-bars" id="t-score-bars"></div>
+          <div class="t-disclaimer" id="t-disclaimer-text"></div>
+        </div>
+
+      </div><!-- /card -->
+
+      <div class="disclaimer">
+        <strong>⚠️ Important:</strong> This numerical classifier is
+        <strong>experimental</strong> and trained on a research dataset.
+        It is <em>not</em> a certified medical diagnostic tool and
+        <strong>must not replace</strong> professional medical evaluation.
+      </div>
+
+    </div><!-- /panel-tabular -->
 
   </main>
 
@@ -635,6 +919,234 @@
       xaiContent.style.display   = 'none';
       document.getElementById('progress-fill').style.width = '0%';
     });
+
+    // ── Tab switcher ─────────────────────────────────────────────────────────
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('panel-' + tab).classList.add('active');
+      document.getElementById('tab-' + tab + '-btn').classList.add('active');
+    }
+
+    // ── Tabular prediction ───────────────────────────────────────────────────
+    function getTabularPayload() {
+      const g = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+      const n = (v) => v === '' ? undefined : Number(v);
+      return {
+        'age':                    n(g('t-age')),
+        'gender':                 n(g('t-gender')),
+        'A/G Ratio':              n(g('t-ag')),
+        'Albumin':                n(g('t-albumin')),
+        'Alk':                    n(g('t-alk')),
+        'ALT (GPT)':              n(g('t-alt')),
+        'AST (GOT)':              n(g('t-ast')),
+        'BUN':                    n(g('t-bun')),
+        'Calcium':                n(g('t-calcium')),
+        'Chloride':               n(g('t-chloride')),
+        'Creatinine':             n(g('t-creatinine')),
+        'Direct Bilirubin':       n(g('t-dbili')),
+        'Estimated GFR':          n(g('t-gfr')),
+        'Glucose AC':             n(g('t-glucose')),
+        'Nitrite':                n(g('t-nitrite')),
+        'Urine occult Blood':     n(g('t-occblood')),
+        'pH':                     n(g('t-ph')),
+        'Potassium':              n(g('t-potassium')),
+        'Sodium':                 n(g('t-sodium')),
+        'Specific Gravity':       n(g('t-spgravity')),
+        'Strip WBC':              n(g('t-stripwbc')),
+        'Total Bilirubin':        n(g('t-tbili')),
+        'Total Cholesterol':      n(g('t-chol')),
+        'Total Protein':          n(g('t-protein')),
+        'Triglyceride':           n(g('t-trig')),
+        'Urine epitheilum (UL)':  n(g('t-uepiL')),
+        'Urine epithelium count': n(g('t-uepiCount')),
+        'Uric acid':              n(g('t-uricacid')),
+        'Urine Bilirubin':        n(g('t-ubili')),
+        'Urine Glucose':          n(g('t-uglucose')),
+        'Urine Ketone':           n(g('t-uketone')),
+        'Urine Protein':          n(g('t-uprobe')),
+        'Urobilinogen':           n(g('t-urobilinogen')),
+        'Hyper1en1ion':           n(g('t-htn')),
+        'Diabe1es':               n(g('t-dm')),
+        'Smoking':                n(g('t-smoking')),
+        'Drinking':               n(g('t-drinking')),
+        'Bee1leNu1':              n(g('t-betel')),
+        'FamilyHis1ory':          n(g('t-fhx')),
+      };
+    }
+
+    document.getElementById('tabular-form').addEventListener('submit', async () => {
+      const btn     = document.getElementById('tabular-submit-btn');
+      const errDiv  = document.getElementById('tabular-error');
+      const resDiv  = document.getElementById('tabular-result');
+      errDiv.style.display = 'none';
+      resDiv.style.display = 'none';
+      btn.disabled = true;
+      btn.textContent = '⏳ Predicting…';
+
+      try {
+        // Remove undefined fields
+        const payload = Object.fromEntries(
+          Object.entries(getTabularPayload()).filter(([,v]) => v !== undefined)
+        );
+
+        const res  = await fetch('/predict-tabular', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Server error');
+
+        // Show result
+        document.getElementById('t-pred-label').textContent = data.predicted_class;
+        document.getElementById('t-pred-sub').textContent =
+          `Confidence: ${(Math.max(...Object.values(data.class_scores))*100).toFixed(1)}%`;
+        document.getElementById('t-disclaimer-text').innerHTML =
+          '<strong>⚠️ Disclaimer:</strong> ' + data.disclaimer;
+
+        // Build score bars
+        const barsDiv = document.getElementById('t-score-bars');
+        barsDiv.innerHTML = '<div style="font-size:.72rem;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Class Probabilities</div>';
+        Object.entries(data.class_scores)
+          .sort((a,b) => b[1]-a[1])
+          .forEach(([cls, prob]) => {
+            const pct = (prob * 100).toFixed(1);
+            const row = document.createElement('div');
+            row.className = 'score-row';
+            row.innerHTML = `<span class="score-name">${cls}</span><div class="score-track"><div class="score-bar" data-pct="${pct}"></div></div><span class="score-pct">${pct}%</span>`;
+            barsDiv.appendChild(row);
+          });
+        resDiv.style.display = 'block';
+        setTimeout(() => {
+          document.querySelectorAll('.score-bar').forEach(b => {
+            b.style.width = b.dataset.pct + '%';
+          });
+        }, 60);
+        resDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      } catch (err) {
+        errDiv.textContent = '⚠️ ' + err.message;
+        errDiv.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '🧬 Predict Disease Category';
+      }
+    });
+
+    // ── Quick Test Cases data ──────────────────────────────────────────────
+    const CASES = {
+      cystitis: {
+        age:69, gender:1,
+        'Albumin':4.4, 'Alk':69, 'ALT (GPT)':28, 'AST (GOT)':16,
+        'BUN':21, 'Calcium':8.5, 'Chloride':100, 'Creatinine':1.4,
+        'Direct Bilirubin':0.2, 'Estimated GFR':75, 'Glucose AC':182,
+        'Nitrite':0, 'Urine occult Blood':3, 'pH':6, 'Potassium':3.7,
+        'Sodium':136, 'Specific Gravity':1.012, 'Strip WBC':2,
+        'Total Bilirubin':1.3, 'Total Cholesterol':169, 'Total Protein':6.9,
+        'Triglyceride':96, 'Urine epithelium count':0, 'Uric acid':7.7,
+        'Urine Bilirubin':0, 'Urine Glucose':0, 'Urine Ketone':0,
+        'Urine Protein':1, 'Urobilinogen':1,
+        Hyper1en1ion:1, Diabe1es:1, Smoking:0, Drinking:0, Bee1leNu1:0, FamilyHis1ory:0,
+      },
+      kidney: {
+        age:67, gender:1,
+        'A/G Ratio':2.0, 'Albumin':4.6, 'Alk':82, 'ALT (GPT)':23, 'AST (GOT)':22,
+        'BUN':23, 'Calcium':9.6, 'Chloride':108, 'Creatinine':1.1,
+        'Direct Bilirubin':0.2, 'Estimated GFR':77, 'Glucose AC':120,
+        'Nitrite':0, 'Urine occult Blood':0, 'pH':6.5, 'Potassium':3.7,
+        'Sodium':141, 'Specific Gravity':1.024, 'Strip WBC':0,
+        'Total Bilirubin':1.7, 'Total Cholesterol':203, 'Total Protein':6.8,
+        'Triglyceride':106, 'Urine epitheilum (UL)':0, 'Urine epithelium count':0,
+        'Uric acid':6.7, 'Urine Bilirubin':0, 'Urine Glucose':0, 'Urine Ketone':0,
+        'Urine Protein':0.5, 'Urobilinogen':0.1,
+        Hyper1en1ion:0, Diabe1es:0, Smoking:0, Drinking:0, Bee1leNu1:0, FamilyHis1ory:0,
+      },
+      prostate: {
+        age:68, gender:1,
+        'BUN':25, 'Chloride':105, 'Creatinine':1.6, 'Estimated GFR':43.5,
+        'Nitrite':0, 'Urine occult Blood':3, 'pH':6, 'Potassium':3.5,
+        'Sodium':139, 'Specific Gravity':1.029, 'Strip WBC':1,
+        'Urine epitheilum (UL)':0, 'Urine epithelium count':3,
+        'Urine Bilirubin':0, 'Urine Glucose':0, 'Urine Ketone':0,
+        'Urine Protein':2, 'Urobilinogen':1,
+        Hyper1en1ion:0, Diabe1es:0, Smoking:0, Drinking:0, Bee1leNu1:0, FamilyHis1ory:0,
+      },
+      urinarybladder: {
+        age:60, gender:1,
+        'A/G Ratio':1.4, 'Albumin':4.3, 'Alk':73, 'ALT (GPT)':28, 'AST (GOT)':23,
+        'BUN':8, 'Calcium':8.9, 'Chloride':104, 'Creatinine':1.2,
+        'Direct Bilirubin':0.2, 'Estimated GFR':79.1, 'Glucose AC':102,
+        'Nitrite':0, 'Urine occult Blood':0, 'pH':6.5, 'Potassium':3.9,
+        'Sodium':140, 'Specific Gravity':1.017, 'Strip WBC':2,
+        'Total Bilirubin':1.3, 'Total Cholesterol':149, 'Total Protein':6.9,
+        'Triglyceride':120, 'Urine epitheilum (UL)':36, 'Urine epithelium count':0,
+        'Uric acid':5.3, 'Urine Bilirubin':0, 'Urine Glucose':0, 'Urine Ketone':0,
+        'Urine Protein':0.5, 'Urobilinogen':0.1,
+        Hyper1en1ion:1, Diabe1es:0, Smoking:1, Drinking:0, Bee1leNu1:1, FamilyHis1ory:1,
+      },
+      uterus: {
+        age:79, gender:0,
+        'A/G Ratio':1.8, 'Albumin':4.2, 'Alk':69, 'ALT (GPT)':28, 'AST (GOT)':21,
+        'BUN':20, 'Chloride':104, 'Creatinine':0.6,
+        'Direct Bilirubin':0.1, 'Estimated GFR':98.4, 'Glucose AC':119,
+        'Nitrite':0, 'Urine occult Blood':0.5, 'pH':5.5, 'Potassium':3.9,
+        'Sodium':140, 'Specific Gravity':1.018, 'Strip WBC':0,
+        'Total Bilirubin':0.8, 'Total Cholesterol':215, 'Total Protein':6.7,
+        'Triglyceride':91, 'Urine epithelium count':2, 'Uric acid':5,
+        'Urine Bilirubin':0, 'Urine Glucose':0, 'Urine Ketone':0,
+        'Urine Protein':0, 'Urobilinogen':0.1,
+        Hyper1en1ion:0, Diabe1es:0, Smoking:0, Drinking:0, Bee1leNu1:0, FamilyHis1ory:0,
+      },
+    };
+
+    const FIELD_MAP = {
+      't-age':'age', 't-gender':'gender',
+      't-ag':'A/G Ratio', 't-albumin':'Albumin', 't-alk':'Alk',
+      't-alt':'ALT (GPT)', 't-ast':'AST (GOT)', 't-bun':'BUN',
+      't-calcium':'Calcium', 't-chloride':'Chloride', 't-creatinine':'Creatinine',
+      't-dbili':'Direct Bilirubin', 't-gfr':'Estimated GFR', 't-glucose':'Glucose AC',
+      't-nitrite':'Nitrite', 't-occblood':'Urine occult Blood', 't-ph':'pH',
+      't-potassium':'Potassium', 't-sodium':'Sodium', 't-spgravity':'Specific Gravity',
+      't-stripwbc':'Strip WBC', 't-tbili':'Total Bilirubin', 't-chol':'Total Cholesterol',
+      't-protein':'Total Protein', 't-trig':'Triglyceride',
+      't-uepiL':'Urine epitheilum (UL)', 't-uepiCount':'Urine epithelium count',
+      't-uricacid':'Uric acid', 't-ubili':'Urine Bilirubin',
+      't-uglucose':'Urine Glucose', 't-uketone':'Urine Ketone',
+      't-uprobe':'Urine Protein', 't-urobilinogen':'Urobilinogen',
+      't-htn':'Hyper1en1ion', 't-dm':'Diabe1es',
+      't-smoking':'Smoking', 't-drinking':'Drinking',
+      't-betel':'Bee1leNu1', 't-fhx':'FamilyHis1ory',
+    };
+
+    function loadCase(caseName) {
+      const data = CASES[caseName];
+      if (!data) return;
+      Object.keys(FIELD_MAP).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      Object.entries(FIELD_MAP).forEach(([id, key]) => {
+        const el = document.getElementById(id);
+        if (el && data[key] !== undefined) el.value = data[key];
+      });
+      document.querySelectorAll('.case-card').forEach(c => c.classList.remove('active'));
+      const card = document.getElementById('case-' + caseName);
+      if (card) card.classList.add('active');
+      document.getElementById('tabular-result').style.display = 'none';
+      document.getElementById('tabular-error').style.display  = 'none';
+      document.getElementById('tabular-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function clearTabularForm() {
+      Object.keys(FIELD_MAP).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      document.querySelectorAll('.case-card').forEach(c => c.classList.remove('active'));
+      document.getElementById('tabular-result').style.display = 'none';
+      document.getElementById('tabular-error').style.display  = 'none';
+    }
   </script>
 </body>
 </html>
