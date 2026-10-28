@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BladderVision QML — Quantum-Hybrid Cancer Detection & Multi-Analyte AI</title>
-  <meta name="description" content="World-class clinical AI suite: Hybrid Quantum-Classical CNN for endoscopic bladder cystoscopy with Explainable AI and multi-analyte disease classification." />
+  <title>BladderVision QML — Quantum-Hybrid Oncology & Clinical Multi-Analyte Diagnostic Intelligence</title>
+  <meta name="description" content="Next-generation medical AI platform: Full-spectrum endoscopic cystoscopy with 4-qubit Quantum Neural Networks (VQC), Groq LLaMA 3.3 Explainable AI, and multi-analyte clinical biochemistry classification." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -13,1218 +13,1033 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* ── WORLD-CLASS LIGHT THEME PALETTE ── */
-      --bg:             #f8fafc;
-      --bg-gradient:    radial-gradient(circle at 10% 20%, rgba(37,99,235,0.05) 0%, rgba(248,250,252,1) 90%);
+      /* ── LUXURY ARCHITECTURAL LIGHT THEME (SHARP / MINIMAL RADII) ── */
+      --bg:             #ffffff;
+      --bg-subtle:      #f8fafc;
+      --bg-alt:         #f1f5f9;
       --surface:        #ffffff;
-      --surface-subtle: #f1f5f9;
-      --surface-hover:  #f8fafc;
-      --border:         #e2e8f0;
-      --border-subtle:  #edf2f7;
-      --border-accent:  rgba(37,99,235,0.25);
+      --surface-border: #e2e8f0;
+      --border-dark:    #0f172a;
+      --border-subtle:  #cbd5e1;
 
-      /* Typography & Contrast */
-      --text:           #0f172a;       /* Deep obsidian - high contrast */
-      --text-secondary: #334155;       /* Slate 700 */
-      --muted:          #64748b;       /* Slate 500 */
-      --subtle:         #94a3b8;
+      /* High-Contrast Obsidian Typography */
+      --text:           #090d16;
+      --text-body:      #334155;
+      --muted:          #64748b;
+      --light-text:     #ffffff;
 
-      /* Vibrant Brand Accents */
-      --primary:        #2563eb;       /* Royal Sapphire */
-      --primary-light:  #dbeafe;
-      --primary-hover:  #1d4ed8;
-      --quantum:        #7c3aed;       /* Electric Violet */
-      --quantum-light:  #ede9fe;
-      --xai:            #0d9488;       /* Bio Teal / Emerald */
-      --xai-light:      #ccfbf1;
-      --danger:         #dc2626;       /* Clinical Crimson */
-      --danger-light:   #fee2e2;
-      --success:        #059669;       /* Clinical Emerald */
-      --success-light:  #d1fae5;
-      --warn:           #d97706;       /* Radiant Amber */
-      --warn-light:     #fef3c7;
+      /* Precision Clinical Accents */
+      --primary:        #1d4ed8;       /* Deep Medical Sapphire */
+      --primary-hover:  #1e40af;
+      --quantum:        #6d28d9;       /* Deep Quantum Violet */
+      --xai:            #0f766e;       /* Deep Bio Emerald / Teal */
+      --danger:         #b91c1c;       /* Crimson Alert */
+      --danger-bg:      #fef2f2;
+      --success:        #047857;       /* Clinical Green */
+      --success-bg:     #ecfdf5;
+      --warn:           #b45309;       /* Deep Amber */
+      --warn-bg:        #fffbeb;
 
-      /* Organ Class Themes */
-      --c-cystitis:     #0284c7;       /* Sky Blue */
-      --c-kidney:       #7c3aed;       /* Royal Violet */
-      --c-prostate:     #ea580c;       /* Tangerine / Coral */
-      --c-bladder:      #059669;       /* Emerald */
-      --c-uterus:       #db2777;       /* Rose / Pink */
+      /* Organ Color Keys */
+      --c-cystitis:     #0369a1;
+      --c-kidney:       #6d28d9;
+      --c-prostate:     #c2410c;
+      --c-bladder:      #047857;
+      --c-uterus:       #be185d;
 
-      /* Shadows & Radii */
-      --shadow-xs:      0 1px 2px 0 rgba(15,23,42,0.04);
-      --shadow-sm:      0 2px 6px -1px rgba(15,23,42,0.06), 0 1px 4px -1px rgba(15,23,42,0.03);
-      --shadow-md:      0 10px 25px -4px rgba(15,23,42,0.07), 0 4px 10px -2px rgba(15,23,42,0.03);
-      --shadow-lg:      0 20px 35px -8px rgba(15,23,42,0.09), 0 6px 16px -4px rgba(15,23,42,0.04);
-      --shadow-glow:    0 0 25px rgba(37,99,235,0.14);
-      --r-sm:           10px;
-      --r-md:           16px;
-      --r-lg:           22px;
-      --r-full:         9999px;
+      /* Strict Zero-Border-Radius Policy for sleek surgical look */
+      --r-sharp:        0px;
+      --r-tag:          2px;
     }
 
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
-      background-image: var(--bg-gradient);
       color: var(--text);
       min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center;
+      width: 100%;
       overflow-x: hidden;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Subtle ambient mesh light */
-    .ambient-mesh {
-      position: fixed; inset: 0; pointer-events: none; z-index: 0;
-      background:
-        radial-gradient(ellipse 70% 40% at 20% 0%, rgba(37,99,235,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 10%, rgba(124,58,237,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 30% at 50% 90%, rgba(13,148,136,0.05) 0%, transparent 70%);
+    /* ── FULL-WIDTH ARCHITECTURAL NAVBAR ── */
+    .site-nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      background: rgba(9, 13, 22, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 74px;
     }
+    .nav-brand {
+      display: flex; align-items: center; gap: 14px; text-decoration: none; color: #fff;
+    }
+    .nav-logo-box {
+      width: 44px; height: 44px; border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 2px; background: #000; display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-img { width: 100%; height: 100%; object-fit: cover; }
+    .nav-title { font-size: 1.25rem; font-weight: 900; letter-spacing: -0.02em; text-transform: uppercase; }
+    .nav-tagline { font-size: 0.72rem; color: #94a3b8; font-weight: 500; letter-spacing: 0.05em; }
 
-    /* Ambient fine dot grid */
-    .dot-grid {
-      position: fixed; inset: 0;
-      background-image: radial-gradient(#cbd5e1 1.2px, transparent 1.2px);
-      background-size: 28px 28px;
-      opacity: 0.45;
-      pointer-events: none; z-index: 0;
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-status-items { display: flex; align-items: center; gap: 18px; }
+    .nav-status {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.74rem; font-weight: 700; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.06em;
     }
-
-    /* ── TOP NAVIGATION ── */
-    .top-nav {
-      position: relative; z-index: 10; width: 100%; max-width: 1140px;
-      padding: 18px 24px 0;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      flex-wrap: wrap;
-    }
-    .brand-group {
-      display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit;
-    }
-    .brand-logo-frame {
-      width: 48px; height: 48px; border-radius: 14px;
-      background: #ffffff;
-      padding: 3px;
-      border: 1.5px solid rgba(37,99,235,0.25);
-      box-shadow: 0 4px 14px rgba(37,99,235,0.12);
-      display: flex; align-items: center; justify-content: center;
-      transition: transform .2s ease;
-    }
-    .brand-logo-frame:hover { transform: scale(1.05); }
-    .brand-logo-img { width: 100%; height: 100%; border-radius: 10px; object-fit: cover; }
-    .brand-meta h2 {
-      font-size: 1.15rem; font-weight: 800; color: var(--text);
-      letter-spacing: -0.02em; display: flex; align-items: center; gap: 8px;
-    }
-    .brand-badge {
-      font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-      padding: 2px 7px; border-radius: var(--r-full);
-      background: var(--primary-light); color: var(--primary);
-    }
-    .brand-sub { font-size: 0.76rem; color: var(--muted); font-weight: 500; }
-
-    .nav-status-pills {
-      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    }
-    .status-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 12px; border-radius: var(--r-full);
-      font-size: 0.72rem; font-weight: 700;
-      background: var(--surface); border: 1px solid var(--border);
-      box-shadow: var(--shadow-xs);
-    }
-    .status-pill.qml { color: var(--quantum); border-color: rgba(124,58,237,0.25); background: var(--quantum-light); }
-    .status-pill.xai { color: var(--xai); border-color: rgba(13,148,136,0.25); background: var(--xai-light); }
-    .status-pill.tab { color: var(--primary); border-color: rgba(37,99,235,0.25); background: var(--primary-light); }
-    .status-pill .pulse-dot {
-      width: 7px; height: 7px; border-radius: 50%; background: currentColor;
-      animation: pulse 2s infinite;
+    .pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+      box-shadow: 0 0 10px #22c55e; animation: pulse 2s infinite;
     }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
 
-    /* ── HERO BANNER ── */
-    .hero-container {
-      position: relative; z-index: 2; width: 100%; max-width: 1140px;
-      padding: 28px 24px 20px;
+    .nav-cta-btn {
+      background: #ffffff; color: #090d16;
+      border: 1px solid #ffffff; padding: 12px 26px;
+      font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+      cursor: pointer; transition: all .2s; display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none;
     }
-    .hero-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      box-shadow: var(--shadow-md);
-      overflow: hidden;
-      display: grid; grid-template-columns: 1.15fr 0.85fr;
-      position: relative;
-    }
-    @media (max-width: 860px) {
-      .hero-card { grid-template-columns: 1fr; }
-    }
-    .hero-content {
-      padding: 40px 36px; display: flex; flex-direction: column; justify-content: center;
-    }
-    .hero-tagline {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 4px 12px; border-radius: var(--r-full);
-      background: var(--primary-light); color: var(--primary);
-      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
-      margin-bottom: 16px; align-self: flex-start;
-    }
-    .hero-title {
-      font-size: clamp(1.8rem, 3.6vw, 2.5rem);
-      font-weight: 900; line-height: 1.16;
-      letter-spacing: -0.03em; margin-bottom: 14px;
-      color: #0f172a;
-    }
-    .hero-title .gradient-text {
-      background: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 50%, #0d9488 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero-desc {
-      font-size: 0.95rem; color: var(--text-secondary); line-height: 1.65;
-      margin-bottom: 24px; max-width: 540px;
-    }
-    .hero-stats-row {
-      display: flex; gap: 14px; flex-wrap: wrap; margin-top: auto;
-    }
-    .hero-stat-box {
-      background: var(--surface-subtle); border: 1px solid var(--border);
-      border-radius: var(--r-sm); padding: 10px 14px;
-    }
-    .hero-stat-val { font-size: 1.1rem; font-weight: 800; color: var(--primary); line-height: 1.1; }
-    .hero-stat-lbl { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
-
-    .hero-media-wrap {
-      position: relative; overflow: hidden; min-height: 280px;
-      background: #e2e8f0;
-    }
-    .hero-banner-img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform .6s cubic-bezier(.2,0,0,1);
-    }
-    .hero-card:hover .hero-banner-img { transform: scale(1.03); }
-    .hero-overlay-hud {
-      position: absolute; bottom: 16px; left: 16px; right: 16px;
-      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.8);
-      border-radius: var(--r-sm); padding: 12px 16px;
-      box-shadow: 0 6px 20px rgba(15,23,42,0.12);
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    }
-    .hud-title { font-size: 0.78rem; font-weight: 800; color: var(--text); }
-    .hud-sub { font-size: 0.68rem; color: var(--muted); }
-    .hud-chip {
-      font-size: 0.68rem; font-weight: 800; color: var(--xai);
-      padding: 3px 8px; border-radius: var(--r-full); background: var(--xai-light);
-      display: flex; align-items: center; gap: 4px;
+    .nav-cta-btn:hover {
+      background: #1d4ed8; color: #ffffff; border-color: #1d4ed8;
     }
 
-    /* ── MAIN WORKSPACE ── */
-    main {
-      position: relative; z-index: 2; width: 100%; max-width: 1140px;
-      padding: 10px 24px 60px;
+    /* ── FULL-BLEED CINEMATIC HERO SECTION ── */
+    .hero-viewport {
+      position: relative; width: 100vw; min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 60px 80px; overflow: hidden;
+      background: #090d16;
+    }
+    .hero-bg-media {
+      position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;
+      background-image: url('/static/images/hero_banner.jpg');
+      background-size: cover; background-position: center center; background-repeat: no-repeat;
+      opacity: 0.38; /* Crisp, low transparency for rich contrast */
+      filter: saturate(1.2);
+    }
+    .hero-gradient-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(90deg, rgba(9,13,22,0.96) 0%, rgba(9,13,22,0.85) 45%, rgba(9,13,22,0.5) 100%),
+                  linear-gradient(0deg, rgba(9,13,22,1) 0%, transparent 40%);
     }
 
-    /* ── WORKFLOW TAB SWITCHER ── */
-    .tab-bar {
-      display: flex; gap: 10px; margin-bottom: 24px;
-      background: var(--surface); border: 1.5px solid var(--border);
-      border-radius: var(--r-md); padding: 6px;
-      box-shadow: var(--shadow-sm);
+    .hero-inner {
+      position: relative; z-index: 5; width: 100%; max-width: 1560px; margin: 0 auto;
     }
-    .tab-btn {
-      flex: 1; padding: 14px 20px; border: none; border-radius: 12px;
-      background: transparent; color: var(--muted);
-      font-size: 0.92rem; font-weight: 700; font-family: inherit;
-      cursor: pointer; transition: all .25s ease;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(8px);
+      padding: 6px 16px; margin-bottom: 24px;
+      font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+      color: #60a5fa;
     }
-    .tab-btn .tab-icon { font-size: 1.15rem; }
-    .tab-btn .tab-badge {
-      font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
-      padding: 2px 7px; border-radius: var(--r-full);
-      background: var(--surface-subtle); color: var(--muted);
+    .hero-headline {
+      font-size: clamp(2.8rem, 6.2vw, 5.4rem);
+      font-weight: 900; line-height: 1.05; letter-spacing: -0.04em;
+      color: #ffffff; text-transform: uppercase; margin-bottom: 24px;
+      max-width: 1200px;
     }
-    .tab-btn:hover:not(.active) {
-      background: var(--surface-subtle); color: var(--text);
+    .hero-headline span.accent {
+      color: transparent;
+      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #2dd4bf 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .tab-btn.active {
-      background: #ffffff;
-      color: var(--primary);
-      border: 1px solid rgba(37,99,235,0.25);
-      box-shadow: 0 4px 14px rgba(37,99,235,0.12);
-    }
-    .tab-btn.active .tab-badge {
-      background: var(--primary-light); color: var(--primary);
+    .hero-lead {
+      font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+      color: #cbd5e1; max-width: 860px; line-height: 1.7; margin-bottom: 40px; font-weight: 400;
     }
 
-    .tab-panel { display: none; animation: fadeIn .3s ease; }
-    .tab-panel.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* ── CARDS & PANELS ── */
-    .card {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: var(--r-md);
-      padding: 32px;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow-md);
-      transition: border-color .25s ease, box-shadow .25s ease;
+    .hero-cta-group {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 60px;
     }
-    .card:hover {
-      border-color: rgba(37,99,235,0.25);
-      box-shadow: var(--shadow-lg);
+    .btn-hero-primary {
+      background: #2563eb; color: #ffffff;
+      border: 1px solid #2563eb; padding: 20px 42px;
+      font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
+      cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 14px;
+      transition: all .25s ease; box-shadow: 0 10px 30px rgba(37,99,235,0.4);
     }
-
-    .card-header-row {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 20px; gap: 12px; flex-wrap: wrap;
+    .btn-hero-primary:hover {
+      background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 16px 40px rgba(37,99,235,0.6);
     }
-    .card-title {
-      font-size: 1.15rem; font-weight: 800; color: var(--text);
-      display: flex; align-items: center; gap: 10px;
+    .btn-hero-secondary {
+      background: transparent; color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.4); padding: 20px 38px;
+      font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+      cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+      transition: all .25s ease;
     }
-    .card-title .card-title-badge {
-      font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
-      padding: 3px 8px; border-radius: var(--r-full);
-      background: var(--primary-light); color: var(--primary);
-    }
-    .card-subtext {
-      font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;
-      margin-bottom: 22px;
+    .btn-hero-secondary:hover {
+      background: rgba(255, 255, 255, 0.12); border-color: #ffffff;
     }
 
-    /* ── VISUAL HIGHLIGHT CARD ── */
-    .visual-highlight-card {
-      background: var(--surface-subtle);
-      border: 1px solid var(--border);
-      border-radius: var(--r-sm);
-      overflow: hidden;
-      display: grid; grid-template-columns: 200px 1fr;
-      margin-bottom: 24px;
+    /* Hero Metrics Bar */
+    .hero-metrics-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(9, 13, 22, 0.7); backdrop-filter: blur(12px);
+      width: 100%; max-width: 1200px;
     }
-    @media (max-width: 680px) {
-      .visual-highlight-card { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      .hero-metrics-bar { grid-template-columns: 1fr 1fr; }
     }
-    .visual-highlight-img {
-      width: 100%; height: 100%; min-height: 140px; object-fit: cover; display: block;
+    @media (max-width: 550px) {
+      .hero-metrics-bar { grid-template-columns: 1fr; }
     }
-    .visual-highlight-content {
-      padding: 16px 20px; display: flex; flex-direction: column; justify-content: center;
+    .metric-cell {
+      padding: 24px 28px; border-right: 1px solid rgba(255, 255, 255, 0.12);
     }
-    .visual-tag {
-      font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
-      color: var(--primary); margin-bottom: 4px;
+    .metric-cell:last-child { border-right: none; }
+    .metric-num {
+      font-size: 2.2rem; font-weight: 900; color: #ffffff;
+      font-family: 'JetBrains Mono', monospace; line-height: 1; margin-bottom: 6px;
     }
-    .visual-head {
-      font-size: 0.92rem; font-weight: 800; color: var(--text); margin-bottom: 6px;
-    }
-    .visual-p {
-      font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5;
+    .metric-lbl {
+      font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+      color: #94a3b8;
     }
 
-    /* ── QUICK SAMPLE TEST SCANS (Workflow A) ── */
-    .sample-scans-row {
-      display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+    /* ── FULL-WIDTH ARCHITECTURAL INFORMATION SECTION ── */
+    .system-info-section {
+      width: 100%; background: #ffffff; padding: 100px 60px; border-bottom: 1px solid var(--surface-border);
     }
-    .sample-scan-btn {
-      flex: 1; min-width: 200px;
-      padding: 12px 16px; border-radius: var(--r-sm);
-      background: #ffffff; border: 1.5px solid var(--border);
-      display: flex; align-items: center; gap: 12px;
-      cursor: pointer; font-family: inherit; transition: all .2s ease;
-      box-shadow: var(--shadow-xs);
+    .info-container { width: 100%; max-width: 1560px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 0.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
     }
-    .sample-scan-btn:hover {
-      border-color: var(--primary); transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
+    .section-title {
+      font-size: clamp(2rem, 3.8vw, 3.2rem); font-weight: 900; line-height: 1.15;
+      letter-spacing: -0.03em; color: var(--text); text-transform: uppercase; margin-bottom: 20px;
     }
-    .sample-scan-btn.cancer:hover { border-color: var(--danger); }
-    .sample-scan-btn.normal:hover { border-color: var(--success); }
-    .sample-thumb {
-      width: 42px; height: 42px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border);
+    .section-subtitle {
+      font-size: 1.15rem; color: var(--text-body); max-width: 900px; line-height: 1.7; margin-bottom: 60px;
     }
-    .sample-info { text-align: left; }
-    .sample-name { font-size: 0.82rem; font-weight: 800; color: var(--text); }
-    .sample-desc { font-size: 0.7rem; color: var(--muted); }
 
-    /* ── UPLOAD DROPZONE ── */
-    .upload-zone {
-      border: 2px dashed rgba(37,99,235,0.3);
-      border-radius: var(--r-md); padding: 40px 24px;
-      text-align: center; cursor: pointer;
-      transition: all .25s ease; position: relative;
-      background: rgba(37,99,235,0.02);
+    .info-tri-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
     }
-    .upload-zone:hover, .upload-zone.drag-over {
-      border-color: var(--primary);
-      background: rgba(37,99,235,0.06);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-glow);
+    @media (max-width: 1050px) {
+      .info-tri-grid { grid-template-columns: 1fr; }
     }
-    .upload-zone input[type="file"] {
+    .info-box {
+      border: 1px solid var(--surface-border); background: var(--bg-subtle);
+      padding: 40px 34px; display: flex; flex-direction: column; justify-content: space-between;
+      position: relative; transition: all .25s ease;
+    }
+    .info-box:hover {
+      border-color: var(--border-dark); background: #ffffff; box-shadow: 0 16px 36px rgba(9,13,22,0.06);
+    }
+    .info-box-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .info-box-num {
+      font-size: 2.2rem; font-weight: 900; color: #cbd5e1; font-family: 'JetBrains Mono', monospace;
+    }
+    .info-box-icon { font-size: 30px; }
+    .info-box-h3 {
+      font-size: 1.35rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em;
+      color: var(--text); margin-bottom: 14px;
+    }
+    .info-box-p {
+      font-size: 0.94rem; color: var(--text-body); line-height: 1.7; margin-bottom: 24px;
+    }
+    .info-box-footer {
+      border-top: 1px solid var(--surface-border); padding-top: 18px;
+      font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--primary); display: flex; align-items: center; gap: 8px;
+    }
+
+    /* ── DUAL IMAGERY SHOWCASE SECTION ── */
+    .imagery-strip-section {
+      width: 100%; background: #090d16; padding: 100px 60px; border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .imagery-grid {
+      width: 100%; max-width: 1560px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    @media (max-width: 980px) {
+      .imagery-grid { grid-template-columns: 1fr; }
+    }
+    .imagery-card {
+      border: 1px solid rgba(255,255,255,0.15); background: #0f1422;
+      overflow: hidden; display: flex; flex-direction: column;
+    }
+    .imagery-frame {
+      width: 100%; height: 320px; overflow: hidden; position: relative;
+    }
+    .imagery-img {
+      width: 100%; height: 100%; object-fit: cover; filter: saturate(1.15);
+      transition: transform .5s ease;
+    }
+    .imagery-card:hover .imagery-img { transform: scale(1.04); }
+    .imagery-tag {
+      position: absolute; top: 18px; left: 18px; background: rgba(9,13,22,0.9);
+      border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 5px 12px;
+      font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .imagery-desc-wrap { padding: 32px 30px; display: flex; flex-direction: column; flex: 1; }
+    .imagery-h4 {
+      font-size: 1.3rem; font-weight: 900; color: #ffffff; text-transform: uppercase;
+      letter-spacing: -0.01em; margin-bottom: 12px;
+    }
+    .imagery-text {
+      font-size: 0.92rem; color: #94a3b8; line-height: 1.65; margin-bottom: 20px;
+    }
+    .imagery-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+    .im-badge {
+      font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+      padding: 4px 10px; border: 1px solid rgba(255,255,255,0.2); color: #cbd5e1;
+    }
+
+    /* ── DETECTION SUITE (HORIZONTAL FULL-WIDTH EXPERIENCE) ── */
+    #detection-workspace {
+      width: 100%; background: #ffffff; padding: 90px 60px 120px;
+    }
+    .workspace-container { width: 100%; max-width: 1560px; margin: 0 auto; }
+
+    .workspace-header {
+      margin-bottom: 40px; border-bottom: 2px solid #090d16; padding-bottom: 24px;
+      display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    }
+    .workspace-title {
+      font-size: 2.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; color: var(--text);
+    }
+    .workspace-sub {
+      font-size: 1.05rem; color: var(--muted); font-weight: 500;
+    }
+
+    /* Sharp Tabs */
+    .sharp-tab-bar {
+      display: flex; width: 100%; border: 2px solid #090d16; background: #090d16;
+      margin-bottom: 40px;
+    }
+    .sharp-tab-btn {
+      flex: 1; padding: 22px 28px; border: none; background: #090d16; color: #94a3b8;
+      font-size: 1rem; font-weight: 900; font-family: inherit; text-transform: uppercase;
+      letter-spacing: 0.08em; cursor: pointer; transition: all .2s;
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+    }
+    .sharp-tab-btn:hover:not(.active) { background: #1e293b; color: #ffffff; }
+    .sharp-tab-btn.active {
+      background: #ffffff; color: #090d16;
+    }
+    .sharp-tab-badge {
+      font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border: 1px solid currentColor;
+    }
+
+    .sharp-panel { display: none; }
+    .sharp-panel.active { display: block; animation: fadeIn .25s ease; }
+
+    /* ── SHARP WORKSPACE LAYOUT (EXPANSIVE 2-COLUMN) ── */
+    .workspace-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    @media (max-width: 1100px) {
+      .workspace-split { grid-template-columns: 1fr; }
+    }
+
+    .sharp-card {
+      border: 1px solid var(--surface-border); background: #ffffff;
+      padding: 40px 36px; box-shadow: 0 4px 18px rgba(9,13,22,0.03);
+    }
+    .sharp-card-title {
+      font-size: 1.25rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em;
+      color: var(--text); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--surface-border); padding-bottom: 14px;
+    }
+
+    /* ── 1-CLICK SAMPLES ── */
+    .sample-label {
+      font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--primary); margin-bottom: 12px;
+    }
+    .sample-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+    .sample-btn-box {
+      border: 1px solid var(--surface-border); background: var(--bg-subtle);
+      padding: 16px; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 14px;
+    }
+    .sample-btn-box:hover {
+      border-color: #090d16; background: #ffffff; transform: translateY(-2px);
+    }
+    .sample-btn-thumb {
+      width: 52px; height: 52px; object-fit: cover; border: 1px solid #cbd5e1; flex-shrink: 0;
+    }
+    .sample-btn-name { font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--text); }
+    .sample-btn-sub { font-size: 0.74rem; color: var(--muted); }
+
+    /* Dropzone */
+    .sharp-dropzone {
+      border: 2px dashed #94a3b8; padding: 48px 30px; text-align: center;
+      cursor: pointer; background: var(--bg-subtle); position: relative; transition: all .2s;
+    }
+    .sharp-dropzone:hover, .sharp-dropzone.drag-over {
+      border-color: #090d16; background: #ffffff;
+    }
+    .sharp-dropzone input[type="file"] {
       position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
     }
-    .upload-icon-circle {
-      width: 64px; height: 64px; margin: 0 auto 14px;
-      background: linear-gradient(135deg, var(--primary-light), var(--quantum-light));
-      border: 1.5px solid rgba(37,99,235,0.25);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; font-size: 26px;
-      box-shadow: 0 4px 12px rgba(37,99,235,0.12);
-    }
-    .upload-title { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 4px; }
-    .upload-sub   { color: var(--muted); font-size: 0.85rem; }
-    .upload-types {
-      display: inline-block; margin-top: 10px;
-      background: var(--surface); border: 1px solid var(--border);
-      padding: 3px 10px; border-radius: var(--r-full);
-      color: var(--primary); font-size: 0.72rem; font-weight: 700;
-    }
+    .dropzone-icon { font-size: 38px; margin-bottom: 12px; }
+    .dropzone-h4 { font-size: 1.15rem; font-weight: 900; text-transform: uppercase; margin-bottom: 6px; }
+    .dropzone-p { font-size: 0.85rem; color: var(--muted); }
 
     #preview-container {
-      display: none; margin-top: 22px; border-radius: var(--r-sm);
-      overflow: hidden; position: relative; border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
+      display: none; margin-top: 24px; border: 1px solid #090d16; position: relative;
     }
-    #preview-container img {
-      width: 100%; max-height: 360px; object-fit: cover; display: block;
-    }
-    .preview-label {
-      position: absolute; bottom: 12px; left: 12px;
-      background: rgba(15,23,42,0.85); backdrop-filter: blur(10px);
-      border-radius: 8px; padding: 6px 12px;
-      font-size: 0.78rem; color: #ffffff; font-weight: 600;
-      display: flex; align-items: center; gap: 6px;
+    #preview-container img { width: 100%; max-height: 420px; object-fit: cover; display: block; }
+    .preview-tag {
+      position: absolute; bottom: 12px; left: 12px; background: rgba(9,13,22,0.9);
+      color: #fff; padding: 6px 14px; font-size: 0.76rem; font-weight: 700; font-family: 'JetBrains Mono', monospace;
     }
 
-    /* ── BUTTONS ── */
     #analyze-btn {
-      display: none; width: 100%; margin-top: 20px; padding: 16px;
-      border: none; border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--quantum) 100%);
-      color: #ffffff; font-size: 1rem; font-weight: 800; font-family: inherit;
-      cursor: pointer; transition: all .25s ease;
-      box-shadow: 0 4px 16px rgba(37,99,235,0.3);
-      position: relative; overflow: hidden;
+      display: none; width: 100%; margin-top: 22px; padding: 20px;
+      background: #090d16; color: #ffffff; border: 1px solid #090d16;
+      font-size: 1.05rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
+      cursor: pointer; transition: all .2s;
     }
-    #analyze-btn:hover:not(:disabled) {
-      transform: translateY(-2px); box-shadow: 0 6px 22px rgba(37,99,235,0.4);
-    }
-    #analyze-btn:active:not(:disabled) { transform: scale(0.99); }
-    #analyze-btn:disabled { opacity: .65; cursor: not-allowed; }
-    .btn-inner { display: flex; align-items: center; justify-content: center; gap: 10px; }
-    .spinner {
-      display: none; width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,.3);
-      border-top-color: #ffffff; border-radius: 50%; animation: spin .7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    #analyze-btn:hover:not(:disabled) { background: #1d4ed8; border-color: #1d4ed8; }
+    #analyze-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
     #reset-btn {
-      display: none; background: #ffffff; border: 1.5px solid var(--border);
-      color: var(--text-secondary); border-radius: 10px; padding: 11px 20px;
-      margin-top: 14px; cursor: pointer; font-family: inherit; font-weight: 700;
-      font-size: 0.88rem; transition: all .2s; width: 100%;
+      display: none; width: 100%; margin-top: 14px; padding: 14px;
+      background: transparent; color: #b91c1c; border: 1px solid #b91c1c;
+      font-size: 0.86rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+      cursor: pointer; transition: all .2s;
     }
-    #reset-btn:hover { border-color: var(--danger); color: var(--danger); background: var(--danger-light); }
+    #reset-btn:hover { background: #fee2e2; }
 
-    /* Mode Badge */
-    #mode-badge {
-      display: none; align-items: center; gap: 8px;
-      background: var(--quantum-light); border: 1px solid rgba(124,58,237,0.3);
-      border-radius: 8px; padding: 10px 16px;
-      font-size: 0.82rem; color: var(--quantum); font-weight: 700;
-      margin-bottom: 18px;
-    }
-
-    /* ── RESULT CARDS (Workflow A) ── */
+    /* Results */
     #result-card { display: none; }
-    .result-banner {
-      border-radius: var(--r-sm); padding: 20px 22px;
-      display: flex; align-items: center; gap: 16px; margin-bottom: 22px;
+    .verdict-banner {
+      padding: 24px 26px; border: 2px solid; margin-bottom: 24px;
+      display: flex; align-items: center; gap: 20px;
     }
-    .result-banner.cancer {
-      background: var(--danger-light); border: 1.5px solid rgba(220,38,38,0.3);
-    }
-    .result-banner.no_cancer {
-      background: var(--success-light); border: 1.5px solid rgba(5,150,105,0.3);
-    }
-    .result-icon {
-      width: 58px; height: 58px; border-radius: 16px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center; font-size: 28px;
-    }
-    .result-banner.cancer .result-icon {
-      background: #ffffff; border: 2px solid var(--danger); box-shadow: 0 4px 12px rgba(220,38,38,0.15);
-    }
-    .result-banner.no_cancer .result-icon {
-      background: #ffffff; border: 2px solid var(--success); box-shadow: 0 4px 12px rgba(5,150,105,0.15);
-    }
-    .result-title { font-size: 1.3rem; font-weight: 900; margin-bottom: 4px; }
-    .result-banner.cancer .result-title { color: var(--danger); }
-    .result-banner.no_cancer .result-title { color: var(--success); }
-    .result-subtitle { font-size: 0.84rem; color: var(--text-secondary); font-weight: 600; }
+    .verdict-banner.cancer { background: #fef2f2; border-color: #b91c1c; color: #991b1b; }
+    .verdict-banner.no_cancer { background: #ecfdf5; border-color: #047857; color: #065f46; }
+    .verdict-icon { font-size: 40px; }
+    .verdict-title { font-size: 1.6rem; font-weight: 900; text-transform: uppercase; }
+    .verdict-sub { font-size: 0.88rem; font-weight: 700; margin-top: 4px; }
 
-    /* Confidence Meter */
-    .conf-card {
-      background: var(--surface-subtle); border: 1px solid var(--border);
-      border-radius: var(--r-sm); padding: 18px 20px; margin-bottom: 18px;
+    .meter-box {
+      border: 1px solid var(--surface-border); padding: 20px; background: var(--bg-subtle); margin-bottom: 20px;
     }
-    .conf-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px; }
-    .conf-label { font-size: 0.75rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-    .conf-value { font-size: 1.85rem; font-weight: 900; font-family: 'JetBrains Mono', monospace; line-height: 1; }
-    .conf-value.cancer { color: var(--danger); }
-    .conf-value.no_cancer { color: var(--success); }
-    .progress-track {
-      height: 12px; background: #e2e8f0; border-radius: var(--r-full); overflow: hidden;
+    .meter-label {
+      font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--muted);
+      display: flex; justify-content: space-between; margin-bottom: 8px;
     }
-    .progress-fill {
-      height: 100%; border-radius: var(--r-full); width: 0%;
-      transition: width 1.2s cubic-bezier(.34, 1.56, .64, 1);
-    }
-    .progress-fill.cancer { background: linear-gradient(90deg, #f87171, var(--danger)); }
-    .progress-fill.no_cancer { background: linear-gradient(90deg, #34d399, var(--success)); }
+    .meter-val { font-size: 1.8rem; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+    .meter-track { height: 14px; background: #e2e8f0; width: 100%; overflow: hidden; }
+    .meter-fill { height: 100%; width: 0%; transition: width 1s ease; }
+    .meter-fill.cancer { background: #b91c1c; }
+    .meter-fill.no_cancer { background: #047857; }
 
-    .info-box {
-      border-radius: 10px; padding: 16px 18px; margin-bottom: 16px;
-      border-left: 4px solid;
-    }
-    .info-box.cancer { background: var(--danger-light); border-color: var(--danger); }
-    .info-box.no_cancer { background: var(--success-light); border-color: var(--success); }
-    .info-box p { font-size: 0.9rem; line-height: 1.6; color: var(--text); }
+    /* Groq XAI */
+    #xai-card { display: none; margin-top: 30px; border: 1px solid #090d16; padding: 32px 30px; background: #ffffff; }
+    .xai-h3 { font-size: 1.15rem; font-weight: 900; text-transform: uppercase; margin-bottom: 12px; color: #0f766e; }
+    #xai-content { font-size: 0.94rem; line-height: 1.8; color: var(--text-body); white-space: pre-wrap; }
+    #xai-content strong { color: #090d16; font-weight: 800; }
 
-    .rec-box {
-      display: flex; gap: 12px; align-items: flex-start;
-      background: var(--warn-light); border: 1px solid rgba(217,119,6,0.3);
-      border-radius: 10px; padding: 14px 18px;
+    /* Circuit Diagram */
+    .sharp-qc {
+      background: #090d16; color: #fff; padding: 22px; margin-top: 24px;
     }
-    .rec-box .rec-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-    .rec-box p { font-size: 0.88rem; line-height: 1.55; color: #78350f; }
-    .rec-box strong { color: #92400e; }
+    .sharp-qc-title { font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #a78bfa; margin-bottom: 14px; }
+    .sharp-qc-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+    .sharp-qc-q { width: 28px; height: 28px; background: #1e1b4b; border: 1px solid #818cf8; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #a78bfa; }
+    .sharp-qc-w { flex: 1; height: 2px; background: #475569; }
+    .sharp-qc-g { width: 34px; height: 26px; background: #312e81; border: 1px solid #818cf8; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800; color: #fff; }
 
-    /* ── GROQ XAI PANEL ── */
-    #xai-card { display: none; }
-    .xai-header {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border);
+    /* ── WORKFLOW B: MULTI-ANALYTE ── */
+    .quick-cases-strip {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 34px;
     }
-    .xai-meta { display: flex; align-items: center; gap: 12px; }
-    .xai-logo-box {
-      width: 44px; height: 44px; border-radius: 12px;
-      background: var(--xai-light); border: 1.5px solid rgba(13,148,136,0.3);
-      display: flex; align-items: center; justify-content: center; font-size: 22px;
-      color: var(--xai);
+    @media (max-width: 1200px) { .quick-cases-strip { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 760px)  { .quick-cases-strip { grid-template-columns: 1fr; } }
+    .sharp-case-card {
+      border: 1px solid var(--surface-border); border-top: 4px solid var(--case-color, #1d4ed8);
+      padding: 18px 16px; background: #ffffff; cursor: pointer; transition: all .2s;
+      display: flex; flex-direction: column; justify-content: space-between; min-height: 160px;
     }
-    .xai-title { font-size: 1.05rem; font-weight: 800; color: var(--text); }
-    .xai-sub { font-size: 0.78rem; color: var(--muted); }
-    .xai-engine-pill {
-      font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: var(--r-full);
-      background: var(--xai-light); color: var(--xai); border: 1px solid rgba(13,148,136,0.25);
+    .sharp-case-card:hover { border-color: #090d16; transform: translateY(-3px); box-shadow: 0 10px 24px rgba(9,13,22,0.08); }
+    .sharp-case-card.active { border-color: #090d16; background: #f8fafc; box-shadow: 0 0 0 2px #090d16; }
+    .sharp-case-name { font-size: 1rem; font-weight: 900; text-transform: uppercase; color: var(--text); margin-bottom: 6px; }
+    .sharp-case-meta { font-size: 0.74rem; font-family: 'JetBrains Mono', monospace; color: var(--text-body); line-height: 1.5; margin-bottom: 12px; }
+    .sharp-case-btn {
+      width: 100%; padding: 7px; border: 1px solid var(--case-color, #1d4ed8); background: #ffffff;
+      color: var(--case-color, #1d4ed8); font-size: 0.74rem; font-weight: 800; text-transform: uppercase; cursor: pointer;
     }
+    .sharp-case-btn:hover { background: var(--case-color, #1d4ed8); color: #fff; }
 
-    .xai-skeleton { display: flex; flex-direction: column; gap: 12px; }
-    .skeleton-line {
-      height: 14px; background: #e2e8f0; border-radius: 6px;
-      animation: shimmer 1.5s infinite;
+    /* Tabular Form */
+    .form-section-head {
+      font-size: 0.85rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
+      border-bottom: 2px solid #090d16; padding-bottom: 8px; margin: 30px 0 18px; color: #090d16;
     }
-    @keyframes shimmer { 0%,100%{opacity:.5} 50%{opacity:1} }
+    .form-quad-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px;
+    }
+    .sharp-field { display: flex; flex-direction: column; gap: 5px; }
+    .sharp-field label {
+      font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text);
+      display: flex; justify-content: space-between;
+    }
+    .sharp-field .u-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--muted); }
+    .sharp-field input, .sharp-field select {
+      border: 1px solid #cbd5e1; padding: 12px 14px; font-size: 0.92rem;
+      font-family: inherit; font-weight: 700; color: #090d16; background: #ffffff;
+      outline: none; transition: border-color .18s;
+    }
+    .sharp-field input:focus, .sharp-field select:focus { border-color: #090d16; }
+    .sharp-field .field-hint { font-size: 0.68rem; color: var(--muted); }
 
-    #xai-content {
-      font-size: 0.92rem; line-height: 1.8; color: var(--text-secondary);
-      white-space: pre-wrap;
-    }
-    #xai-content strong { color: var(--text); font-weight: 800; }
-
-    /* Quantum Circuit Diagram */
-    .qc-diagram {
-      background: var(--surface-subtle);
-      border: 1.5px solid rgba(124,58,237,0.25);
-      border-radius: var(--r-sm); padding: 20px; margin-top: 22px;
-    }
-    .qc-title {
-      font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--quantum); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
-    }
-    .qc-row {
-      display: flex; align-items: center; gap: 6px; margin-bottom: 8px;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
-    }
-    .qc-qubit {
-      width: 26px; height: 26px; border-radius: 50%;
-      background: var(--quantum-light); border: 1.5px solid var(--quantum);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; font-weight: 800; color: var(--quantum); flex-shrink: 0;
-    }
-    .qc-wire { flex: 1; height: 2px; background: #cbd5e1; position: relative; }
-    .qc-gate {
-      width: 32px; height: 24px; border-radius: 6px;
-      border: 1px solid var(--quantum); background: #ffffff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; font-weight: 800; color: var(--quantum);
-      box-shadow: var(--shadow-xs); flex-shrink: 0;
-    }
-    .qc-measure {
-      width: 32px; height: 24px; border-radius: 6px;
-      border: 1px solid var(--primary); background: #ffffff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; color: var(--primary); box-shadow: var(--shadow-xs); flex-shrink: 0;
-    }
-
-    /* ── WORKFLOW B: QUICK TEST CASES ── */
-    .cases-header-row {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 14px; gap: 12px; flex-wrap: wrap;
-    }
-    .cases-badge {
-      font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
-      padding: 3px 10px; border-radius: var(--r-full);
-      background: var(--primary-light); color: var(--primary);
-    }
-    .cases-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-      gap: 12px; margin-bottom: 26px;
-    }
-    .case-card {
-      border-radius: var(--r-sm); padding: 16px 14px;
-      border: 1.5px solid var(--border);
-      background: #ffffff;
-      cursor: pointer; transition: all .22s ease;
-      display: flex; flex-direction: column; gap: 8px;
-      box-shadow: var(--shadow-xs);
-      position: relative; overflow: hidden;
-    }
-    .case-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-      background: var(--case-color, var(--primary));
-    }
-    .case-card:hover {
-      transform: translateY(-3px); box-shadow: var(--shadow-md);
-      border-color: var(--case-color, var(--primary));
-    }
-    .case-card.active {
-      border-color: var(--case-color, var(--primary));
-      box-shadow: 0 0 0 2px var(--case-color, var(--primary)), var(--shadow-md);
-      background: #fafafa;
-    }
-    .case-head-line { display: flex; align-items: center; justify-content: space-between; }
-    .case-icon { font-size: 24px; }
-    .case-class-tag {
-      font-size: 0.65rem; font-weight: 800; text-transform: uppercase;
-      padding: 2px 7px; border-radius: var(--r-full);
-      background: var(--surface-subtle); color: var(--muted);
-    }
-    .case-name { font-size: 0.95rem; font-weight: 800; color: var(--text); }
-    .case-meta {
-      font-size: 0.74rem; color: var(--text-secondary); line-height: 1.5;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .case-load-btn {
-      margin-top: auto; padding: 7px 0; border: 1px solid var(--case-color, var(--primary));
-      border-radius: 8px; background: #ffffff;
-      color: var(--case-color, var(--primary)); font-size: 0.74rem; font-weight: 800;
-      cursor: pointer; font-family: inherit; transition: all .18s;
-      display: flex; align-items: center; justify-content: center; gap: 4px;
-    }
-    .case-load-btn:hover {
-      background: var(--case-color, var(--primary)); color: #ffffff;
-    }
-
-    /* ── CLINICAL FORM INPUTS ── */
-    .section-label {
-      font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--primary);
-      margin: 28px 0 14px; padding-bottom: 8px;
-      border-bottom: 1.5px solid var(--border-subtle);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .form-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 16px;
-    }
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-group label {
-      font-size: 0.76rem; font-weight: 700; color: var(--text);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .form-group .unit-badge {
-      font-size: 0.65rem; font-weight: 600; color: var(--muted); font-family: 'JetBrains Mono', monospace;
-    }
-    .form-group input, .form-group select {
-      background: #ffffff; border: 1.5px solid var(--border);
-      border-radius: 10px; padding: 11px 14px;
-      color: var(--text); font-size: 0.92rem; font-family: inherit; font-weight: 600;
-      transition: all .2s ease; width: 100%;
-      box-shadow: var(--shadow-xs);
-    }
-    .form-group input:focus, .form-group select:focus {
-      outline: none; border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
-    }
-    .form-group input::placeholder { color: #94a3b8; font-weight: 400; }
-    .form-group .hint {
-      font-size: 0.7rem; color: var(--muted); line-height: 1.3;
-    }
-
-    /* Form action buttons */
-    .form-actions-row {
-      display: flex; gap: 14px; align-items: center; margin-top: 26px; flex-wrap: wrap;
+    .form-btn-row {
+      display: flex; gap: 16px; align-items: center; margin-top: 36px; flex-wrap: wrap;
     }
     #tabular-submit-btn {
-      flex: 1; min-width: 240px; padding: 16px;
-      border: none; border-radius: 12px;
-      background: linear-gradient(135deg, var(--xai) 0%, var(--primary) 100%);
-      color: #ffffff; font-size: 1rem; font-weight: 800; font-family: inherit;
-      cursor: pointer; transition: all .25s ease;
-      box-shadow: 0 4px 18px rgba(13,148,136,0.25);
+      flex: 1; min-width: 280px; padding: 20px; background: #090d16; color: #ffffff;
+      border: 1px solid #090d16; font-size: 1rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: 0.1em; cursor: pointer; transition: all .2s;
     }
-    #tabular-submit-btn:hover:not(:disabled) {
-      transform: translateY(-2px); box-shadow: 0 6px 22px rgba(13,148,136,0.35);
+    #tabular-submit-btn:hover:not(:disabled) { background: #0f766e; border-color: #0f766e; }
+    .btn-clear-sharp {
+      padding: 19px 28px; background: transparent; color: #64748b;
+      border: 1px solid #cbd5e1; font-size: 0.88rem; font-weight: 800; text-transform: uppercase; cursor: pointer;
     }
-    #tabular-submit-btn:disabled { opacity: .6; cursor: not-allowed; }
+    .btn-clear-sharp:hover { border-color: #b91c1c; color: #b91c1c; background: #fef2f2; }
 
-    .clear-form-btn {
-      background: #ffffff; border: 1.5px solid var(--border);
-      color: var(--muted); border-radius: 12px; padding: 15px 22px;
-      cursor: pointer; font-family: inherit; font-size: 0.88rem; font-weight: 700;
-      transition: all .2s;
-    }
-    .clear-form-btn:hover {
-      border-color: var(--danger); color: var(--danger); background: var(--danger-light);
-    }
-
-    /* ── RESULTS (Workflow B) ── */
-    #tabular-error {
-      display: none; margin-top: 18px;
-      background: var(--danger-light); border: 1.5px solid rgba(220,38,38,0.3);
-      border-radius: 10px; padding: 14px 18px; color: var(--danger); font-size: 0.88rem; font-weight: 600;
-    }
     #tabular-result {
-      display: none; margin-top: 24px;
-      background: var(--surface-subtle); border: 1.5px solid var(--border);
-      border-radius: var(--r-md); padding: 24px;
+      display: none; margin-top: 36px; border: 2px solid #090d16; padding: 32px 30px; background: #f8fafc;
     }
-    .t-result-head {
-      display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
-    }
-    .t-result-icon {
-      width: 56px; height: 56px; border-radius: 16px; flex-shrink: 0;
-      background: #ffffff; border: 2px solid var(--xai);
-      box-shadow: 0 4px 14px rgba(13,148,136,0.15);
-      display: flex; align-items: center; justify-content: center; font-size: 26px;
-    }
-    .t-result-label { font-size: 1.4rem; font-weight: 900; color: var(--text); }
-    .t-result-sub { font-size: 0.85rem; color: var(--muted); font-weight: 600; margin-top: 2px; }
+    .tab-result-head { display: flex; align-items: center; gap: 18px; margin-bottom: 24px; }
+    .tab-result-lbl { font-size: 2rem; font-weight: 900; text-transform: uppercase; color: #090d16; }
+    .tab-result-sub { font-size: 0.9rem; font-weight: 700; color: var(--muted); }
 
-    .score-bars { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
-    .score-row { display: flex; align-items: center; gap: 12px; }
-    .score-name { font-size: 0.82rem; font-weight: 700; width: 140px; color: var(--text-secondary); flex-shrink: 0; }
-    .score-track { flex: 1; height: 10px; background: #e2e8f0; border-radius: var(--r-full); overflow: hidden; }
-    .score-bar {
-      height: 100%; border-radius: var(--r-full);
-      background: linear-gradient(90deg, var(--xai), var(--primary));
-      transition: width 1s cubic-bezier(.34, 1.56, .64, 1); width: 0%;
-    }
-    .score-pct { font-size: 0.82rem; font-weight: 800; width: 50px; text-align: right; color: var(--text); font-family: 'JetBrains Mono', monospace; }
+    .score-row-sharp { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .score-name-sharp { font-size: 0.82rem; font-weight: 800; text-transform: uppercase; width: 160px; flex-shrink: 0; }
+    .score-track-sharp { flex: 1; height: 12px; background: #e2e8f0; overflow: hidden; }
+    .score-bar-sharp { height: 100%; background: #090d16; width: 0%; transition: width 1s ease; }
+    .score-pct-sharp { font-size: 0.84rem; font-weight: 900; font-family: 'JetBrains Mono', monospace; width: 55px; text-align: right; }
 
-    .t-disclaimer {
-      margin-top: 18px; padding: 14px 16px;
-      background: var(--warn-light); border: 1px solid rgba(217,119,6,0.25);
-      border-radius: 10px; font-size: 0.82rem; color: #92400e; line-height: 1.55;
+    /* ── FULL-WIDTH ARCHITECTURAL FOOTER ── */
+    footer.site-footer {
+      width: 100%; background: #090d16; color: #94a3b8;
+      padding: 60px 40px; border-top: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
     }
+    .footer-left { font-size: 0.85rem; }
+    .footer-left strong { color: #ffffff; }
+    .footer-right { display: flex; gap: 24px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
+    .footer-right a { color: #cbd5e1; text-decoration: none; }
+    .footer-right a:hover { color: #60a5fa; }
 
-    /* ── GLOBAL DISCLAIMER BOX ── */
-    .disclaimer {
-      background: #ffffff; border: 1px solid var(--border);
-      border-radius: var(--r-md); padding: 18px 24px;
-      font-size: 0.82rem; color: var(--muted); line-height: 1.6; text-align: center;
-      margin-top: 10px; box-shadow: var(--shadow-xs);
-    }
-    .disclaimer strong { color: var(--warn); }
-
-    /* ── ERROR CARD ── */
-    #error-card {
-      display: none; background: var(--danger-light);
-      border: 1.5px solid rgba(220,38,38,0.3); border-radius: 12px;
-      padding: 18px 22px; color: var(--danger); font-size: 0.9rem; font-weight: 600;
-      margin-top: 16px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      position: relative; z-index: 2; width: 100%; max-width: 1140px;
-      padding: 24px 24px 40px; text-align: center;
-      font-size: 0.82rem; color: var(--muted); font-weight: 500;
-      border-top: 1px solid var(--border); margin-top: auto;
-    }
-    footer span { color: var(--primary); font-weight: 700; }
-
-    @media (max-width: 600px) {
-      .hero-content { padding: 28px 20px; }
-      .card { padding: 22px 18px; }
-      .brand-sub { display: none; }
+    @media (max-width: 768px) {
+      .hero-viewport { padding: 110px 24px 60px; }
+      .system-info-section, .imagery-strip-section, #detection-workspace { padding: 60px 24px; }
+      .site-nav { padding: 0 20px; }
+      .nav-status-items { display: none; }
     }
   </style>
 </head>
 
 <body>
-  <div class="ambient-mesh"></div>
-  <div class="dot-grid"></div>
 
-  <!-- ── TOP NAVIGATION ── -->
-  <header class="top-nav">
-    <a href="#" class="brand-group">
-      <div class="brand-logo-frame">
-        <img src="/static/images/logo.jpg" alt="BladderVision Logo" class="brand-logo-img" />
+  <!-- ── SITE NAVIGATION ── -->
+  <nav class="site-nav">
+    <a href="#" class="nav-brand">
+      <div class="nav-logo-box">
+        <img src="/static/images/logo.jpg" alt="BladderVision Logo" class="nav-logo-img" />
       </div>
-      <div class="brand-meta">
-        <h2>BladderVision AI <span class="brand-badge">PRO</span></h2>
-        <div class="brand-sub">Quantum-Classical Neural &amp; Multi-Analyte Pathology</div>
+      <div>
+        <div class="nav-title">BladderVision AI</div>
+        <div class="nav-tagline">Quantum Oncology &amp; Multi-Analyte Pathology</div>
       </div>
     </a>
 
-    <div class="nav-status-pills">
-      <div class="status-pill qml"><div class="pulse-dot"></div> 4-Qubit VQC Active</div>
-      <div class="status-pill xai"><div class="pulse-dot"></div> Groq LLaMA 3.3 Ready</div>
-      <div class="status-pill tab"><div class="pulse-dot"></div> Multi-Analyte ML</div>
+    <div class="nav-right">
+      <div class="nav-status-items">
+        <div class="nav-status"><div class="pulse-dot"></div> 4-Qubit VQC Active</div>
+        <div class="nav-status"><div class="pulse-dot"></div> Groq LLaMA 3.3 Connected</div>
+      </div>
+      <a href="#detection-workspace" class="nav-cta-btn">
+        <span>Launch Detection</span>
+        <span>→</span>
+      </a>
     </div>
-  </header>
+  </nav>
 
-  <!-- ── HERO SHOWCASE ── -->
-  <section class="hero-container">
-    <div class="hero-card">
-      <div class="hero-content">
-        <div class="hero-tagline">Clinical Grade Diagnostic Suite</div>
-        <h1 class="hero-title">
-          Next-Gen <span class="gradient-text">Bladder Oncology</span> &amp; Pathology Intelligence
-        </h1>
-        <p class="hero-desc">
-          Accelerating endoscopic cystoscopy with hybrid quantum convolutional networks alongside multi-analyte blood and urine diagnostics for early, transparent clinical intervention.
-        </p>
-        <div class="hero-stats-row">
-          <div class="hero-stat-box">
-            <div class="hero-stat-val">92.4%</div>
-            <div class="hero-stat-lbl">High-Risk Sensitivity</div>
-          </div>
-          <div class="hero-stat-box">
-            <div class="hero-stat-val">4 Qubits</div>
-            <div class="hero-stat-lbl">Variational Quantum Circuit</div>
-          </div>
-          <div class="hero-stat-box">
-            <div class="hero-stat-val">5 Classes</div>
-            <div class="hero-stat-lbl">Multi-Organ Categories</div>
-          </div>
-        </div>
+  <!-- ── FULL-WIDTH HERO SECTION (FULL BACKGROUND IMAGE, CRISP CONTRAST) ── -->
+  <section class="hero-viewport">
+    <div class="hero-bg-media"></div>
+    <div class="hero-gradient-overlay"></div>
+
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <span>⚛️</span> Quantum Computing &amp; Medical Artificial Intelligence
       </div>
 
-      <div class="hero-media-wrap">
-        <img src="/static/images/hero_banner.jpg" alt="AI Quantum Neural Network Lab" class="hero-banner-img" />
-        <div class="hero-overlay-hud">
-          <div>
-            <div class="hud-title">Quantum Neural Network (QNN) Diagnosis</div>
-            <div class="hud-sub">Cellular Pathology · Quantum State Vector · Live Diagnostics</div>
-          </div>
-          <div class="hud-chip">● Online</div>
+      <h1 class="hero-headline">
+        Architecting Precision <br />
+        <span class="accent">Bladder Oncology</span> with Quantum Neural Networks
+      </h1>
+
+      <p class="hero-lead">
+        A clinical dual-engine intelligence platform uniting parameterized variational quantum circuits (VQC) with deep convolutional cystoscopy feature extraction and multi-analyte serum and urinalysis biochemistry classification.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#detection-workspace" class="btn-hero-primary">
+          <span>Start Clinical Detection Suite</span>
+          <span style="font-size:1.3rem;">↓</span>
+        </a>
+        <a href="#system-architecture" class="btn-hero-secondary">
+          <span>System Architecture &amp; Data</span>
+        </a>
+      </div>
+
+      <!-- 4-Cell Hero Metrics Bar -->
+      <div class="hero-metrics-bar">
+        <div class="metric-cell">
+          <div class="metric-num">92.4%</div>
+          <div class="metric-lbl">High-Risk Malignancy Sensitivity</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-num">4 Qubits</div>
+          <div class="metric-lbl">Parameterized VQC Entangled Lattice</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-num">5 Organs</div>
+          <div class="metric-lbl">Pathology Fluid Profiles Classified</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-num">&lt; 180 ms</div>
+          <div class="metric-lbl">Groq LLaMA 3.3 Inference Latency</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── MAIN WORKSPACE ── -->
-  <main>
-
-    <!-- WORKFLOW TAB BAR -->
-    <div class="tab-bar" role="tablist">
-      <button class="tab-btn active" id="tab-image-btn" role="tab" onclick="switchTab('image')">
-        <span class="tab-icon">🔬</span>
-        <span>Workflow A: Endoscopic Optical AI</span>
-        <span class="tab-badge">Quantum + XAI</span>
-      </button>
-      <button class="tab-btn" id="tab-tabular-btn" role="tab" onclick="switchTab('tabular')">
-        <span class="tab-icon">🧬</span>
-        <span>Workflow B: Disease Classifier</span>
-        <span class="tab-badge">Multi-Analyte</span>
-      </button>
-    </div>
-
-    <!-- ══════════════════════════════════════════════════════════════════
-         WORKFLOW A: IMAGE ANALYSIS
-         ══════════════════════════════════════════════════════════════════ -->
-    <div class="tab-panel active" id="panel-image">
-
-      <!-- Optical AI Highlight Card -->
-      <div class="visual-highlight-card">
-        <img src="/static/images/endoscopy.jpg" alt="Endoscopic Cystoscopy Scan" class="visual-highlight-img" />
-        <div class="visual-highlight-content">
-          <div class="visual-tag">Cystoscopic Optical Engine</div>
-          <div class="visual-head">High-Resolution Endoscopic Lesion Profiling</div>
-          <p class="visual-p">
-            Deep CNN feature extraction passed through a 4-qubit parameterized variational quantum circuit with Entangling CNOT gates, backed by Groq LLaMA 3.3 for clinical transparency.
-          </p>
-        </div>
+  <!-- ── COMPREHENSIVE ARCHITECTURAL INFORMATION SECTION ── -->
+  <section class="system-info-section" id="system-architecture">
+    <div class="info-container">
+      <div class="section-eyebrow">
+        <span>■</span> Computational Pathology Blueprint
       </div>
+      <h2 class="section-title">A Unified Multi-Modal Clinical Paradigm</h2>
+      <p class="section-subtitle">
+        Bladder cancer detection traditionally relies on subjective visual cystoscopy and invasive transurethral resections. BladderVision AI pioneers a dual-engine architecture bridging optical endoscopy with non-invasive biochemical multi-analyte profiling.
+      </p>
 
-      <div class="card">
-        <div class="card-header-row">
-          <div class="card-title">
-            <span>📷</span> Upload Cystoscopy Image
-            <span class="card-title-badge">Optical Pipeline</span>
-          </div>
-          <div id="mode-badge">
-            <span class="pulse-dot"></span>
-            <span id="mode-text">Model: Quantum-Hybrid (4 qubits)</span>
-          </div>
-        </div>
-
-        <p class="card-subtext">
-          Select an endoscopic cystoscopy capture or click one of our verified clinical test samples below to run immediate quantum-hybrid inference:
-        </p>
-
-        <!-- Quick 1-Click Sample Scans -->
-        <div class="sample-scans-row">
-          <button type="button" class="sample-scan-btn cancer" onclick="loadSampleScan('cancer')">
-            <img src="/static/samples/sample_cancer.png" alt="Malignant Sample" class="sample-thumb" />
-            <div class="sample-info">
-              <div class="sample-name">🔬 Malignant Lesion Sample</div>
-              <div class="sample-desc">Click to test confirmed cancer biopsy scan</div>
-            </div>
-          </button>
-          <button type="button" class="sample-scan-btn normal" onclick="loadSampleScan('normal')">
-            <img src="/static/samples/sample_normal.png" alt="Normal Sample" class="sample-thumb" />
-            <div class="sample-info">
-              <div class="sample-name">✅ Benign Normal Sample</div>
-              <div class="sample-desc">Click to test clean normal bladder mucosa</div>
-            </div>
-          </button>
-        </div>
-
-        <!-- Upload Dropzone -->
-        <div class="upload-zone" id="upload-zone">
-          <input type="file" id="file-input" accept="image/*" />
-          <div class="upload-icon-circle">📂</div>
-          <div class="upload-title">Drop your cystoscopy frame here, or browse</div>
-          <div class="upload-sub">Supports high-res PNG, JPG, or DICOM optical captures</div>
-          <span class="upload-types">128 × 128 Optimal Resolution</span>
-        </div>
-
-        <div id="preview-container">
-          <img id="preview-img" src="" alt="Cystoscopy preview" />
-          <div class="preview-label" id="preview-filename"></div>
-        </div>
-
-        <button id="analyze-btn">
-          <div class="btn-inner">
-            <div class="spinner" id="spinner"></div>
-            <span id="btn-text">⚛️ &nbsp;Run Quantum Analysis + XAI</span>
-          </div>
-        </button>
-
-        <button id="reset-btn">✕ Clear &amp; Scan Another Image</button>
-
-        <div id="error-card">
-          <strong>⚠️ Error:</strong> <span id="error-msg"></span>
-        </div>
-      </div>
-
-      <!-- Result Card -->
-      <div class="card" id="result-card">
-        <div class="card-title">
-          <span>📊</span> Diagnostic Inference &amp; Probability Analysis
-        </div>
-
-        <div class="result-banner" id="result-banner">
-          <div class="result-icon" id="result-icon">🔬</div>
+      <div class="info-tri-grid">
+        <!-- Box 1 -->
+        <div class="info-box">
           <div>
-            <div class="result-title" id="result-title">—</div>
-            <div class="result-subtitle" id="result-subtitle">—</div>
-          </div>
-        </div>
-
-        <div class="conf-card">
-          <div class="conf-row">
-            <span class="conf-label">Diagnostic Confidence</span>
-            <span class="conf-value" id="conf-value">0%</span>
-          </div>
-          <div class="progress-track">
-            <div class="progress-fill" id="progress-fill"></div>
-          </div>
-        </div>
-
-        <div class="info-box" id="info-box">
-          <p id="result-message"></p>
-        </div>
-
-        <div class="rec-box">
-          <div class="rec-icon">📋</div>
-          <p id="recommendation-text"></p>
-        </div>
-      </div>
-
-      <!-- XAI Card -->
-      <div class="card" id="xai-card">
-        <div class="xai-header">
-          <div class="xai-meta">
-            <div class="xai-logo-box">🧠</div>
-            <div>
-              <div class="xai-title">Groq LLaMA 3.3 · Clinical Explanation</div>
-              <div class="xai-sub">Transparent pathophysiological reasoning for medical oversight</div>
+            <div class="info-box-header">
+              <span class="info-box-num">01</span>
+              <span class="info-box-icon">⚛️</span>
             </div>
+            <h3 class="info-box-h3">Quantum VQC Optical Engine</h3>
+            <p class="info-box-p">
+              Endoscopic bladder captures are mapped through a deep convolutional backbone into a 4-dimensional continuous latent space. A 4-qubit Variational Quantum Circuit (Qiskit VQC) applies Hadamard state superpositions and parameterized $RY(\theta)$ rotations entangled with CNOT gates, projecting tissue anomalies across Hilbert feature space.
+            </p>
           </div>
-          <div class="xai-engine-pill">Groq LPUs Active</div>
+          <div class="info-box-footer">
+            <span>Workflow A · Image Modality</span>
+            <span>→</span>
+          </div>
         </div>
 
-        <div class="xai-skeleton" id="xai-skeleton">
-          <div class="skeleton-line" style="width:95%"></div>
-          <div class="skeleton-line" style="width:85%"></div>
-          <div class="skeleton-line" style="width:90%"></div>
-          <div class="skeleton-line" style="width:70%"></div>
-          <div class="skeleton-line" style="width:88%"></div>
+        <!-- Box 2 -->
+        <div class="info-box">
+          <div>
+            <div class="info-box-header">
+              <span class="info-box-num">02</span>
+              <span class="info-box-icon">🧠</span>
+            </div>
+            <h3 class="info-box-h3">Groq LLaMA 3.3 Explainable AI</h3>
+            <p class="info-box-p">
+              Zero black-box ambiguity. Every quantum-classical prediction triggers a real-time request to Groq LPUs running LLaMA 3.3. The model reviews calibrated confidence intervals, classical probability vectors, and quantum state measurements to produce transparent, pathophysiological explanations for clinical oversight.
+            </p>
+          </div>
+          <div class="info-box-footer">
+            <span>Clinical Transparency (XAI)</span>
+            <span>→</span>
+          </div>
         </div>
 
-        <div id="xai-content" style="display:none"></div>
-
-        <!-- Quantum Circuit Diagram -->
-        <div class="qc-diagram">
-          <div class="qc-title">
-            <span>⚛️</span> Quantum Circuit Backbone (Qiskit VQC · Real-Time Architecture)
+        <!-- Box 3 -->
+        <div class="info-box">
+          <div>
+            <div class="info-box-header">
+              <span class="info-box-num">03</span>
+              <span class="info-box-icon">🧪</span>
+            </div>
+            <h3 class="info-box-h3">Multi-Analyte Fluid Diagnostics</h3>
+            <p class="info-box-p">
+              A trained machine learning ensemble evaluates 39 clinical blood and urinalysis biomarkers (including Creatinine, Estimated GFR, Occult Blood, Proteinuria, and cellular casts) to stratify primary pathology across 5 disease classes: Cystitis, Kidney, Prostate, Urinary Bladder, and Uterus.
+            </p>
           </div>
-          <div class="qc-row">
-            <div class="qc-qubit">q₀</div><div class="qc-wire"></div>
-            <div class="qc-gate">H</div><div class="qc-wire"></div>
-            <div class="qc-gate">RY</div><div class="qc-wire"></div>
-            <div class="qc-gate">CX</div><div class="qc-wire"></div>
-            <div class="qc-measure">⏱</div>
-          </div>
-          <div class="qc-row">
-            <div class="qc-qubit">q₁</div><div class="qc-wire"></div>
-            <div class="qc-gate">H</div><div class="qc-wire"></div>
-            <div class="qc-gate">RY</div><div class="qc-wire"></div>
-            <div class="qc-gate">CX</div><div class="qc-wire"></div>
-            <div class="qc-measure">⏱</div>
-          </div>
-          <div class="qc-row">
-            <div class="qc-qubit">q₂</div><div class="qc-wire"></div>
-            <div class="qc-gate">H</div><div class="qc-wire"></div>
-            <div class="qc-gate">RY</div><div class="qc-wire"></div>
-            <div class="qc-gate">CX</div><div class="qc-wire"></div>
-            <div class="qc-measure">⏱</div>
-          </div>
-          <div class="qc-row">
-            <div class="qc-qubit">q₃</div><div class="qc-wire"></div>
-            <div class="qc-gate">H</div><div class="qc-wire"></div>
-            <div class="qc-gate">RY</div><div class="qc-wire"></div>
-            <div class="qc-gate">CX</div><div class="qc-wire"></div>
-            <div class="qc-measure">⏱</div>
+          <div class="info-box-footer">
+            <span>Workflow B · Tabular Modality</span>
+            <span>→</span>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="disclaimer">
-        <strong>⚕️ Medical Disclaimer:</strong> This system is designed for medical research and educational assistance. It does <em>not</em> replace histological biopsy or professional clinical judgment.
-      </div>
-
-    </div><!-- /panel-image -->
-
-    <!-- ══════════════════════════════════════════════════════════════════
-         WORKFLOW B: DISEASE CLASSIFIER (TABULAR)
-         ══════════════════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="panel-tabular">
-
-      <!-- Multi-Analyte Visual Highlight Card -->
-      <div class="visual-highlight-card">
-        <img src="/static/images/lab_analytics.jpg" alt="Clinical Biochemistry Lab" class="visual-highlight-img" />
-        <div class="visual-highlight-content">
-          <div class="visual-tag">Multi-Analyte Fluid Diagnostics</div>
-          <div class="visual-head">Biochemistry &amp; Urinalysis Machine Learning</div>
-          <p class="visual-p">
-            Predicts primary organ pathology across 5 categories (Cystitis, Kidney, Prostate, Urinary Bladder, Uterus) by synthesizing renal metabolites, hepatic markers, cellular sediment counts, and clinical history.
+  <!-- ── DUAL IMAGERY SHOWCASE STRIP (AI-GENERATED ASSETS) ── -->
+  <section class="imagery-strip-section">
+    <div class="imagery-grid">
+      <!-- Card 1: Endoscopy -->
+      <div class="imagery-card">
+        <div class="imagery-frame">
+          <span class="imagery-tag">Optical Modality · Workflow A</span>
+          <img src="/static/images/endoscopy.jpg" alt="High-Definition Cystoscopy" class="imagery-img" />
+        </div>
+        <div class="imagery-desc-wrap">
+          <h4 class="imagery-h4">High-Definition Optical Cystoscopy</h4>
+          <p class="imagery-text">
+            Autonomous lesion demarcation identifying superficial papillary urothelial carcinomas versus benign inflammatory cystitis mucosa. Enhanced by quantum feature entanglement.
           </p>
+          <div class="imagery-badge-row">
+            <span class="im-badge">4-Qubit VQC</span>
+            <span class="im-badge">128 × 128 Optimal</span>
+            <span class="im-badge">Groq LLaMA 3.3</span>
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-header-row">
-          <div class="card-title">
-            <span>🧬</span> Patient Multi-Analyte Disease Classifier
-            <span class="card-title-badge">Blood &amp; Urine Profile</span>
+      <!-- Card 2: Laboratory Analytics -->
+      <div class="imagery-card">
+        <div class="imagery-frame">
+          <span class="imagery-tag">Biochemical Modality · Workflow B</span>
+          <img src="/static/images/lab_analytics.jpg" alt="Laboratory Analytics" class="imagery-img" />
+        </div>
+        <div class="imagery-desc-wrap">
+          <h4 class="imagery-h4">Multi-Analyte Biochemical Profiling</h4>
+          <p class="imagery-text">
+            Simultaneous plasma and urinalysis evaluation. Cross-referencing nitrogenous renal waste products with microscopic urinary epithelial cytology for organ-specific differentiation.
+          </p>
+          <div class="imagery-badge-row">
+            <span class="im-badge">39 Biomarkers</span>
+            <span class="im-badge">5 Organ Classes</span>
+            <span class="im-badge">Random Forest Pipeline</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Quick Test Cases Section -->
-        <div class="cases-header-row">
-          <div style="font-size:0.88rem;font-weight:800;color:var(--text);">
-            ⚡ Quick Test Cases — Click any card to auto-fill verified clinical data:
-          </div>
-          <div class="cases-badge">5 Verified Profiles</div>
+  <!-- ── THE DETECTION SUITE (HORIZONTAL FULL-WIDTH INTERFACE) ── -->
+  <section id="detection-workspace">
+    <div class="workspace-container">
+      <div class="workspace-header">
+        <div>
+          <h2 class="workspace-title">Active Diagnostic Workspace</h2>
+          <div class="workspace-sub">Select your modality below to initiate quantum optical analysis or multi-analyte tabular classification.</div>
         </div>
-
-        <div class="cases-grid">
-          <!-- 1: Cystitis -->
-          <div class="case-card" id="case-cystitis" style="--case-color: var(--c-cystitis);" onclick="loadCase('cystitis')">
-            <div class="case-head-line">
-              <span class="case-icon">🔵</span>
-              <span class="case-class-tag">Infection</span>
-            </div>
-            <div class="case-name">Cystitis</div>
-            <div class="case-meta">Age 69 · Male<br>Urine WBC: 2 · Blood: 3+<br>Creatinine: 1.4 · GFR: 75</div>
-            <button type="button" class="case-load-btn" onclick="event.stopPropagation();loadCase('cystitis')">▶ Load Case</button>
-          </div>
-
-          <!-- 2: Kidney -->
-          <div class="case-card" id="case-kidney" style="--case-color: var(--c-kidney);" onclick="loadCase('kidney')">
-            <div class="case-head-line">
-              <span class="case-icon">🟣</span>
-              <span class="case-class-tag">Renal</span>
-            </div>
-            <div class="case-name">Kidney</div>
-            <div class="case-meta">Age 67 · Male<br>Creatinine: 1.1 · GFR: 77<br>Protein: 0.5+ · Bili: 1.7</div>
-            <button type="button" class="case-load-btn" onclick="event.stopPropagation();loadCase('kidney')">▶ Load Case</button>
-          </div>
-
-          <!-- 3: Prostate -->
-          <div class="case-card" id="case-prostate" style="--case-color: var(--c-prostate);" onclick="loadCase('prostate')">
-            <div class="case-head-line">
-              <span class="case-icon">🟠</span>
-              <span class="case-class-tag">Urologic</span>
-            </div>
-            <div class="case-name">Prostate</div>
-            <div class="case-meta">Age 68 · Male<br>Urine Protein: 2+ · Blood: 3+<br>GFR: 43.5 · BUN: 25</div>
-            <button type="button" class="case-load-btn" onclick="event.stopPropagation();loadCase('prostate')">▶ Load Case</button>
-          </div>
-
-          <!-- 4: Urinary Bladder -->
-          <div class="case-card" id="case-urinarybladder" style="--case-color: var(--c-bladder);" onclick="loadCase('urinarybladder')">
-            <div class="case-head-line">
-              <span class="case-icon">🟢</span>
-              <span class="case-class-tag">Vesical</span>
-            </div>
-            <div class="case-name">Urinary Bladder</div>
-            <div class="case-meta">Age 60 · Male<br>Smoker · Hypertension<br>GFR: 79 · Epi/µL: 36</div>
-            <button type="button" class="case-load-btn" onclick="event.stopPropagation();loadCase('urinarybladder')">▶ Load Case</button>
-          </div>
-
-          <!-- 5: Uterus -->
-          <div class="case-card" id="case-uterus" style="--case-color: var(--c-uterus);" onclick="loadCase('uterus')">
-            <div class="case-head-line">
-              <span class="case-icon">🌸</span>
-              <span class="case-class-tag">Gynecologic</span>
-            </div>
-            <div class="case-name">Uterus</div>
-            <div class="case-meta">Age 79 · Female<br>Creatinine: 0.6 · GFR: 98<br>Cholesterol: 215</div>
-            <button type="button" class="case-load-btn" onclick="event.stopPropagation();loadCase('uterus')">▶ Load Case</button>
-          </div>
-        </div>
-
-        <!-- Form for Manual Reports -->
-        <form id="tabular-form" onsubmit="return false;">
-
-          <div class="section-label">🧑 1. Patient Demographics (Required)</div>
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="t-age">Age <span style="color:var(--danger)">*</span> <span class="unit-badge">Years</span></label>
-              <input type="number" id="t-age" name="age" min="18" max="100" placeholder="e.g. 65" required />
-              <span class="hint">Patient age (18–100)</span>
-            </div>
-            <div class="form-group">
-              <label for="t-gender">Gender <span style="color:var(--danger)">*</span></label>
-              <select id="t-gender" name="gender" required>
-                <option value="">Select Gender…</option>
-                <option value="0">Female (0)</option>
-                <option value="1">Male (1)</option>
-              </select>
-              <span class="hint">Biological sex at birth</span>
-            </div>
-          </div>
-
-          <div class="section-label">🩸 2. Serum &amp; Blood Biochemistry (Optional)</div>
-          <div class="form-grid">
-            <div class="form-group"><label for="t-albumin">Albumin <span class="unit-badge">g/dL</span></label><input type="number" step="0.01" id="t-albumin" placeholder="e.g. 4.0" /><span class="hint">Normal: 3.5–5.5</span></div>
-            <div class="form-group"><label for="t-ag">A/G Ratio <span class="unit-badge">ratio</span></label><input type="number" step="0.01" id="t-ag" placeholder="e.g. 1.7" /><span class="hint">Normal: 1.1–2.5</span></div>
-            <div class="form-group"><label for="t-alk">Alkaline Phosphatase <span class="unit-badge">U/L</span></label><input type="number" step="1" id="t-alk" placeholder="e.g. 70" /><span class="hint">Normal: 44–147</span></div>
-            <div class="form-group"><label for="t-alt">ALT / GPT <span class="unit-badge">U/L</span></label><input type="number" step="1" id="t-alt" placeholder="e.g. 25" /><span class="hint">Normal: 7–56</span></div>
-            <div class="form-group"><label for="t-ast">AST / GOT <span class="unit-badge">U/L</span></label><input type="number" step="1" id="t-ast" placeholder="e.g. 28" /><span class="hint">Normal: 10–40</span></div>
-            <div class="form-group"><label for="t-bun">BUN <span class="unit-badge">mg/dL</span></label><input type="number" step="0.1" id="t-bun" placeholder="e.g. 15" /><span class="hint">Normal: 7–25</span></div>
-            <div class="form-group"><label for="t-calcium">Calcium <span class="unit-badge">mg/dL</span></label><input type="number" step="0.01" id="t-calcium" placeholder="e.g. 9.0" /><span class="hint">Normal: 8.5–10.5</span></div>
-            <div class="form-group"><label for="t-chloride">Chloride <span class="unit-badge">mEq/L</span></label><input type="number" step="1" id="t-chloride" placeholder="e.g. 103" /><span class="hint">Normal: 96–106</span></div>
-            <div class="form-group"><label for="t-creatinine">Creatinine <span class="unit-badge">mg/dL</span></label><input type="number" step="0.01" id="t-creatinine" placeholder="e.g. 1.0" /><span class="hint">Normal: 0.6–1.3</span></div>
-            <div class="form-group"><label for="t-dbili">Direct Bilirubin <span class="unit-badge">mg/dL</span></label><input type="number" step="0.01" id="t-dbili" placeholder="e.g. 0.1" /><span class="hint">Normal: 0.0–0.3</span></div>
-            <div class="form-group"><label for="t-gfr">Estimated GFR <span class="unit-badge">mL/min</span></label><input type="number" step="0.1" id="t-gfr" placeholder="e.g. 75" /><span class="hint">Normal: ≥60</span></div>
-            <div class="form-group"><label for="t-glucose">Glucose AC <span class="unit-badge">mg/dL</span></label><input type="number" step="1" id="t-glucose" placeholder="e.g. 110" /><span class="hint">Fasting: 70–99</span></div>
-            <div class="form-group"><label for="t-potassium">Potassium <span class="unit-badge">mEq/L</span></label><input type="number" step="0.01" id="t-potassium" placeholder="e.g. 4.1" /><span class="hint">Normal: 3.5–5.0</span></div>
-            <div class="form-group"><label for="t-sodium">Sodium <span class="unit-badge">mEq/L</span></label><input type="number" step="1" id="t-sodium" placeholder="e.g. 139" /><span class="hint">Normal: 135–145</span></div>
-            <div class="form-group"><label for="t-tbili">Total Bilirubin <span class="unit-badge">mg/dL</span></label><input type="number" step="0.01" id="t-tbili" placeholder="e.g. 0.8" /><span class="hint">Normal: 0.1–1.2</span></div>
-            <div class="form-group"><label for="t-chol">Total Cholesterol <span class="unit-badge">mg/dL</span></label><input type="number" step="1" id="t-chol" placeholder="e.g. 185" /><span class="hint">Desirable: &lt;200</span></div>
-            <div class="form-group"><label for="t-protein">Total Protein <span class="unit-badge">g/dL</span></label><input type="number" step="0.01" id="t-protein" placeholder="e.g. 6.8" /><span class="hint">Normal: 6.0–8.3</span></div>
-            <div class="form-group"><label for="t-trig">Triglyceride <span class="unit-badge">mg/dL</span></label><input type="number" step="1" id="t-trig" placeholder="e.g. 120" /><span class="hint">Normal: &lt;150</span></div>
-            <div class="form-group"><label for="t-uricacid">Uric Acid <span class="unit-badge">mg/dL</span></label><input type="number" step="0.01" id="t-uricacid" placeholder="e.g. 5.5" /><span class="hint">Normal: 3.5–7.2</span></div>
-          </div>
-
-          <div class="section-label">🧪 3. Urinalysis Profile (Optional)</div>
-          <div class="form-grid">
-            <div class="form-group"><label for="t-ph">Urine pH <span class="unit-badge">pH</span></label><input type="number" step="0.1" id="t-ph" min="4" max="9" placeholder="e.g. 6.0" /><span class="hint">Normal: 4.6–8.0</span></div>
-            <div class="form-group"><label for="t-spgravity">Specific Gravity</label><input type="number" step="0.001" id="t-spgravity" placeholder="e.g. 1.015" /><span class="hint">Normal: 1.005–1.030</span></div>
-            <div class="form-group"><label for="t-nitrite">Nitrite <span class="unit-badge">0=Neg, 1=Pos</span></label><input type="number" step="1" id="t-nitrite" min="0" max="1" placeholder="0 or 1" /><span class="hint">Normal: 0 (negative)</span></div>
-            <div class="form-group"><label for="t-occblood">Urine Occult Blood <span class="unit-badge">0 to 3+</span></label><input type="number" step="0.5" id="t-occblood" min="0" max="3" placeholder="0–3" /><span class="hint">Normal: 0</span></div>
-            <div class="form-group"><label for="t-stripwbc">Strip WBC <span class="unit-badge">0 to 3+</span></label><input type="number" step="0.5" id="t-stripwbc" min="0" max="3" placeholder="0–3" /><span class="hint">Normal: 0</span></div>
-            <div class="form-group"><label for="t-ubili">Urine Bilirubin <span class="unit-badge">0 to 3+</span></label><input type="number" step="1" id="t-ubili" min="0" max="3" placeholder="0–3" /><span class="hint">Normal: 0</span></div>
-            <div class="form-group"><label for="t-uglucose">Urine Glucose <span class="unit-badge">0 to 3+</span></label><input type="number" step="1" id="t-uglucose" min="0" max="3" placeholder="0–3" /><span class="hint">Normal: 0</span></div>
-            <div class="form-group"><label for="t-uketone">Urine Ketone <span class="unit-badge">0 to 3+</span></label><input type="number" step="1" id="t-uketone" min="0" max="3" placeholder="0–3" /><span class="hint">Normal: 0</span></div>
-            <div class="form-group"><label for="t-uprobe">Urine Protein <span class="unit-badge">0 to 3+</span></label><input type="number" step="0.5" id="t-uprobe" min="0" max="3" placeholder="0–3" /><span class="hint">Normal: 0</span></div>
-            <div class="form-group"><label for="t-urobilinogen">Urobilinogen <span class="unit-badge">mg/dL</span></label><input type="number" step="0.1" id="t-urobilinogen" placeholder="e.g. 0.2" /><span class="hint">Normal: 0.2–1.0</span></div>
-            <div class="form-group"><label for="t-uepiL">Urine Epithelium <span class="unit-badge">/µL</span></label><input type="number" step="1" id="t-uepiL" placeholder="e.g. 5" /><span class="hint">Normal: &lt;10</span></div>
-            <div class="form-group"><label for="t-uepiCount">Urine Epithelium Count <span class="unit-badge">count</span></label><input type="number" step="1" id="t-uepiCount" placeholder="e.g. 2" /></div>
-          </div>
-
-          <div class="section-label">📋 4. Clinical History &amp; Risk Habits (Optional)</div>
-          <div class="form-grid">
-            <div class="form-group"><label for="t-htn">Hypertension</label><select id="t-htn"><option value="">Unknown / None</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
-            <div class="form-group"><label for="t-dm">Diabetes</label><select id="t-dm"><option value="">Unknown / None</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
-            <div class="form-group"><label for="t-smoking">Smoking History</label><select id="t-smoking"><option value="">Unknown / None</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
-            <div class="form-group"><label for="t-drinking">Alcohol Consumption</label><select id="t-drinking"><option value="">Unknown / None</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
-            <div class="form-group"><label for="t-betel">Betel Nut Habit</label><select id="t-betel"><option value="">Unknown / None</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
-            <div class="form-group"><label for="t-fhx">Family Cancer History</label><select id="t-fhx"><option value="">Unknown / None</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
-          </div>
-
-          <div class="form-actions-row">
-            <button type="submit" id="tabular-submit-btn">🧬 Predict Disease Category</button>
-            <button type="button" class="clear-form-btn" onclick="clearTabularForm()">✕ Clear All Fields</button>
-          </div>
-        </form>
-
-        <div id="tabular-error"></div>
-
-        <div id="tabular-result">
-          <div class="t-result-head">
-            <div class="t-result-icon">🧬</div>
-            <div>
-              <div class="t-result-label" id="t-pred-label">—</div>
-              <div class="t-result-sub" id="t-pred-sub">Predicted primary disease category</div>
-            </div>
-          </div>
-          <div class="score-bars" id="t-score-bars"></div>
-          <div class="t-disclaimer" id="t-disclaimer-text"></div>
-        </div>
-
-      </div><!-- /card -->
-
-      <div class="disclaimer">
-        <strong>⚠️ Clinical Notice:</strong> This multi-analyte disease classification model is trained for research &amp; academic evaluation. Clinical decisions must always be guided by complete medical consultation.
+        <a href="#system-architecture" style="color:var(--primary);font-size:0.85rem;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;">
+          View Methodology ↑
+        </a>
       </div>
 
-    </div><!-- /panel-tabular -->
+      <!-- Tab Switcher -->
+      <div class="sharp-tab-bar" role="tablist">
+        <button class="sharp-tab-btn active" id="tab-image-btn" role="tab" onclick="switchModality('image')">
+          <span>🔬</span>
+          <span>Workflow A: Endoscopic Optical AI</span>
+          <span class="sharp-tab-badge">QML + Groq XAI</span>
+        </button>
+        <button class="sharp-tab-btn" id="tab-tabular-btn" role="tab" onclick="switchModality('tabular')">
+          <span>🧬</span>
+          <span>Workflow B: Multi-Analyte Disease Classifier</span>
+          <span class="sharp-tab-badge">39 Lab Biomarkers</span>
+        </button>
+      </div>
 
-  </main>
+      <!-- ════════════════════════════════════════════════════════════════
+           PANEL A: OPTICAL DETECTION
+           ════════════════════════════════════════════════════════════════ -->
+      <div class="sharp-panel active" id="panel-image">
+        <div class="workspace-split">
+          <!-- Left Column: Input & 1-Click Samples -->
+          <div class="sharp-card">
+            <div class="sharp-card-title">
+              <span>Image Ingestion</span>
+              <span style="font-size:0.75rem;color:var(--primary);">Optical Feed</span>
+            </div>
 
-  <!-- ── FOOTER ── -->
-  <footer>
-    BladderVision QML Suite &nbsp;·&nbsp;
-    <span>⚛️ Qiskit Variational Quantum Classifier (VQC)</span> &nbsp;+&nbsp;
-    <span>🧠 Groq LLaMA 3.3 Explainable AI</span> &nbsp;·&nbsp;
-    &copy; 2026 Academic Research Platform
+            <div class="sample-label">⚡ 1-Click Clinical Test Scans:</div>
+            <div class="sample-grid-2">
+              <div class="sample-btn-box" onclick="loadSampleScan('cancer')">
+                <img src="/static/samples/sample_cancer.png" alt="Cancer" class="sample-btn-thumb" />
+                <div>
+                  <div class="sample-btn-name">Malignant Lesion</div>
+                  <div class="sample-btn-sub">Confirmed Carcinoma Scan</div>
+                </div>
+              </div>
+
+              <div class="sample-btn-box" onclick="loadSampleScan('normal')">
+                <img src="/static/samples/sample_normal.png" alt="Normal" class="sample-btn-thumb" />
+                <div>
+                  <div class="sample-btn-name">Benign Mucosa</div>
+                  <div class="sample-btn-sub">Clean Endoscopic Tissue</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Drag & Drop Zone -->
+            <div class="sharp-dropzone" id="upload-zone">
+              <input type="file" id="file-input" accept="image/*" />
+              <div class="dropzone-icon">📁</div>
+              <div class="dropzone-h4">Drop Endoscopy Frame Here</div>
+              <div class="dropzone-p">Supports DICOM, PNG, or JPG captures. Click to select file.</div>
+            </div>
+
+            <div id="preview-container">
+              <img id="preview-img" src="" alt="Cystoscopy Frame Preview" />
+              <div class="preview-tag" id="preview-filename"></div>
+            </div>
+
+            <button id="analyze-btn">
+              <span>Execute Quantum Analysis &amp; Groq XAI</span>
+            </button>
+            <button id="reset-btn">✕ Clear &amp; Scan Another Image</button>
+          </div>
+
+          <!-- Right Column: Live Output & XAI -->
+          <div class="sharp-card">
+            <div class="sharp-card-title">
+              <span>Diagnostic Assessment</span>
+              <span id="live-engine-tag" style="font-size:0.75rem;color:var(--quantum);">Quantum VQC Latent Mode</span>
+            </div>
+
+            <div id="result-idle-state" style="padding:60px 20px;text-align:center;color:var(--muted);">
+              <div style="font-size:42px;margin-bottom:12px;">🔬</div>
+              <div style="font-weight:800;text-transform:uppercase;letter-spacing:0.06em;font-size:1.1rem;color:var(--text);">No Scan Processed</div>
+              <p style="font-size:0.88rem;max-width:380px;margin:8px auto 0;">Load a verified sample above or upload a cystoscopy frame to run real-time inference.</p>
+            </div>
+
+            <!-- Active Result Box -->
+            <div id="result-card">
+              <div class="verdict-banner" id="verdict-banner">
+                <div class="verdict-icon" id="verdict-icon">🔬</div>
+                <div>
+                  <div class="verdict-title" id="verdict-title">—</div>
+                  <div class="verdict-sub" id="verdict-sub">—</div>
+                </div>
+              </div>
+
+              <div class="meter-box">
+                <div class="meter-label">
+                  <span>Diagnostic Confidence</span>
+                  <span class="meter-val" id="meter-val">0%</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill" id="meter-fill"></div>
+                </div>
+              </div>
+
+              <div id="info-box" style="padding:16px 18px;border-left:4px solid;margin-bottom:16px;">
+                <p id="result-message" style="font-size:0.92rem;line-height:1.6;"></p>
+              </div>
+
+              <div style="padding:14px 18px;border:1px solid #cbd5e1;background:var(--bg-subtle);">
+                <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;color:var(--primary);margin-bottom:4px;">Clinical Directive:</div>
+                <p id="recommendation-text" style="font-size:0.88rem;color:var(--text-body);"></p>
+              </div>
+
+              <!-- Groq XAI Panel -->
+              <div id="xai-card">
+                <div class="xai-h3">Groq LLaMA 3.3 · Clinical Explanation</div>
+                <div id="xai-skeleton">
+                  <div style="height:14px;background:#e2e8f0;margin-bottom:8px;"></div>
+                  <div style="height:14px;background:#e2e8f0;width:80%;margin-bottom:8px;"></div>
+                  <div style="height:14px;background:#e2e8f0;width:90%;"></div>
+                </div>
+                <div id="xai-content" style="display:none;"></div>
+
+                <!-- Quantum Circuit Blueprint -->
+                <div class="sharp-qc">
+                  <div class="sharp-qc-title">4-Qubit Variational Quantum Circuit Execution</div>
+                  <div class="sharp-qc-row"><div class="sharp-qc-q">q₀</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">H</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">RY</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">CX</div></div>
+                  <div class="sharp-qc-row"><div class="sharp-qc-q">q₁</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">H</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">RY</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">CX</div></div>
+                  <div class="sharp-qc-row"><div class="sharp-qc-q">q₂</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">H</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">RY</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">CX</div></div>
+                  <div class="sharp-qc-row"><div class="sharp-qc-q">q₃</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">H</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">RY</div><div class="sharp-qc-w"></div><div class="sharp-qc-g">CX</div></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="error-card" style="display:none;background:#fee2e2;border:1px solid #b91c1c;color:#b91c1c;padding:16px;margin-top:16px;">
+              <strong>⚠️ Error:</strong> <span id="error-msg"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════════════
+           PANEL B: MULTI-ANALYTE TABULAR
+           ════════════════════════════════════════════════════════════════ -->
+      <div class="sharp-panel" id="panel-tabular">
+        <div class="sharp-card">
+          <div class="sharp-card-title">
+            <span>⚡ 1-Click Verified Multi-Analyte Profiles</span>
+            <span style="font-size:0.75rem;color:var(--xai);">5 Organ Pathology Profiles</span>
+          </div>
+
+          <div class="quick-cases-strip">
+            <div class="sharp-case-card" id="case-cystitis" style="--case-color: var(--c-cystitis);" onclick="loadCase('cystitis')">
+              <div>
+                <div class="sharp-case-name">Cystitis</div>
+                <div class="sharp-case-meta">Age 69 · Male<br>Urine WBC: 2 · Blood: 3+<br>Creatinine: 1.4 · GFR: 75</div>
+              </div>
+              <button type="button" class="sharp-case-btn" onclick="event.stopPropagation();loadCase('cystitis')">Load Case</button>
+            </div>
+
+            <div class="sharp-case-card" id="case-kidney" style="--case-color: var(--c-kidney);" onclick="loadCase('kidney')">
+              <div>
+                <div class="sharp-case-name">Kidney</div>
+                <div class="sharp-case-meta">Age 67 · Male<br>Creatinine: 1.1 · GFR: 77<br>Protein: 0.5+ · Bili: 1.7</div>
+              </div>
+              <button type="button" class="sharp-case-btn" onclick="event.stopPropagation();loadCase('kidney')">Load Case</button>
+            </div>
+
+            <div class="sharp-case-card" id="case-prostate" style="--case-color: var(--c-prostate);" onclick="loadCase('prostate')">
+              <div>
+                <div class="sharp-case-name">Prostate</div>
+                <div class="sharp-case-meta">Age 68 · Male<br>Urine Protein: 2+ · Blood: 3+<br>GFR: 43.5 · BUN: 25</div>
+              </div>
+              <button type="button" class="sharp-case-btn" onclick="event.stopPropagation();loadCase('prostate')">Load Case</button>
+            </div>
+
+            <div class="sharp-case-card" id="case-urinarybladder" style="--case-color: var(--c-bladder);" onclick="loadCase('urinarybladder')">
+              <div>
+                <div class="sharp-case-name">Urinary Bladder</div>
+                <div class="sharp-case-meta">Age 60 · Male<br>Smoker · Hypertension<br>GFR: 79 · Epi/µL: 36</div>
+              </div>
+              <button type="button" class="sharp-case-btn" onclick="event.stopPropagation();loadCase('urinarybladder')">Load Case</button>
+            </div>
+
+            <div class="sharp-case-card" id="case-uterus" style="--case-color: var(--c-uterus);" onclick="loadCase('uterus')">
+              <div>
+                <div class="sharp-case-name">Uterus</div>
+                <div class="sharp-case-meta">Age 79 · Female<br>Creatinine: 0.6 · GFR: 98<br>Cholesterol: 215</div>
+              </div>
+              <button type="button" class="sharp-case-btn" onclick="event.stopPropagation();loadCase('uterus')">Load Case</button>
+            </div>
+          </div>
+
+          <!-- Comprehensive Clinical Form -->
+          <form id="tabular-form" onsubmit="return false;">
+            <div class="form-section-head">1. Demographics &amp; Vitals (Required)</div>
+            <div class="form-quad-grid">
+              <div class="sharp-field">
+                <label for="t-age">Age * <span class="u-badge">Years</span></label>
+                <input type="number" id="t-age" min="18" max="100" placeholder="e.g. 65" required />
+                <span class="field-hint">Range: 18–100</span>
+              </div>
+              <div class="sharp-field">
+                <label for="t-gender">Biological Sex *</label>
+                <select id="t-gender" required>
+                  <option value="">Select Sex…</option>
+                  <option value="0">Female (0)</option>
+                  <option value="1">Male (1)</option>
+                </select>
+                <span class="field-hint">Required for eGFR calculation</span>
+              </div>
+            </div>
+
+            <div class="form-section-head">2. Serum &amp; Blood Biochemistry (Optional)</div>
+            <div class="form-quad-grid">
+              <div class="sharp-field"><label for="t-albumin">Albumin <span class="u-badge">g/dL</span></label><input type="number" step="0.01" id="t-albumin" placeholder="4.0" /><span class="field-hint">Ref: 3.5–5.5</span></div>
+              <div class="sharp-field"><label for="t-ag">A/G Ratio <span class="u-badge">ratio</span></label><input type="number" step="0.01" id="t-ag" placeholder="1.7" /><span class="field-hint">Ref: 1.1–2.5</span></div>
+              <div class="sharp-field"><label for="t-alk">Alkaline Phosphatase <span class="u-badge">U/L</span></label><input type="number" step="1" id="t-alk" placeholder="70" /><span class="field-hint">Ref: 44–147</span></div>
+              <div class="sharp-field"><label for="t-alt">ALT / GPT <span class="u-badge">U/L</span></label><input type="number" step="1" id="t-alt" placeholder="25" /><span class="field-hint">Ref: 7–56</span></div>
+              <div class="sharp-field"><label for="t-ast">AST / GOT <span class="u-badge">U/L</span></label><input type="number" step="1" id="t-ast" placeholder="28" /><span class="field-hint">Ref: 10–40</span></div>
+              <div class="sharp-field"><label for="t-bun">BUN <span class="u-badge">mg/dL</span></label><input type="number" step="0.1" id="t-bun" placeholder="15" /><span class="field-hint">Ref: 7–25</span></div>
+              <div class="sharp-field"><label for="t-calcium">Calcium <span class="u-badge">mg/dL</span></label><input type="number" step="0.01" id="t-calcium" placeholder="9.0" /><span class="field-hint">Ref: 8.5–10.5</span></div>
+              <div class="sharp-field"><label for="t-chloride">Chloride <span class="u-badge">mEq/L</span></label><input type="number" step="1" id="t-chloride" placeholder="103" /><span class="field-hint">Ref: 96–106</span></div>
+              <div class="sharp-field"><label for="t-creatinine">Creatinine <span class="u-badge">mg/dL</span></label><input type="number" step="0.01" id="t-creatinine" placeholder="1.0" /><span class="field-hint">Ref: 0.6–1.3</span></div>
+              <div class="sharp-field"><label for="t-dbili">Direct Bilirubin <span class="u-badge">mg/dL</span></label><input type="number" step="0.01" id="t-dbili" placeholder="0.1" /><span class="field-hint">Ref: 0.0–0.3</span></div>
+              <div class="sharp-field"><label for="t-gfr">Estimated GFR <span class="u-badge">mL/min</span></label><input type="number" step="0.1" id="t-gfr" placeholder="75" /><span class="field-hint">Ref: ≥60</span></div>
+              <div class="sharp-field"><label for="t-glucose">Glucose AC <span class="u-badge">mg/dL</span></label><input type="number" step="1" id="t-glucose" placeholder="110" /><span class="field-hint">Ref: 70–99</span></div>
+              <div class="sharp-field"><label for="t-potassium">Potassium <span class="u-badge">mEq/L</span></label><input type="number" step="0.01" id="t-potassium" placeholder="4.1" /><span class="field-hint">Ref: 3.5–5.0</span></div>
+              <div class="sharp-field"><label for="t-sodium">Sodium <span class="u-badge">mEq/L</span></label><input type="number" step="1" id="t-sodium" placeholder="139" /><span class="field-hint">Ref: 135–145</span></div>
+              <div class="sharp-field"><label for="t-tbili">Total Bilirubin <span class="u-badge">mg/dL</span></label><input type="number" step="0.01" id="t-tbili" placeholder="0.8" /><span class="field-hint">Ref: 0.1–1.2</span></div>
+              <div class="sharp-field"><label for="t-chol">Total Cholesterol <span class="u-badge">mg/dL</span></label><input type="number" step="1" id="t-chol" placeholder="185" /><span class="field-hint">Ref: &lt;200</span></div>
+              <div class="sharp-field"><label for="t-protein">Total Protein <span class="u-badge">g/dL</span></label><input type="number" step="0.01" id="t-protein" placeholder="6.8" /><span class="field-hint">Ref: 6.0–8.3</span></div>
+              <div class="sharp-field"><label for="t-trig">Triglyceride <span class="u-badge">mg/dL</span></label><input type="number" step="1" id="t-trig" placeholder="120" /><span class="field-hint">Ref: &lt;150</span></div>
+              <div class="sharp-field"><label for="t-uricacid">Uric Acid <span class="u-badge">mg/dL</span></label><input type="number" step="0.01" id="t-uricacid" placeholder="5.5" /><span class="field-hint">Ref: 3.5–7.2</span></div>
+            </div>
+
+            <div class="form-section-head">3. Urinalysis &amp; Sediment Counts (Optional)</div>
+            <div class="form-quad-grid">
+              <div class="sharp-field"><label for="t-ph">Urine pH</label><input type="number" step="0.1" id="t-ph" placeholder="6.0" /><span class="field-hint">Ref: 4.6–8.0</span></div>
+              <div class="sharp-field"><label for="t-spgravity">Specific Gravity</label><input type="number" step="0.001" id="t-spgravity" placeholder="1.015" /><span class="field-hint">Ref: 1.005–1.030</span></div>
+              <div class="sharp-field"><label for="t-nitrite">Nitrite (0=Neg, 1=Pos)</label><input type="number" step="1" id="t-nitrite" min="0" max="1" placeholder="0" /></div>
+              <div class="sharp-field"><label for="t-occblood">Occult Blood (0–3+)</label><input type="number" step="0.5" id="t-occblood" min="0" max="3" placeholder="0" /></div>
+              <div class="sharp-field"><label for="t-stripwbc">Strip WBC (0–3+)</label><input type="number" step="0.5" id="t-stripwbc" min="0" max="3" placeholder="0" /></div>
+              <div class="sharp-field"><label for="t-ubili">Urine Bilirubin (0–3+)</label><input type="number" step="1" id="t-ubili" min="0" max="3" placeholder="0" /></div>
+              <div class="sharp-field"><label for="t-uglucose">Urine Glucose (0–3+)</label><input type="number" step="1" id="t-uglucose" min="0" max="3" placeholder="0" /></div>
+              <div class="sharp-field"><label for="t-uketone">Urine Ketone (0–3+)</label><input type="number" step="1" id="t-uketone" min="0" max="3" placeholder="0" /></div>
+              <div class="sharp-field"><label for="t-uprobe">Urine Protein (0–3+)</label><input type="number" step="0.5" id="t-uprobe" min="0" max="3" placeholder="0" /></div>
+              <div class="sharp-field"><label for="t-urobilinogen">Urobilinogen</label><input type="number" step="0.1" id="t-urobilinogen" placeholder="0.2" /></div>
+              <div class="sharp-field"><label for="t-uepiL">Urine Epithelium /µL</label><input type="number" step="1" id="t-uepiL" placeholder="5" /></div>
+              <div class="sharp-field"><label for="t-uepiCount">Urine Epithelium Count</label><input type="number" step="1" id="t-uepiCount" placeholder="2" /></div>
+            </div>
+
+            <div class="form-section-head">4. Risk Factors &amp; Medical History (Optional)</div>
+            <div class="form-quad-grid">
+              <div class="sharp-field"><label for="t-htn">Hypertension</label><select id="t-htn"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+              <div class="sharp-field"><label for="t-dm">Diabetes</label><select id="t-dm"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+              <div class="sharp-field"><label for="t-smoking">Smoking History</label><select id="t-smoking"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+              <div class="sharp-field"><label for="t-drinking">Alcohol Consumption</label><select id="t-drinking"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+              <div class="sharp-field"><label for="t-betel">Betel Nut Habit</label><select id="t-betel"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+              <div class="sharp-field"><label for="t-fhx">Family Cancer History</label><select id="t-fhx"><option value="">Unknown</option><option value="0">No (0)</option><option value="1">Yes (1)</option></select></div>
+            </div>
+
+            <div class="form-btn-row">
+              <button type="submit" id="tabular-submit-btn">Run Multi-Analyte Prediction</button>
+              <button type="button" class="btn-clear-sharp" onclick="clearTabularForm()">Clear All Fields</button>
+            </div>
+          </form>
+
+          <div id="tabular-error" style="display:none;background:#fee2e2;border:1px solid #b91c1c;color:#b91c1c;padding:16px;margin-top:20px;font-weight:700;"></div>
+
+          <div id="tabular-result">
+            <div class="tab-result-head">
+              <div style="font-size:38px;">🧬</div>
+              <div>
+                <div class="tab-result-lbl" id="t-pred-label">—</div>
+                <div class="tab-result-sub" id="t-pred-sub">—</div>
+              </div>
+            </div>
+
+            <div id="t-score-bars"></div>
+            <div id="t-disclaimer-text" style="margin-top:20px;padding:14px;border:1px solid #cbd5e1;background:#fff;font-size:0.8rem;color:#78350f;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SITE FOOTER ── -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <strong>BladderVision QML Suite</strong> · Precision Oncology &amp; Quantum Computing Academic Initiative · © 2026
+    </div>
+    <div class="footer-right">
+      <a href="#system-architecture">Architecture</a>
+      <a href="#detection-workspace">Diagnostic Workspace</a>
+      <a href="#">Documentation</a>
+    </div>
   </footer>
 
-  <!-- ── SCRIPTS ── -->
+  <!-- ── FRONTEND CONTROLLER ── -->
   <script>
     const fileInput    = document.getElementById('file-input');
     const uploadZone   = document.getElementById('upload-zone');
@@ -1234,15 +1049,12 @@
     const analyzeBtn   = document.getElementById('analyze-btn');
     const resetBtn     = document.getElementById('reset-btn');
     const resultCard   = document.getElementById('result-card');
+    const resultIdle   = document.getElementById('result-idle-state');
     const xaiCard      = document.getElementById('xai-card');
-    const errorCard    = document.getElementById('error-card');
-    const errorMsg     = document.getElementById('error-msg');
-    const spinner      = document.getElementById('spinner');
-    const btnText      = document.getElementById('btn-text');
-    const modeBadge    = document.getElementById('mode-badge');
-    const modeText     = document.getElementById('mode-text');
     const xaiSkeleton  = document.getElementById('xai-skeleton');
     const xaiContent   = document.getElementById('xai-content');
+    const errorCard    = document.getElementById('error-card');
+    const errorMsg     = document.getElementById('error-msg');
 
     let selectedFile = null;
 
@@ -1260,18 +1072,18 @@
       const reader = new FileReader();
       reader.onload = ev => {
         previewImg.src = ev.target.result;
-        previewName.innerHTML = `📄 <strong>${file.name}</strong> &nbsp;(${(file.size/1024).toFixed(1)} KB)`;
+        previewName.textContent = `${file.name} (${(file.size/1024).toFixed(1)} KB)`;
         previewCont.style.display = 'block';
       };
       reader.readAsDataURL(file);
       analyzeBtn.style.display = 'block';
       resultCard.style.display = 'none';
+      resultIdle.style.display = 'block';
       xaiCard.style.display    = 'none';
       errorCard.style.display  = 'none';
       resetBtn.style.display   = 'none';
     }
 
-    // 1-Click sample scan loader
     async function loadSampleScan(type) {
       const url = type === 'cancer' ? '/static/samples/sample_cancer.png' : '/static/samples/sample_normal.png';
       const name = type === 'cancer' ? 'confirmed_cancer_sample.png' : 'benign_normal_sample.png';
@@ -1286,15 +1098,11 @@
       }
     }
 
-    // Analyze action
     analyzeBtn.addEventListener('click', async () => {
       if (!selectedFile) return;
-      analyzeBtn.disabled   = true;
-      spinner.style.display = 'block';
-      btnText.textContent   = 'Running Quantum-Classical AI Inference…';
-      resultCard.style.display = 'none';
-      xaiCard.style.display    = 'none';
-      errorCard.style.display  = 'none';
+      analyzeBtn.disabled = true;
+      analyzeBtn.textContent = 'Processing Optical Quantum Feature Space…';
+      errorCard.style.display = 'none';
 
       try {
         const form = new FormData();
@@ -1309,85 +1117,72 @@
         resetBtn.style.display = 'block';
 
       } catch (err) {
-        errorMsg.textContent    = err.message;
+        errorMsg.textContent = err.message;
         errorCard.style.display = 'block';
       } finally {
-        analyzeBtn.disabled   = false;
-        spinner.style.display = 'none';
-        btnText.textContent   = '⚛️ \u00a0Run Quantum Analysis + XAI';
+        analyzeBtn.disabled = false;
+        analyzeBtn.textContent = 'Execute Quantum Analysis & Groq XAI';
       }
     });
 
     function showResult(data) {
-      const cls = data.status;  // 'cancer' or 'no_cancer'
+      const cls = data.status; // 'cancer' or 'no_cancer'
 
-      modeBadge.style.display = 'flex';
-      modeText.textContent    = `Engine: ${data.model_mode}`;
+      resultIdle.style.display = 'none';
+      resultCard.style.display = 'block';
 
-      const bannerEl = document.getElementById('result-banner');
-      bannerEl.className = `result-banner ${cls}`;
+      const banner = document.getElementById('verdict-banner');
+      banner.className = `verdict-banner ${cls}`;
+      document.getElementById('verdict-icon').textContent = data.icon;
+      document.getElementById('verdict-title').textContent = data.title;
+      document.getElementById('verdict-sub').textContent =
+        `P(No Cancer): ${data.raw_score} · QML VQC: ${data.qml_raw ?? 'N/A'} · Mode: ${data.model_mode}`;
 
-      const iconEl = document.getElementById('result-icon');
-      iconEl.textContent = data.icon;
+      document.getElementById('meter-val').textContent = `${data.confidence}%`;
+      const fill = document.getElementById('meter-fill');
+      fill.className = `meter-fill ${cls}`;
+      setTimeout(() => { fill.style.width = `${data.confidence}%`; }, 60);
 
-      const titleEl = document.getElementById('result-title');
-      titleEl.textContent = data.title;
-
-      document.getElementById('result-subtitle').textContent =
-        `P(No Cancer): ${data.raw_score} · QML: ${data.qml_raw ?? 'N/A'} · Diagnostic Verdict: ${data.prediction}`;
-
-      const confVal  = document.getElementById('conf-value');
-      const progFill = document.getElementById('progress-fill');
-      confVal.className  = `conf-value ${cls}`;
-      progFill.className = `progress-fill ${cls}`;
-      confVal.textContent = `${data.confidence}%`;
-      setTimeout(() => { progFill.style.width = `${data.confidence}%`; }, 60);
-
-      document.getElementById('info-box').className = `info-box ${cls}`;
+      document.getElementById('info-box').style.borderColor = cls === 'cancer' ? '#b91c1c' : '#047857';
+      document.getElementById('info-box').style.background = cls === 'cancer' ? '#fef2f2' : '#ecfdf5';
       document.getElementById('result-message').textContent = data.message;
       document.getElementById('recommendation-text').textContent = data.recommendation;
 
-      resultCard.style.display = 'block';
       resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function showXAI(explanation) {
-      xaiCard.style.display     = 'block';
+      xaiCard.style.display = 'block';
       xaiSkeleton.style.display = 'none';
-      xaiContent.style.display   = 'block';
+      xaiContent.style.display = 'block';
 
-      const formatted = explanation
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      const formatted = explanation.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
       xaiContent.innerHTML = formatted;
-
-      xaiCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    // Reset button
     resetBtn.addEventListener('click', () => {
       fileInput.value = '';
       selectedFile = null;
-      previewCont.style.display  = 'none';
-      analyzeBtn.style.display   = 'none';
-      resetBtn.style.display     = 'none';
-      resultCard.style.display   = 'none';
-      xaiCard.style.display      = 'none';
-      errorCard.style.display    = 'none';
-      modeBadge.style.display    = 'none';
-      xaiSkeleton.style.display  = 'flex';
-      xaiContent.style.display   = 'none';
-      document.getElementById('progress-fill').style.width = '0%';
+      previewCont.style.display = 'none';
+      analyzeBtn.style.display  = 'none';
+      resetBtn.style.display    = 'none';
+      resultCard.style.display  = 'none';
+      resultIdle.style.display  = 'block';
+      xaiCard.style.display     = 'none';
+      errorCard.style.display   = 'none';
+      xaiSkeleton.style.display = 'block';
+      xaiContent.style.display  = 'none';
+      document.getElementById('meter-fill').style.width = '0%';
     });
 
-    // Tab switcher
-    function switchTab(tab) {
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    function switchModality(tab) {
+      document.querySelectorAll('.sharp-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.sharp-tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('panel-' + tab).classList.add('active');
       document.getElementById('tab-' + tab + '-btn').classList.add('active');
     }
 
-    // ── TABULAR PREDICTION ENGINE ──
+    // ── MULTI-ANALYTE TABULAR ENGINE ──
     function getTabularPayload() {
       const g = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
       const n = (v) => v === '' ? undefined : Number(v);
@@ -1435,13 +1230,13 @@
     }
 
     document.getElementById('tabular-form').addEventListener('submit', async () => {
-      const btn     = document.getElementById('tabular-submit-btn');
-      const errDiv  = document.getElementById('tabular-error');
-      const resDiv  = document.getElementById('tabular-result');
+      const btn    = document.getElementById('tabular-submit-btn');
+      const errDiv = document.getElementById('tabular-error');
+      const resDiv = document.getElementById('tabular-result');
       errDiv.style.display = 'none';
       resDiv.style.display = 'none';
       btn.disabled = true;
-      btn.textContent = '⏳ Computing Multi-Analyte Prediction…';
+      btn.textContent = 'Computing Multi-Analyte Classification…';
 
       try {
         const payload = Object.fromEntries(
@@ -1463,19 +1258,19 @@
           '<strong>⚠️ Clinical Notice:</strong> ' + data.disclaimer;
 
         const barsDiv = document.getElementById('t-score-bars');
-        barsDiv.innerHTML = '<div style="font-size:.76rem;font-weight:800;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">Organ Probability Distribution</div>';
+        barsDiv.innerHTML = '<div style="font-size:.78rem;font-weight:900;text-transform:uppercase;color:#64748b;letter-spacing:.06em;margin-bottom:12px">Organ Probability Density Distribution</div>';
         Object.entries(data.class_scores)
           .sort((a,b) => b[1]-a[1])
           .forEach(([cls, prob]) => {
             const pct = (prob * 100).toFixed(1);
             const row = document.createElement('div');
-            row.className = 'score-row';
-            row.innerHTML = `<span class="score-name">${cls}</span><div class="score-track"><div class="score-bar" data-pct="${pct}"></div></div><span class="score-pct">${pct}%</span>`;
+            row.className = 'score-row-sharp';
+            row.innerHTML = `<span class="score-name-sharp">${cls}</span><div class="score-track-sharp"><div class="score-bar-sharp" data-pct="${pct}"></div></div><span class="score-pct-sharp">${pct}%</span>`;
             barsDiv.appendChild(row);
           });
         resDiv.style.display = 'block';
         setTimeout(() => {
-          document.querySelectorAll('.score-bar').forEach(b => {
+          document.querySelectorAll('.score-bar-sharp').forEach(b => {
             b.style.width = b.dataset.pct + '%';
           });
         }, 60);
@@ -1486,11 +1281,10 @@
         errDiv.style.display = 'block';
       } finally {
         btn.disabled = false;
-        btn.textContent = '🧬 Predict Disease Category';
+        btn.textContent = 'Run Multi-Analyte Prediction';
       }
     });
 
-    // ── Quick Test Cases Verified Clinical Data ──
     const CASES = {
       cystitis: {
         age:69, gender:1,
@@ -1586,7 +1380,7 @@
         const el = document.getElementById(id);
         if (el && data[key] !== undefined) el.value = data[key];
       });
-      document.querySelectorAll('.case-card').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.sharp-case-card').forEach(c => c.classList.remove('active'));
       const card = document.getElementById('case-' + caseName);
       if (card) card.classList.add('active');
       document.getElementById('tabular-result').style.display = 'none';
@@ -1599,7 +1393,7 @@
         const el = document.getElementById(id);
         if (el) el.value = '';
       });
-      document.querySelectorAll('.case-card').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.sharp-case-card').forEach(c => c.classList.remove('active'));
       document.getElementById('tabular-result').style.display = 'none';
       document.getElementById('tabular-error').style.display  = 'none';
     }
