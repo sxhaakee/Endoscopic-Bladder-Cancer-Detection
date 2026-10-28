@@ -107,24 +107,24 @@
       background: #1d4ed8; color: #ffffff; border-color: #1d4ed8;
     }
 
-    /* ── FULL-BLEED ARCHITECTURAL HERO SECTION (BRIGHT LIGHT THEME) ── */
+    /* ── FULL-BLEED ARCHITECTURAL HERO SECTION (PROMINENT HERO IMAGE & LIGHT CONTRAST) ── */
     .hero-viewport {
       position: relative; width: 100vw; min-height: 100vh;
       display: flex; flex-direction: column; justify-content: center;
       padding: 130px 60px 90px; overflow: hidden;
-      background: #f1f5f9;
+      background: #e2e8f0;
     }
     .hero-bg-media {
       position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;
       background-image: url('/static/images/hero_banner.jpg');
-      background-size: cover; background-position: center center; background-repeat: no-repeat;
-      opacity: 0.42; /* Much more visible clinical quantum laboratory banner */
-      filter: saturate(1.2) contrast(1.05);
+      background-size: cover; background-position: center 30%; background-repeat: no-repeat;
+      opacity: 0.88; /* Highly visible laboratory and medical quantum banner */
+      filter: saturate(1.15) contrast(1.08);
     }
     .hero-gradient-overlay {
       position: absolute; inset: 0; z-index: 2;
-      background: linear-gradient(90deg, rgba(248,250,252,0.92) 0%, rgba(248,250,252,0.76) 50%, rgba(248,250,252,0.45) 100%),
-                  linear-gradient(0deg, rgba(248,250,252,0.95) 0%, transparent 50%);
+      background: linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.78) 45%, rgba(255,255,255,0.48) 100%),
+                  linear-gradient(0deg, rgba(255,255,255,0.85) 0%, transparent 45%);
     }
 
     .hero-inner {
@@ -132,18 +132,19 @@
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
-      border: 1.5px solid #090d16;
+      border: 2px solid #090d16;
       background: #ffffff;
-      padding: 6px 16px; margin-bottom: 24px;
-      font-size: 0.78rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 8px 18px; margin-bottom: 24px;
+      font-size: 0.82rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase;
       color: #1d4ed8;
-      box-shadow: 0 4px 12px rgba(9,13,22,0.06);
+      box-shadow: 0 4px 16px rgba(9,13,22,0.12);
     }
     .hero-headline {
       font-size: clamp(2.8rem, 6.2vw, 5.2rem);
       font-weight: 900; line-height: 1.05; letter-spacing: -0.04em;
       color: #090d16; text-transform: uppercase; margin-bottom: 24px;
       max-width: 1220px;
+      text-shadow: 0 2px 14px rgba(255,255,255,0.8);
     }
     .hero-headline span.accent {
       color: #1d4ed8;
@@ -152,7 +153,8 @@
     }
     .hero-lead {
       font-size: clamp(1.05rem, 1.6vw, 1.35rem);
-      color: #334155; max-width: 880px; line-height: 1.7; margin-bottom: 40px; font-weight: 500;
+      color: #1e293b; max-width: 900px; line-height: 1.7; margin-bottom: 40px; font-weight: 600;
+      background: rgba(255,255,255,0.7); backdrop-filter: blur(8px); padding: 12px 18px; border-left: 3px solid #1d4ed8;
     }
 
     .hero-cta-group {
@@ -282,53 +284,62 @@
     .risk-card-h4 { font-size: 1.15rem; font-weight: 900; text-transform: uppercase; color: #090d16; margin-bottom: 10px; }
     .risk-card-desc { font-size: 0.88rem; color: #475569; line-height: 1.6; }
 
-    /* Real-World Clinical Case Studies Section (White Light Theme) */
+    /* Real-World Clinical Case Studies Section (Vertical Stack with Large Images) */
     .case-studies-section {
       width: 100%; background: #ffffff; padding: 100px 60px; border-bottom: 1px solid #cbd5e1;
     }
     .case-studies-container { width: 100%; max-width: 1560px; margin: 0 auto; }
     .cohort-studies-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px;
+      display: flex; flex-direction: column; gap: 48px; margin-top: 50px;
     }
-    @media (max-width: 1100px) { .cohort-studies-grid { grid-template-columns: 1fr; } }
     .cohort-card {
-      border: 1.5px solid #cbd5e1; background: #ffffff; padding: 0;
-      display: flex; flex-direction: column; justify-content: space-between; position: relative;
-      overflow: hidden;
+      border: 2px solid #cbd5e1; background: #ffffff; padding: 0;
+      display: grid; grid-template-columns: 1.1fr 1fr; position: relative;
+      overflow: hidden; box-shadow: 0 10px 30px rgba(9,13,22,0.06);
+      transition: all .25s ease;
     }
-    .cohort-card:hover { border-color: #090d16; box-shadow: 0 16px 36px rgba(9,13,22,0.1); }
+    @media (max-width: 1024px) {
+      .cohort-card { grid-template-columns: 1fr; }
+    }
+    .cohort-card:hover { border-color: #090d16; box-shadow: 0 20px 48px rgba(9,13,22,0.14); }
     .cohort-img-box {
-      width: 100%; height: 180px; position: relative; overflow: hidden; background: #0f172a;
-      border-bottom: 1.5px solid #cbd5e1;
+      width: 100%; min-height: 400px; height: 100%; position: relative; overflow: hidden; background: #0f172a;
+      border-right: 2px solid #cbd5e1;
+    }
+    @media (max-width: 1024px) {
+      .cohort-img-box { border-right: none; border-bottom: 2px solid #cbd5e1; min-height: 320px; }
     }
     .cohort-img {
       width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform .4s ease;
+      transition: transform .5s ease;
     }
-    .cohort-card:hover .cohort-img { transform: scale(1.04); }
+    .cohort-card:hover .cohort-img { transform: scale(1.05); }
     .cohort-img-badge {
-      position: absolute; bottom: 10px; left: 10px; background: rgba(9,13,22,0.88);
-      color: #ffffff; font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
-      letter-spacing: 0.08em; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.2);
+      position: absolute; bottom: 18px; left: 18px; background: rgba(9,13,22,0.92);
+      color: #ffffff; font-size: 0.76rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.1em; padding: 6px 14px; border: 1.5px solid rgba(255,255,255,0.3);
     }
-    .cohort-body { padding: 28px 26px 20px; }
-    .cohort-badge-line { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-    .cohort-id { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; font-weight: 900; color: #1d4ed8; }
+    .cohort-card-content {
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .cohort-body { padding: 40px 42px 28px; }
+    .cohort-badge-line { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .cohort-id { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 900; color: #1d4ed8; }
     .cohort-stage {
-      font-size: 0.72rem; font-weight: 900; text-transform: uppercase; padding: 2px 8px; border: 1px solid;
+      font-size: 0.78rem; font-weight: 900; text-transform: uppercase; padding: 4px 12px; border: 1.5px solid;
     }
     .cohort-stage.ta { border-color: #0284c7; color: #0284c7; background: #e0f2fe; }
     .cohort-stage.t1 { border-color: #ea580c; color: #ea580c; background: #ffedd5; }
     .cohort-stage.t2 { border-color: #dc2626; color: #dc2626; background: #fee2e2; }
-    .cohort-title { font-size: 1.15rem; font-weight: 900; text-transform: uppercase; color: #090d16; margin-bottom: 10px; }
-    .cohort-p { font-size: 0.88rem; color: #334155; line-height: 1.6; margin-bottom: 18px; }
+    .cohort-title { font-size: 1.6rem; font-weight: 900; text-transform: uppercase; color: #090d16; margin-bottom: 16px; line-height: 1.2; }
+    .cohort-p { font-size: 0.98rem; color: #334155; line-height: 1.7; margin-bottom: 24px; }
     .cohort-biomarkers {
-      background: #f8fafc; border: 1.5px solid #e2e8f0; padding: 12px 14px; margin-bottom: 18px;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: #090d16; line-height: 1.6;
+      background: #f8fafc; border: 1.5px solid #cbd5e1; padding: 18px 20px; margin-bottom: 24px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: #090d16; line-height: 1.7;
     }
     .cohort-outcome {
-      border-top: 1.5px solid #e2e8f0; padding: 14px 26px; background: #f8fafc;
-      font-size: 0.78rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #047857;
+      border-top: 1.5px solid #cbd5e1; padding: 20px 42px; background: #f8fafc;
+      font-size: 0.84rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; color: #047857;
       display: flex; align-items: center; justify-content: space-between;
     }
 
@@ -350,45 +361,49 @@
     }
 
     .info-tri-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
-    }
-    @media (max-width: 1050px) {
-      .info-tri-grid { grid-template-columns: 1fr; }
+      display: flex; flex-direction: column; gap: 40px;
     }
     .info-box {
-      border: 1.5px solid #e2e8f0; background: #ffffff;
-      padding: 0; display: flex; flex-direction: column; justify-content: space-between;
+      border: 2px solid #cbd5e1; background: #ffffff;
+      padding: 0; display: grid; grid-template-columns: 1fr 1.3fr;
       position: relative; transition: all .25s ease; overflow: hidden;
+      box-shadow: 0 8px 24px rgba(9,13,22,0.05);
+    }
+    @media (max-width: 1024px) {
+      .info-box { grid-template-columns: 1fr; }
     }
     .info-box:hover {
-      border-color: #090d16; box-shadow: 0 16px 36px rgba(9,13,22,0.08);
+      border-color: #090d16; box-shadow: 0 16px 40px rgba(9,13,22,0.12);
     }
     .info-box-img-frame {
-      width: 100%; height: 170px; position: relative; overflow: hidden; background: #0f172a;
-      border-bottom: 1.5px solid #e2e8f0;
+      width: 100%; min-height: 320px; height: 100%; position: relative; overflow: hidden; background: #0f172a;
+      border-right: 2px solid #cbd5e1; border-bottom: none;
+    }
+    @media (max-width: 1024px) {
+      .info-box-img-frame { border-right: none; border-bottom: 2px solid #cbd5e1; min-height: 250px; }
     }
     .info-box-img {
       width: 100%; height: 100%; object-fit: cover; display: block;
       transition: transform .4s ease;
     }
-    .info-box:hover .info-box-img { transform: scale(1.04); }
-    .info-box-content { padding: 32px 30px 24px; }
-    .info-box-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .info-box:hover .info-box-img { transform: scale(1.05); }
+    .info-box-content { padding: 40px 42px 28px; display: flex; flex-direction: column; justify-content: space-between; }
+    .info-box-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
     .info-box-num {
-      font-size: 2.2rem; font-weight: 900; color: #94a3b8; font-family: 'JetBrains Mono', monospace;
+      font-size: 2.2rem; font-weight: 900; color: #1d4ed8; font-family: 'JetBrains Mono', monospace;
     }
-    .info-box-icon { font-size: 30px; }
+    .info-box-icon { font-size: 34px; }
     .info-box-h3 {
-      font-size: 1.35rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em;
-      color: #090d16; margin-bottom: 14px;
+      font-size: 1.55rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em;
+      color: #090d16; margin-bottom: 16px;
     }
     .info-box-p {
-      font-size: 0.94rem; color: #475569; line-height: 1.7; margin-bottom: 24px;
+      font-size: 1rem; color: #334155; line-height: 1.75; margin-bottom: 24px;
     }
     .info-box-footer {
       border-top: 1.5px solid #e2e8f0; padding-top: 18px;
-      font-size: 0.78rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em;
-      color: #1d4ed8; display: flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em;
+      color: #1d4ed8; display: flex; align-items: center; justify-content: space-between;
     }
 
     /* ── DUAL IMAGERY SHOWCASE SECTION (BRIGHT LIGHT THEME) ── */
@@ -810,24 +825,26 @@
             <img src="/static/images/endoscopy.jpg" alt="High-Definition Cystoscopy Detection" class="cohort-img" />
             <div class="cohort-img-badge">Optical Endoscopy · High Definition</div>
           </div>
-          <div class="cohort-body">
-            <div class="cohort-badge-line">
-              <span class="cohort-id">CASE STUDY #AUA-0142</span>
-              <span class="cohort-stage ta">Stage Ta (NMIBC)</span>
+          <div class="cohort-card-content">
+            <div class="cohort-body">
+              <div class="cohort-badge-line">
+                <span class="cohort-id">CASE STUDY #AUA-0142</span>
+                <span class="cohort-stage ta">Stage Ta (NMIBC)</span>
+              </div>
+              <h3 class="cohort-title">Superficial Papillary Lesion</h3>
+              <p class="cohort-p">
+                64-year-old male with intermittent painless microscopic hematuria. Cystoscopic exploration revealed solitary 1.2 cm frond-like papillary lesion at the right trigone wall with intact lamina propria.
+              </p>
+              <div class="cohort-biomarkers">
+                OCCULT BLOOD: 3+ · STRIP WBC: 1+<br>
+                CREATININE: 1.1 mg/dL · GFR: 79.5 mL/min<br>
+                QUANTUM VQC PREDICTION: Malignant (Cancer 93.8%)
+              </div>
             </div>
-            <h3 class="cohort-title">Superficial Papillary Lesion</h3>
-            <p class="cohort-p">
-              64-year-old male with intermittent painless microscopic hematuria. Cystoscopic exploration revealed solitary 1.2 cm frond-like papillary lesion at the right trigone wall with intact lamina propria.
-            </p>
-            <div class="cohort-biomarkers">
-              OCCULT BLOOD: 3+ · STRIP WBC: 1+<br>
-              CREATININE: 1.1 mg/dL · GFR: 79.5 mL/min<br>
-              QUANTUM VQC PREDICTION: Malignant (Cancer 93.8%)
+            <div class="cohort-outcome">
+              <span>Transurethral Resection (TURBT)</span>
+              <span>Intravesical BCG Clean</span>
             </div>
-          </div>
-          <div class="cohort-outcome">
-            <span>Transurethral Resection (TURBT)</span>
-            <span>Intravesical BCG Clean</span>
           </div>
         </div>
 
@@ -837,24 +854,26 @@
             <img src="/static/images/lab_analytics.jpg" alt="Automated Clinical Biochemistry Fluid Analytics" class="cohort-img" />
             <div class="cohort-img-badge">Biochemistry &amp; Serum Profiling</div>
           </div>
-          <div class="cohort-body">
-            <div class="cohort-badge-line">
-              <span class="cohort-id">CASE STUDY #EAU-0887</span>
-              <span class="cohort-stage t1">Stage T1 High-Grade</span>
+          <div class="cohort-card-content">
+            <div class="cohort-body">
+              <div class="cohort-badge-line">
+                <span class="cohort-id">CASE STUDY #EAU-0887</span>
+                <span class="cohort-stage t1">Stage T1 High-Grade</span>
+              </div>
+              <h3 class="cohort-title">Lamina Propria Invasion</h3>
+              <p class="cohort-p">
+                69-year-old heavy smoker (40 pack-years) presenting with dysuria, urgency, and gross hematuria. QNN analysis identified multi-focal erythematous velvety patches indicative of carcinoma in situ (CIS).
+              </p>
+              <div class="cohort-biomarkers">
+                OCCULT BLOOD: 3+ · PROTEINURIA: 2+<br>
+                URINE EPITHELIUM: 28/µL · BUN: 22 mg/dL<br>
+                TABULAR MULTI-ANALYTE: UrinaryBladder (74.2%)
+              </div>
             </div>
-            <h3 class="cohort-title">Lamina Propria Invasion</h3>
-            <p class="cohort-p">
-              69-year-old heavy smoker (40 pack-years) presenting with dysuria, urgency, and gross hematuria. QNN analysis identified multi-focal erythematous velvety patches indicative of carcinoma in situ (CIS).
-            </p>
-            <div class="cohort-biomarkers">
-              OCCULT BLOOD: 3+ · PROTEINURIA: 2+<br>
-              URINE EPITHELIUM: 28/µL · BUN: 22 mg/dL<br>
-              TABULAR MULTI-ANALYTE: UrinaryBladder (74.2%)
+            <div class="cohort-outcome">
+              <span>Re-Staging TURBT Required</span>
+              <span>Radical Cystectomy Candidate</span>
             </div>
-          </div>
-          <div class="cohort-outcome">
-            <span>Re-Staging TURBT Required</span>
-            <span>Radical Cystectomy Candidate</span>
           </div>
         </div>
 
@@ -864,24 +883,26 @@
             <img src="/static/images/pathology.jpg" alt="Cellular Histopathology &amp; Cytology Verification" class="cohort-img" />
             <div class="cohort-img-badge">Cellular Pathology &amp; Cytology</div>
           </div>
-          <div class="cohort-body">
-            <div class="cohort-badge-line">
-              <span class="cohort-id">CASE STUDY #MED-0319</span>
-              <span class="cohort-stage t2" style="border-color:#059669;color:#059669;background:#ecfdf5;">Benign Cystitis Mimic</span>
+          <div class="cohort-card-content">
+            <div class="cohort-body">
+              <div class="cohort-badge-line">
+                <span class="cohort-id">CASE STUDY #MED-0319</span>
+                <span class="cohort-stage t2" style="border-color:#059669;color:#059669;background:#ecfdf5;">Benign Cystitis Mimic</span>
+              </div>
+              <h3 class="cohort-title">Severe Chronic Hemorrhagic Cystitis</h3>
+              <p class="cohort-p">
+                58-year-old female with intense pelvic pain, dysuria, and elevated inflammatory markers. Optical cystoscopy showed hyperemic, friable mucosa frequently misidentified as diffuse malignancy.
+              </p>
+              <div class="cohort-biomarkers">
+                STRIP WBC: 3+ · NITRITE: Positive (1)<br>
+                CREATININE: 0.8 mg/dL · GFR: 92.0 mL/min<br>
+                QUANTUM VQC PREDICTION: Benign (No Cancer 91.2%)
+              </div>
             </div>
-            <h3 class="cohort-title">Severe Chronic Hemorrhagic Cystitis</h3>
-            <p class="cohort-p">
-              58-year-old female with intense pelvic pain, dysuria, and elevated inflammatory markers. Optical cystoscopy showed hyperemic, friable mucosa frequently misidentified as diffuse malignancy.
-            </p>
-            <div class="cohort-biomarkers">
-              STRIP WBC: 3+ · NITRITE: Positive (1)<br>
-              CREATININE: 0.8 mg/dL · GFR: 92.0 mL/min<br>
-              QUANTUM VQC PREDICTION: Benign (No Cancer 91.2%)
+            <div class="cohort-outcome">
+              <span>Targeted Antibiotic Course</span>
+              <span>Avoided Unnecessary Resection</span>
             </div>
-          </div>
-          <div class="cohort-outcome">
-            <span>Targeted Antibiotic Course</span>
-            <span>Avoided Unnecessary Resection</span>
           </div>
         </div>
       </div>
