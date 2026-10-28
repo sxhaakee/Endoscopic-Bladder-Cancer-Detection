@@ -13,41 +13,45 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* ── LUXURY ARCHITECTURAL LIGHT THEME (SHARP / MINIMAL RADII) ── */
+      /* ── LUXURY VIBRANT WHITE & SAPPHIRE BLUE COLOR SYSTEM ── */
       --bg:             #ffffff;
-      --bg-subtle:      #f8fafc;
-      --bg-alt:         #f1f5f9;
+      --bg-subtle:      #f0f7ff;       /* Crisp Ice Blue Tint */
+      --bg-alt:         #e0effe;       /* Bright Azure Accent */
       --surface:        #ffffff;
-      --surface-border: #e2e8f0;
-      --border-dark:    #0f172a;
+      --surface-border: #bfdbfe;       /* Vivid Blue Border Tint */
+      --border-dark:    #0f2858;
       --border-subtle:  #cbd5e1;
+      
+      /* Vibrant Primary Blues */
+      --primary:        #0284c7;       /* Electric Medical Cyan / Sky */
+      --primary-deep:   #1d4ed8;       /* Royal Sapphire Blue */
+      --primary-dark:   #0f172a;       /* Midnight Navy */
+      --blue-glow:      rgba(37, 99, 235, 0.16);
 
       /* High-Contrast Obsidian Typography */
-      --text:           #090d16;
+      --text:           #0b192c;
       --text-body:      #334155;
       --muted:          #64748b;
       --light-text:     #ffffff;
 
       /* Precision Clinical Accents */
-      --primary:        #1d4ed8;       /* Deep Medical Sapphire */
-      --primary-hover:  #1e40af;
-      --quantum:        #6d28d9;       /* Deep Quantum Violet */
-      --xai:            #0f766e;       /* Deep Bio Emerald / Teal */
-      --danger:         #b91c1c;       /* Crimson Alert */
+      --quantum:        #2563eb;       /* Royal Quantum Blue */
+      --xai:            #0284c7;       /* Electric Cerulean */
+      --danger:         #dc2626;       /* Crimson Alert */
       --danger-bg:      #fef2f2;
-      --success:        #047857;       /* Clinical Green */
+      --success:        #059669;       /* Clinical Emerald */
       --success-bg:     #ecfdf5;
-      --warn:           #b45309;       /* Deep Amber */
+      --warn:           #d97706;       /* Radiant Amber */
       --warn-bg:        #fffbeb;
 
       /* Organ Color Keys */
-      --c-cystitis:     #0369a1;
-      --c-kidney:       #6d28d9;
-      --c-prostate:     #c2410c;
-      --c-bladder:      #047857;
-      --c-uterus:       #be185d;
+      --c-cystitis:     #0284c7;
+      --c-kidney:       #3b82f6;
+      --c-prostate:     #ea580c;
+      --c-bladder:      #1d4ed8;
+      --c-uterus:       #db2777;
 
-      /* Strict Zero-Border-Radius Policy for sleek surgical look */
+      /* Strict Zero-Border-Radius Policy */
       --r-sharp:        0px;
       --r-tag:          2px;
     }
@@ -64,130 +68,171 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── FULL-WIDTH ARCHITECTURAL NAVBAR (PRISTINE LIGHT) ── */
+    /* ── FULL-WIDTH ARCHITECTURAL NAVBAR (WHITE & ROYAL BLUE VIBRANT) ── */
     .site-nav {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid #cbd5e1;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 2px solid #bfdbfe;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.06);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 40px; height: 74px;
+      padding: 0 48px; height: 76px;
     }
     .nav-brand {
-      display: flex; align-items: center; gap: 14px; text-decoration: none; color: #090d16;
+      display: flex; align-items: center; gap: 14px; text-decoration: none; color: #0b192c;
     }
     .nav-logo-box {
-      width: 44px; height: 44px; border: 1.5px solid #090d16;
-      padding: 2px; background: #ffffff; display: flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border: 2px solid #1d4ed8;
+      padding: 2px; background: #eff6ff; display: flex; align-items: center; justify-content: center;
     }
     .nav-logo-img { width: 100%; height: 100%; object-fit: cover; }
-    .nav-title { font-size: 1.25rem; font-weight: 900; letter-spacing: -0.02em; text-transform: uppercase; color: #090d16; }
-    .nav-tagline { font-size: 0.72rem; color: #64748b; font-weight: 700; letter-spacing: 0.05em; }
+    .nav-title { font-size: 1.25rem; font-weight: 900; letter-spacing: -0.02em; text-transform: uppercase; color: #1d4ed8; }
+    .nav-tagline { font-size: 0.72rem; color: #475569; font-weight: 700; letter-spacing: 0.05em; }
 
     .nav-right { display: flex; align-items: center; gap: 24px; }
     .nav-status-items { display: flex; align-items: center; gap: 18px; }
     .nav-status {
       display: flex; align-items: center; gap: 8px;
-      font-size: 0.74rem; font-weight: 800; color: #334155; text-transform: uppercase; letter-spacing: 0.06em;
+      font-size: 0.74rem; font-weight: 800; color: #1e3a8a; text-transform: uppercase; letter-spacing: 0.06em;
+      background: #eff6ff; padding: 6px 14px; border: 1px solid #bfdbfe;
     }
     .pulse-dot {
-      width: 8px; height: 8px; border-radius: 50%; background: #059669;
-      box-shadow: 0 0 10px rgba(5,150,105,0.4); animation: pulse 2s infinite;
+      width: 8px; height: 8px; border-radius: 50%; background: #0284c7;
+      box-shadow: 0 0 10px rgba(2,132,199,0.7); animation: pulse 2s infinite;
     }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
 
     .nav-cta-btn {
-      background: #090d16; color: #ffffff;
-      border: 1px solid #090d16; padding: 12px 26px;
-      font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
-      cursor: pointer; transition: all .2s; display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none;
+      background: #1d4ed8; color: #ffffff;
+      border: 2px solid #1d4ed8; padding: 12px 28px;
+      font-size: 0.84rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em;
+      cursor: pointer; transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; box-shadow: 0 4px 14px rgba(29, 78, 216, 0.28);
     }
     .nav-cta-btn:hover {
-      background: #1d4ed8; color: #ffffff; border-color: #1d4ed8;
+      background: #0284c7; border-color: #0284c7; transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
     }
 
-    /* ── FULL-BLEED ARCHITECTURAL HERO SECTION (PROMINENT HERO IMAGE & LIGHT CONTRAST) ── */
+    /* ── WORLD-CLASS ARCHITECTURAL HERO SECTION (VIBRANT WHITE & BLUE) ── */
     .hero-viewport {
-      position: relative; width: 100vw; min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 130px 60px 90px; overflow: hidden;
-      background: #e2e8f0;
+      position: relative; width: 100vw; min-height: 94vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 120px 60px 80px; overflow: hidden;
+      background: radial-gradient(circle at 85% 20%, rgba(2, 132, 199, 0.08) 0%, transparent 60%),
+                  radial-gradient(circle at 10% 80%, rgba(29, 78, 216, 0.06) 0%, transparent 50%),
+                  linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
+      border-bottom: 2px solid #bfdbfe;
     }
-    .hero-bg-media {
-      position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;
-      background-image: url('/static/images/hero_banner.jpg');
-      background-size: cover; background-position: center 30%; background-repeat: no-repeat;
-      opacity: 0.88; /* Highly visible laboratory and medical quantum banner */
-      filter: saturate(1.15) contrast(1.08);
-    }
-    .hero-gradient-overlay {
-      position: absolute; inset: 0; z-index: 2;
-      background: linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.78) 45%, rgba(255,255,255,0.48) 100%),
-                  linear-gradient(0deg, rgba(255,255,255,0.85) 0%, transparent 45%);
-    }
+    .hero-bg-media { display: none; }
+    .hero-gradient-overlay { display: none; }
 
     .hero-inner {
       position: relative; z-index: 5; width: 100%; max-width: 1560px; margin: 0 auto;
     }
+    .hero-split-grid {
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: 60px; align-items: center;
+    }
+    @media (max-width: 1150px) {
+      .hero-split-grid { grid-template-columns: 1fr; gap: 44px; }
+    }
+
+    .hero-left-col {
+      display: flex; flex-direction: column; justify-content: center;
+    }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
-      border: 2px solid #090d16;
-      background: #ffffff;
-      padding: 8px 18px; margin-bottom: 24px;
-      font-size: 0.82rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase;
+      border: 2px solid #1d4ed8;
+      background: #eff6ff;
+      padding: 8px 20px; margin-bottom: 24px; width: fit-content;
+      font-size: 0.8rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase;
       color: #1d4ed8;
-      box-shadow: 0 4px 16px rgba(9,13,22,0.12);
+      box-shadow: 0 4px 16px rgba(29, 78, 216, 0.12);
     }
     .hero-headline {
-      font-size: clamp(2.8rem, 6.2vw, 5.2rem);
-      font-weight: 900; line-height: 1.05; letter-spacing: -0.04em;
-      color: #090d16; text-transform: uppercase; margin-bottom: 24px;
-      max-width: 1220px;
-      text-shadow: 0 2px 14px rgba(255,255,255,0.8);
+      font-size: clamp(2.5rem, 4.4vw, 4.4rem);
+      font-weight: 900; line-height: 1.08; letter-spacing: -0.035em;
+      color: #0b192c; text-transform: uppercase; margin-bottom: 24px;
     }
     .hero-headline span.accent {
       color: #1d4ed8;
-      background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 50%, #0f766e 100%);
+      background: linear-gradient(135deg, #1d4ed8 0%, #0284c7 60%, #0369a1 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero-lead {
-      font-size: clamp(1.05rem, 1.6vw, 1.35rem);
-      color: #1e293b; max-width: 900px; line-height: 1.7; margin-bottom: 40px; font-weight: 600;
-      background: rgba(255,255,255,0.7); backdrop-filter: blur(8px); padding: 12px 18px; border-left: 3px solid #1d4ed8;
+      font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+      color: #334155; max-width: 740px; line-height: 1.75; margin-bottom: 38px; font-weight: 500;
+      border-left: 3px solid #0284c7; padding-left: 18px;
     }
 
     .hero-cta-group {
-      display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 60px;
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;
     }
     .btn-hero-primary {
-      background: #090d16; color: #ffffff;
-      border: 1.5px solid #090d16; padding: 20px 42px;
-      font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
-      cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 14px;
-      transition: all .25s ease; box-shadow: 0 10px 25px rgba(9,13,22,0.18);
+      background: #1d4ed8; color: #ffffff;
+      border: 2px solid #1d4ed8; padding: 18px 42px;
+      font-size: 0.95rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em;
+      cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
+      transition: all .25s ease; box-shadow: 0 10px 28px rgba(29, 78, 216, 0.35);
     }
     .btn-hero-primary:hover {
-      background: #1d4ed8; border-color: #1d4ed8; transform: translateY(-2px); box-shadow: 0 16px 36px rgba(29,78,216,0.28);
+      background: #0284c7; border-color: #0284c7; transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(2, 132, 199, 0.45);
     }
     .btn-hero-secondary {
-      background: #ffffff; color: #090d16;
-      border: 1.5px solid #090d16; padding: 20px 38px;
-      font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+      background: #ffffff; color: #1d4ed8;
+      border: 2px solid #1d4ed8; padding: 18px 36px;
+      font-size: 0.95rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em;
       cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
-      transition: all .25s ease;
+      transition: all .25s ease; box-shadow: 0 4px 16px rgba(29, 78, 216, 0.08);
     }
     .btn-hero-secondary:hover {
-      background: #090d16; color: #ffffff;
+      background: #eff6ff; color: #0284c7; border-color: #0284c7;
     }
 
-    /* Hero Metrics Bar (Light Architecture) */
+    /* Right Hero Visual Showcase Card */
+    .hero-visual-card {
+      border: 2px solid #1d4ed8; background: #ffffff;
+      position: relative; overflow: hidden;
+      box-shadow: 0 20px 50px rgba(29, 78, 216, 0.16);
+    }
+    .hero-visual-img-wrap {
+      width: 100%; height: 440px; position: relative; overflow: hidden; background: #0f172a;
+    }
+    .hero-visual-img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .5s ease;
+    }
+    .hero-visual-card:hover .hero-visual-img { transform: scale(1.04); }
+    .hero-visual-badge {
+      position: absolute; top: 18px; left: 18px; background: rgba(15, 23, 42, 0.94);
+      color: #ffffff; padding: 6px 14px; font-size: 0.76rem; font-weight: 900;
+      text-transform: uppercase; letter-spacing: 0.1em; border: 1.5px solid #38bdf8;
+    }
+    .hero-visual-overlay-stats {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(0deg, rgba(11, 25, 44, 0.96) 0%, rgba(11, 25, 44, 0.75) 60%, transparent 100%);
+      padding: 30px 24px 20px; color: #ffffff; display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    .hero-visual-stat-item {
+      display: flex; flex-direction: column;
+    }
+    .hero-stat-val { font-family: 'JetBrains Mono', monospace; font-size: 1.45rem; font-weight: 900; color: #38bdf8; }
+    .hero-stat-lbl { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; }
+    .hero-visual-footer {
+      padding: 18px 24px; background: #ffffff; border-top: 2px solid #bfdbfe;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.82rem; font-weight: 900; text-transform: uppercase; color: #1d4ed8; letter-spacing: 0.05em;
+    }
+
+    /* Hero Metrics Bar (Below Split Grid) */
     .hero-metrics-bar {
       display: grid; grid-template-columns: repeat(4, 1fr);
-      border: 1.5px solid #090d16;
+      border: 2px solid #1d4ed8;
       background: #ffffff;
-      width: 100%; max-width: 1200px;
-      box-shadow: 0 8px 24px rgba(9,13,22,0.06);
+      width: 100%; margin-top: 48px;
+      box-shadow: 0 10px 30px rgba(29, 78, 216, 0.08);
     }
     @media (max-width: 900px) {
       .hero-metrics-bar { grid-template-columns: 1fr 1fr; }
@@ -196,118 +241,122 @@
       .hero-metrics-bar { grid-template-columns: 1fr; }
     }
     .metric-cell {
-      padding: 24px 28px; border-right: 1.5px solid #e2e8f0;
+      padding: 24px 28px; border-right: 2px solid #bfdbfe;
+      transition: background .2s;
     }
+    .metric-cell:hover { background: #f0f7ff; }
     .metric-cell:last-child { border-right: none; }
     .metric-num {
-      font-size: 2.2rem; font-weight: 900; color: #090d16;
+      font-size: 2.1rem; font-weight: 900; color: #1d4ed8;
       font-family: 'JetBrains Mono', monospace; line-height: 1; margin-bottom: 6px;
     }
     .metric-lbl {
       font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
-      color: #64748b;
+      color: #475569;
     }
 
-    /* ── ETIOLOGY & CLINICAL ONCOLOGY SECTIONS (LIGHT THEME) ── */
+    /* ── ETIOLOGY & CLINICAL ONCOLOGY SECTIONS (VIBRANT WHITE & BLUE) ── */
     .etiology-section {
-      width: 100%; background: #ffffff; color: #090d16; padding: 100px 60px;
-      border-bottom: 1px solid #cbd5e1;
+      width: 100%; background: #ffffff; color: #0b192c; padding: 110px 60px;
+      border-bottom: 2px solid #bfdbfe;
     }
     .etiology-container { width: 100%; max-width: 1560px; margin: 0 auto; }
     
     .etiology-hero-grid {
-      display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 40px; margin-bottom: 60px;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; margin-bottom: 70px;
       align-items: center;
     }
     @media (max-width: 1100px) {
       .etiology-hero-grid { grid-template-columns: 1fr; }
     }
     .etiology-media-frame {
-      border: 1.5px solid #090d16; background: #f8fafc;
+      border: 2px solid #1d4ed8; background: #eff6ff;
       position: relative; overflow: hidden;
+      box-shadow: 0 16px 40px rgba(29, 78, 216, 0.12);
     }
     .etiology-media-img {
-      width: 100%; height: auto; display: block; filter: saturate(1.1);
+      width: 100%; height: auto; display: block; filter: saturate(1.15);
       transition: transform .4s ease;
     }
     .etiology-media-frame:hover .etiology-media-img { transform: scale(1.02); }
     .etiology-media-badge {
-      position: absolute; bottom: 16px; left: 16px; background: rgba(255,255,255,0.95);
-      border: 1.5px solid #090d16; color: #090d16; padding: 8px 16px;
+      position: absolute; bottom: 18px; left: 18px; background: rgba(15, 23, 42, 0.94);
+      border: 1.5px solid #38bdf8; color: #ffffff; padding: 8px 18px;
       font-size: 0.78rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
-      box-shadow: 0 4px 14px rgba(9,13,22,0.1);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
     }
 
     .etiology-summary-box {
-      border: 1.5px solid #cbd5e1; background: #f8fafc; padding: 40px 36px;
+      border: 2px solid #bfdbfe; background: #f0f7ff; padding: 44px 40px;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.05);
     }
     .etiology-eyebrow {
       font-size: 0.78rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.14em;
-      color: #b91c1c; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+      color: #1d4ed8; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
     }
     .etiology-title {
-      font-size: 2.2rem; font-weight: 900; line-height: 1.15; text-transform: uppercase;
-      letter-spacing: -0.02em; color: #090d16; margin-bottom: 20px;
+      font-size: 2.3rem; font-weight: 900; line-height: 1.15; text-transform: uppercase;
+      letter-spacing: -0.02em; color: #0b192c; margin-bottom: 20px;
     }
     .etiology-lead {
-      font-size: 1rem; color: #334155; line-height: 1.7; margin-bottom: 26px;
+      font-size: 1.05rem; color: #334155; line-height: 1.75; margin-bottom: 28px;
     }
     .etiology-stat-callout {
-      border-left: 4px solid #b91c1c; padding-left: 18px; margin-bottom: 24px;
-      background: #ffffff; padding: 14px 18px; border-top: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;
+      border-left: 4px solid #1d4ed8; padding: 16px 20px; margin-bottom: 20px;
+      background: #ffffff; border-top: 1px solid #bfdbfe; border-right: 1px solid #bfdbfe; border-bottom: 1px solid #bfdbfe;
     }
-    .stat-callout-num { font-size: 1.5rem; font-weight: 900; color: #090d16; font-family: 'JetBrains Mono', monospace; margin-bottom: 4px; }
-    .stat-callout-text { font-size: 0.86rem; color: #475569; line-height: 1.55; }
+    .stat-callout-num { font-size: 1.5rem; font-weight: 900; color: #1d4ed8; font-family: 'JetBrains Mono', monospace; margin-bottom: 4px; }
+    .stat-callout-text { font-size: 0.88rem; color: #475569; line-height: 1.6; }
 
-    /* Risk factors 4-column sharp grid (Light Theme) */
+    /* Risk factors 4-column sharp grid (Vibrant White & Blue) */
     .risk-factors-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 30px;
     }
     @media (max-width: 1050px) { .risk-factors-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px)  { .risk-factors-grid { grid-template-columns: 1fr; } }
     .risk-card {
-      border: 1.5px solid #e2e8f0; background: #f8fafc; padding: 28px 24px;
+      border: 2px solid #bfdbfe; background: #ffffff; padding: 32px 26px;
       display: flex; flex-direction: column; justify-content: space-between;
-      transition: all .2s;
+      transition: all .25s ease; box-shadow: 0 4px 18px rgba(37, 99, 235, 0.05);
     }
-    .risk-card:hover { border-color: #090d16; background: #ffffff; transform: translateY(-3px); box-shadow: 0 10px 24px rgba(9,13,22,0.06); }
-    .risk-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .risk-card-icon { font-size: 32px; }
+    .risk-card:hover { border-color: #1d4ed8; transform: translateY(-4px); box-shadow: 0 14px 32px rgba(29, 78, 216, 0.16); }
+    .risk-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .risk-card-icon { font-size: 34px; }
     .risk-level-tag {
-      font-size: 0.68rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em;
-      padding: 3px 8px; border: 1px solid;
+      font-size: 0.72rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 4px 10px; border: 1.5px solid;
     }
-    .risk-level-tag.extreme { border-color: #b91c1c; color: #b91c1c; background: #fee2e2; }
-    .risk-level-tag.high    { border-color: #c2410c; color: #c2410c; background: #ffedd5; }
-    .risk-level-tag.chronic { border-color: #b45309; color: #b45309; background: #fef3c7; }
-    .risk-level-tag.genetic { border-color: #6d28d9; color: #6d28d9; background: #ede9fe; }
-    .risk-card-h4 { font-size: 1.15rem; font-weight: 900; text-transform: uppercase; color: #090d16; margin-bottom: 10px; }
-    .risk-card-desc { font-size: 0.88rem; color: #475569; line-height: 1.6; }
+    .risk-level-tag.extreme { border-color: #1d4ed8; color: #1d4ed8; background: #eff6ff; }
+    .risk-level-tag.high    { border-color: #0284c7; color: #0284c7; background: #f0f9ff; }
+    .risk-level-tag.chronic { border-color: #2563eb; color: #2563eb; background: #eff6ff; }
+    .risk-level-tag.genetic { border-color: #4f46e5; color: #4f46e5; background: #eef2ff; }
+    .risk-card-h4 { font-size: 1.2rem; font-weight: 900; text-transform: uppercase; color: #0b192c; margin-bottom: 12px; }
+    .risk-card-desc { font-size: 0.9rem; color: #475569; line-height: 1.65; }
 
-    /* Real-World Clinical Case Studies Section (Vertical Stack with Large Images) */
+    /* Real-World Clinical Case Studies Section (Ice-Blue Alternating Canvas) */
     .case-studies-section {
-      width: 100%; background: #ffffff; padding: 100px 60px; border-bottom: 1px solid #cbd5e1;
+      width: 100%; background: #f0f7ff; padding: 110px 60px; border-bottom: 2px solid #bfdbfe;
     }
     .case-studies-container { width: 100%; max-width: 1560px; margin: 0 auto; }
     .cohort-studies-grid {
-      display: flex; flex-direction: column; gap: 48px; margin-top: 50px;
+      display: flex; flex-direction: column; gap: 50px; margin-top: 50px;
     }
     .cohort-card {
-      border: 2px solid #cbd5e1; background: #ffffff; padding: 0;
-      display: grid; grid-template-columns: 1.1fr 1fr; position: relative;
-      overflow: hidden; box-shadow: 0 10px 30px rgba(9,13,22,0.06);
+      border: 2px solid #1d4ed8; background: #ffffff; padding: 0;
+      display: grid; grid-template-columns: 1.15fr 1fr; position: relative;
+      overflow: hidden; box-shadow: 0 14px 40px rgba(29, 78, 216, 0.1);
       transition: all .25s ease;
     }
     @media (max-width: 1024px) {
       .cohort-card { grid-template-columns: 1fr; }
     }
-    .cohort-card:hover { border-color: #090d16; box-shadow: 0 20px 48px rgba(9,13,22,0.14); }
+    .cohort-card:hover { border-color: #0284c7; box-shadow: 0 22px 55px rgba(2, 132, 199, 0.2); }
     .cohort-img-box {
-      width: 100%; min-height: 400px; height: 100%; position: relative; overflow: hidden; background: #0f172a;
-      border-right: 2px solid #cbd5e1;
+      width: 100%; min-height: 420px; height: 100%; position: relative; overflow: hidden; background: #0f172a;
+      border-right: 2px solid #bfdbfe;
     }
     @media (max-width: 1024px) {
-      .cohort-img-box { border-right: none; border-bottom: 2px solid #cbd5e1; min-height: 320px; }
+      .cohort-img-box { border-right: none; border-bottom: 2px solid #bfdbfe; min-height: 320px; }
     }
     .cohort-img {
       width: 100%; height: 100%; object-fit: cover; display: block;
@@ -315,22 +364,22 @@
     }
     .cohort-card:hover .cohort-img { transform: scale(1.05); }
     .cohort-img-badge {
-      position: absolute; bottom: 18px; left: 18px; background: rgba(9,13,22,0.92);
+      position: absolute; bottom: 18px; left: 18px; background: rgba(15, 23, 42, 0.94);
       color: #ffffff; font-size: 0.76rem; font-weight: 800; text-transform: uppercase;
-      letter-spacing: 0.1em; padding: 6px 14px; border: 1.5px solid rgba(255,255,255,0.3);
+      letter-spacing: 0.1em; padding: 6px 14px; border: 1.5px solid #38bdf8;
     }
     .cohort-card-content {
       display: flex; flex-direction: column; justify-content: space-between;
     }
-    .cohort-body { padding: 40px 42px 28px; }
+    .cohort-body { padding: 42px 44px 28px; }
     .cohort-badge-line { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-    .cohort-id { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 900; color: #1d4ed8; }
+    .cohort-id { font-family: 'JetBrains Mono', monospace; font-size: 0.84rem; font-weight: 900; color: #1d4ed8; }
     .cohort-stage {
       font-size: 0.78rem; font-weight: 900; text-transform: uppercase; padding: 4px 12px; border: 1.5px solid;
     }
     .cohort-stage.ta { border-color: #0284c7; color: #0284c7; background: #e0f2fe; }
     .cohort-stage.t1 { border-color: #ea580c; color: #ea580c; background: #ffedd5; }
-    .cohort-stage.t2 { border-color: #dc2626; color: #dc2626; background: #fee2e2; }
+    .cohort-stage.t2 { border-color: #059669; color: #059669; background: #ecfdf5; }
     .cohort-title { font-size: 1.6rem; font-weight: 900; text-transform: uppercase; color: #090d16; margin-bottom: 16px; line-height: 1.2; }
     .cohort-p { font-size: 0.98rem; color: #334155; line-height: 1.7; margin-bottom: 24px; }
     .cohort-biomarkers {
@@ -343,9 +392,9 @@
       display: flex; align-items: center; justify-content: space-between;
     }
 
-    /* ── FULL-WIDTH ARCHITECTURAL INFORMATION SECTION ── */
+    /* ── FULL-WIDTH ARCHITECTURAL INFORMATION SECTION (PURE WHITE WITH ROYAL BLUE) ── */
     .system-info-section {
-      width: 100%; background: #ffffff; padding: 100px 60px; border-bottom: 1px solid #cbd5e1;
+      width: 100%; background: #ffffff; padding: 110px 60px; border-bottom: 2px solid #bfdbfe;
     }
     .info-container { width: 100%; max-width: 1560px; margin: 0 auto; }
     .section-eyebrow {
@@ -354,40 +403,40 @@
     }
     .section-title {
       font-size: clamp(2rem, 3.8vw, 3.2rem); font-weight: 900; line-height: 1.15;
-      letter-spacing: -0.03em; color: #090d16; text-transform: uppercase; margin-bottom: 20px;
+      letter-spacing: -0.03em; color: #0b192c; text-transform: uppercase; margin-bottom: 20px;
     }
     .section-subtitle {
       font-size: 1.15rem; color: #334155; max-width: 900px; line-height: 1.7; margin-bottom: 60px;
     }
 
     .info-tri-grid {
-      display: flex; flex-direction: column; gap: 40px;
+      display: flex; flex-direction: column; gap: 46px;
     }
     .info-box {
-      border: 2px solid #cbd5e1; background: #ffffff;
+      border: 2px solid #1d4ed8; background: #ffffff;
       padding: 0; display: grid; grid-template-columns: 1fr 1.3fr;
       position: relative; transition: all .25s ease; overflow: hidden;
-      box-shadow: 0 8px 24px rgba(9,13,22,0.05);
+      box-shadow: 0 10px 30px rgba(29, 78, 216, 0.08);
     }
     @media (max-width: 1024px) {
       .info-box { grid-template-columns: 1fr; }
     }
     .info-box:hover {
-      border-color: #090d16; box-shadow: 0 16px 40px rgba(9,13,22,0.12);
+      border-color: #0284c7; box-shadow: 0 18px 45px rgba(2, 132, 199, 0.18);
     }
     .info-box-img-frame {
       width: 100%; min-height: 320px; height: 100%; position: relative; overflow: hidden; background: #0f172a;
-      border-right: 2px solid #cbd5e1; border-bottom: none;
+      border-right: 2px solid #bfdbfe; border-bottom: none;
     }
     @media (max-width: 1024px) {
-      .info-box-img-frame { border-right: none; border-bottom: 2px solid #cbd5e1; min-height: 250px; }
+      .info-box-img-frame { border-right: none; border-bottom: 2px solid #bfdbfe; min-height: 250px; }
     }
     .info-box-img {
       width: 100%; height: 100%; object-fit: cover; display: block;
       transition: transform .4s ease;
     }
     .info-box:hover .info-box-img { transform: scale(1.05); }
-    .info-box-content { padding: 40px 42px 28px; display: flex; flex-direction: column; justify-content: space-between; }
+    .info-box-content { padding: 42px 44px 28px; display: flex; flex-direction: column; justify-content: space-between; }
     .info-box-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
     .info-box-num {
       font-size: 2.2rem; font-weight: 900; color: #1d4ed8; font-family: 'JetBrains Mono', monospace;
@@ -395,20 +444,20 @@
     .info-box-icon { font-size: 34px; }
     .info-box-h3 {
       font-size: 1.55rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em;
-      color: #090d16; margin-bottom: 16px;
+      color: #0b192c; margin-bottom: 16px;
     }
     .info-box-p {
       font-size: 1rem; color: #334155; line-height: 1.75; margin-bottom: 24px;
     }
     .info-box-footer {
-      border-top: 1.5px solid #e2e8f0; padding-top: 18px;
+      border-top: 2px solid #eff6ff; padding: 18px 44px; background: #f0f7ff;
       font-size: 0.82rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em;
       color: #1d4ed8; display: flex; align-items: center; justify-content: space-between;
     }
 
-    /* ── DUAL IMAGERY SHOWCASE SECTION (BRIGHT LIGHT THEME) ── */
+    /* ── DUAL IMAGERY SHOWCASE SECTION (ICE-BLUE BACKDROP) ── */
     .imagery-strip-section {
-      width: 100%; background: #f8fafc; padding: 100px 60px; border-bottom: 1px solid #cbd5e1;
+      width: 100%; background: #f0f7ff; padding: 100px 60px; border-bottom: 2px solid #bfdbfe;
     }
     .imagery-grid {
       width: 100%; max-width: 1560px; margin: 0 auto;
@@ -418,12 +467,16 @@
       .imagery-grid { grid-template-columns: 1fr; }
     }
     .imagery-card {
-      border: 1.5px solid #090d16; background: #ffffff;
+      border: 2px solid #1d4ed8; background: #ffffff;
       overflow: hidden; display: flex; flex-direction: column;
-      box-shadow: 0 8px 24px rgba(9,13,22,0.06);
+      box-shadow: 0 10px 30px rgba(29, 78, 216, 0.08);
+      transition: all .25s ease;
+    }
+    .imagery-card:hover {
+      border-color: #0284c7; box-shadow: 0 18px 45px rgba(2, 132, 199, 0.2);
     }
     .imagery-frame {
-      width: 100%; height: 320px; overflow: hidden; position: relative; border-bottom: 1.5px solid #090d16;
+      width: 100%; height: 340px; overflow: hidden; position: relative; border-bottom: 2px solid #bfdbfe;
     }
     .imagery-img {
       width: 100%; height: 100%; object-fit: cover; filter: saturate(1.15);
@@ -431,60 +484,60 @@
     }
     .imagery-card:hover .imagery-img { transform: scale(1.04); }
     .imagery-tag {
-      position: absolute; top: 18px; left: 18px; background: rgba(255,255,255,0.96);
-      border: 1.5px solid #090d16; color: #090d16; padding: 5px 12px;
+      position: absolute; top: 18px; left: 18px; background: rgba(15, 23, 42, 0.94);
+      border: 1.5px solid #38bdf8; color: #ffffff; padding: 6px 14px;
       font-size: 0.72rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
     }
-    .imagery-desc-wrap { padding: 32px 30px; display: flex; flex-direction: column; flex: 1; }
+    .imagery-desc-wrap { padding: 34px 32px; display: flex; flex-direction: column; flex: 1; }
     .imagery-h4 {
-      font-size: 1.3rem; font-weight: 900; color: #090d16; text-transform: uppercase;
+      font-size: 1.35rem; font-weight: 900; color: #0b192c; text-transform: uppercase;
       letter-spacing: -0.01em; margin-bottom: 12px;
     }
     .imagery-text {
-      font-size: 0.92rem; color: #475569; line-height: 1.65; margin-bottom: 20px;
+      font-size: 0.94rem; color: #475569; line-height: 1.7; margin-bottom: 20px;
     }
-    .imagery-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+    .imagery-badge-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
     .im-badge {
-      font-size: 0.72rem; font-weight: 900; text-transform: uppercase;
-      padding: 4px 10px; border: 1.5px solid #cbd5e1; color: #090d16; background: #f8fafc;
+      font-size: 0.74rem; font-weight: 900; text-transform: uppercase;
+      padding: 5px 12px; border: 1.5px solid #bfdbfe; color: #1d4ed8; background: #eff6ff;
     }
 
-    /* ── DETECTION SUITE (HORIZONTAL FULL-WIDTH EXPERIENCE) ── */
+    /* ── DETECTION SUITE (VIBRANT WHITE & ROYAL BLUE WORKSPACE) ── */
     #detection-workspace {
-      width: 100%; background: #ffffff; padding: 90px 60px 120px;
+      width: 100%; background: #ffffff; padding: 100px 60px 130px;
     }
     .workspace-container { width: 100%; max-width: 1560px; margin: 0 auto; }
 
     .workspace-header {
-      margin-bottom: 40px; border-bottom: 2px solid #090d16; padding-bottom: 24px;
+      margin-bottom: 40px; border-bottom: 2px solid #1d4ed8; padding-bottom: 24px;
       display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 20px;
     }
     .workspace-title {
-      font-size: 2.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; color: #090d16;
+      font-size: 2.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; color: #0b192c;
     }
     .workspace-sub {
-      font-size: 1.05rem; color: #64748b; font-weight: 600;
+      font-size: 1.05rem; color: #475569; font-weight: 600;
     }
 
-    /* Sharp Tabs (Pure Light Theme) */
+    /* Sharp Tabs (White & Blue) */
     .sharp-tab-bar {
-      display: flex; width: 100%; border: 2px solid #090d16; background: #e2e8f0;
-      margin-bottom: 40px;
+      display: flex; width: 100%; border: 2px solid #1d4ed8; background: #eff6ff;
+      margin-bottom: 40px; box-shadow: 0 4px 18px rgba(29, 78, 216, 0.08);
     }
     .sharp-tab-btn {
-      flex: 1; padding: 22px 28px; border: none; background: #f1f5f9; color: #475569;
+      flex: 1; padding: 22px 28px; border: none; background: #f0f7ff; color: #334155;
       font-size: 1rem; font-weight: 900; font-family: inherit; text-transform: uppercase;
       letter-spacing: 0.08em; cursor: pointer; transition: all .2s;
       display: flex; align-items: center; justify-content: center; gap: 14px;
-      border-right: 1.5px solid #cbd5e1;
+      border-right: 2px solid #bfdbfe;
     }
     .sharp-tab-btn:last-child { border-right: none; }
-    .sharp-tab-btn:hover:not(.active) { background: #e2e8f0; color: #090d16; }
+    .sharp-tab-btn:hover:not(.active) { background: #e0effe; color: #1d4ed8; }
     .sharp-tab-btn.active {
-      background: #090d16; color: #ffffff;
+      background: #1d4ed8; color: #ffffff;
     }
     .sharp-tab-badge {
-      font-size: 0.72rem; font-weight: 900; padding: 3px 8px; border: 1px solid currentColor;
+      font-size: 0.72rem; font-weight: 900; padding: 3px 8px; border: 1.5px solid currentColor;
     }
 
     .sharp-panel { display: none; }
@@ -499,13 +552,13 @@
     }
 
     .sharp-card {
-      border: 1.5px solid #090d16; background: #ffffff;
-      padding: 40px 36px; box-shadow: 0 4px 18px rgba(9,13,22,0.05);
+      border: 2px solid #bfdbfe; background: #ffffff;
+      padding: 40px 36px; box-shadow: 0 10px 30px rgba(29, 78, 216, 0.06);
     }
     .sharp-card-title {
       font-size: 1.25rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em;
-      color: #090d16; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;
-      border-bottom: 1.5px solid #e2e8f0; padding-bottom: 14px;
+      color: #0b192c; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 2px solid #eff6ff; padding-bottom: 14px;
     }
 
     /* ── 1-CLICK SAMPLES ── */
@@ -515,54 +568,55 @@
     }
     .sample-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
     .sample-btn-box {
-      border: 1.5px solid #cbd5e1; background: #f8fafc;
+      border: 1.5px solid #bfdbfe; background: #f0f7ff;
       padding: 16px; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 14px;
     }
     .sample-btn-box:hover {
-      border-color: #090d16; background: #ffffff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(9,13,22,0.08);
+      border-color: #1d4ed8; background: #ffffff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(29, 78, 216, 0.12);
     }
     .sample-btn-thumb {
-      width: 52px; height: 52px; object-fit: cover; border: 1.5px solid #090d16; flex-shrink: 0;
+      width: 52px; height: 52px; object-fit: cover; border: 1.5px solid #1d4ed8; flex-shrink: 0;
     }
-    .sample-btn-name { font-size: 0.88rem; font-weight: 900; text-transform: uppercase; color: #090d16; }
+    .sample-btn-name { font-size: 0.88rem; font-weight: 900; text-transform: uppercase; color: #0b192c; }
     .sample-btn-sub { font-size: 0.74rem; color: #64748b; font-weight: 600; }
 
     /* Dropzone */
     .sharp-dropzone {
-      border: 2px dashed #090d16; padding: 48px 30px; text-align: center;
-      cursor: pointer; background: #f8fafc; position: relative; transition: all .2s;
+      border: 2px dashed #1d4ed8; padding: 48px 30px; text-align: center;
+      cursor: pointer; background: #f0f7ff; position: relative; transition: all .2s;
     }
     .sharp-dropzone:hover, .sharp-dropzone.drag-over {
-      border-color: #1d4ed8; background: #eff6ff;
+      border-color: #0284c7; background: #e0effe;
     }
     .sharp-dropzone input[type="file"] {
       position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
     }
     .dropzone-icon { font-size: 38px; margin-bottom: 12px; }
-    .dropzone-h4 { font-size: 1.15rem; font-weight: 900; text-transform: uppercase; margin-bottom: 6px; color: #090d16; }
+    .dropzone-h4 { font-size: 1.15rem; font-weight: 900; text-transform: uppercase; margin-bottom: 6px; color: #0b192c; }
     .dropzone-p { font-size: 0.85rem; color: #64748b; font-weight: 500; }
 
     #preview-container {
-      display: none; margin-top: 24px; border: 1.5px solid #090d16; position: relative;
+      display: none; margin-top: 24px; border: 2px solid #1d4ed8; position: relative;
     }
     #preview-container img { width: 100%; max-height: 420px; object-fit: cover; display: block; }
     .preview-tag {
-      position: absolute; bottom: 12px; left: 12px; background: rgba(9,13,22,0.92);
-      color: #fff; padding: 6px 14px; font-size: 0.76rem; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+      position: absolute; bottom: 12px; left: 12px; background: rgba(11, 25, 44, 0.94);
+      color: #38bdf8; padding: 6px 14px; font-size: 0.76rem; font-weight: 800; font-family: 'JetBrains Mono', monospace;
+      border: 1px solid #38bdf8;
     }
 
     #analyze-btn {
       display: none; width: 100%; margin-top: 22px; padding: 20px;
-      background: #090d16; color: #ffffff; border: 1.5px solid #090d16;
+      background: #1d4ed8; color: #ffffff; border: 2px solid #1d4ed8;
       font-size: 1.05rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
-      cursor: pointer; transition: all .2s;
+      cursor: pointer; transition: all .2s; box-shadow: 0 8px 24px rgba(29, 78, 216, 0.3);
     }
-    #analyze-btn:hover:not(:disabled) { background: #1d4ed8; border-color: #1d4ed8; }
+    #analyze-btn:hover:not(:disabled) { background: #0284c7; border-color: #0284c7; transform: translateY(-1px); }
     #analyze-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
     #reset-btn {
       display: none; width: 100%; margin-top: 14px; padding: 14px;
-      background: #ffffff; color: #b91c1c; border: 1.5px solid #b91c1c;
+      background: #ffffff; color: #dc2626; border: 1.5px solid #dc2626;
       font-size: 0.86rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em;
       cursor: pointer; transition: all .2s;
     }
@@ -656,36 +710,67 @@
     </div>
   </nav>
 
-  <!-- ── FULL-WIDTH HERO SECTION (FULL BACKGROUND IMAGE, CRISP CONTRAST) ── -->
+  <!-- ── WORLD-CLASS EDITORIAL ARCHITECTURAL HERO SECTION ── -->
   <section class="hero-viewport">
-    <div class="hero-bg-media"></div>
-    <div class="hero-gradient-overlay"></div>
-
     <div class="hero-inner">
-      <div class="hero-eyebrow">
-        <span>⚛️</span> Quantum Computing &amp; Medical Artificial Intelligence
+      <div class="hero-split-grid">
+        <!-- Left Column: Clinical Title & Actions -->
+        <div class="hero-left-col">
+          <div class="hero-eyebrow">
+            <span>⚛️</span> Quantum Oncology &amp; Medical Artificial Intelligence
+          </div>
+
+          <h1 class="hero-headline">
+            Architecting Precision <br />
+            <span class="accent">Bladder Oncology</span> with Quantum Neural Networks
+          </h1>
+
+          <p class="hero-lead">
+            A clinical dual-engine intelligence platform uniting parameterized variational quantum circuits (VQC) with deep convolutional cystoscopy feature extraction and multi-analyte serum and urinalysis biochemistry classification.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#detection-workspace" class="btn-hero-primary">
+              <span>Start Clinical Detection Suite</span>
+              <span style="font-size:1.2rem;">↓</span>
+            </a>
+            <a href="#case-studies" class="btn-hero-secondary">
+              <span>Cohort Case Studies</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Massive High-Tech Quantum Lab Image Card -->
+        <div class="hero-visual-card">
+          <div class="hero-visual-img-wrap">
+            <img src="/static/images/hero_banner.jpg" alt="Quantum Oncology Laboratory Banner" class="hero-visual-img" />
+            <div class="hero-visual-badge">Quantum Computing &amp; Pathology Laboratory</div>
+            <div class="hero-visual-overlay-stats">
+              <div class="hero-visual-stat-item">
+                <span class="hero-stat-val">4 QUBITS</span>
+                <span class="hero-stat-lbl">Entangled Lattice</span>
+              </div>
+              <div class="hero-visual-stat-item">
+                <span class="hero-stat-val">92.4%</span>
+                <span class="hero-stat-lbl">Sensitivity</span>
+              </div>
+              <div class="hero-visual-stat-item">
+                <span class="hero-stat-val">&lt; 180ms</span>
+                <span class="hero-stat-lbl">Groq LLaMA 3.3</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual-footer">
+            <span>Active Clinical Telemetry Feed</span>
+            <span style="color:#059669;display:flex;align-items:center;gap:6px;">
+              <span style="width:8px;height:8px;background:#059669;display:inline-block;"></span>
+              VQC Calibrated
+            </span>
+          </div>
+        </div>
       </div>
 
-      <h1 class="hero-headline">
-        Architecting Precision <br />
-        <span class="accent">Bladder Oncology</span> with Quantum Neural Networks
-      </h1>
-
-      <p class="hero-lead">
-        A clinical dual-engine intelligence platform uniting parameterized variational quantum circuits (VQC) with deep convolutional cystoscopy feature extraction and multi-analyte serum and urinalysis biochemistry classification.
-      </p>
-
-      <div class="hero-cta-group">
-        <a href="#detection-workspace" class="btn-hero-primary">
-          <span>Start Clinical Detection Suite</span>
-          <span style="font-size:1.3rem;">↓</span>
-        </a>
-        <a href="#system-architecture" class="btn-hero-secondary">
-          <span>System Architecture &amp; Data</span>
-        </a>
-      </div>
-
-      <!-- 4-Cell Hero Metrics Bar -->
+      <!-- 4-Cell Hero Metrics Bar Below Split Grid -->
       <div class="hero-metrics-bar">
         <div class="metric-cell">
           <div class="metric-num">92.4%</div>
