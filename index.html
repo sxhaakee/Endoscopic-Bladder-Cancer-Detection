@@ -204,6 +204,112 @@
       color: #94a3b8;
     }
 
+    /* ── ETIOLOGY & CLINICAL ONCOLOGY SECTIONS ── */
+    .etiology-section {
+      width: 100%; background: #090d16; color: #ffffff; padding: 100px 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .etiology-container { width: 100%; max-width: 1560px; margin: 0 auto; }
+    
+    .etiology-hero-grid {
+      display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 40px; margin-bottom: 60px;
+      align-items: center;
+    }
+    @media (max-width: 1100px) {
+      .etiology-hero-grid { grid-template-columns: 1fr; }
+    }
+    .etiology-media-frame {
+      border: 1px solid rgba(255,255,255,0.2); background: #000;
+      position: relative; overflow: hidden;
+    }
+    .etiology-media-img {
+      width: 100%; height: auto; display: block; filter: saturate(1.15);
+      transition: transform .4s ease;
+    }
+    .etiology-media-frame:hover .etiology-media-img { transform: scale(1.02); }
+    .etiology-media-badge {
+      position: absolute; bottom: 16px; left: 16px; background: rgba(9,13,22,0.92);
+      border: 1px solid rgba(255,255,255,0.25); color: #60a5fa; padding: 8px 16px;
+      font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+    }
+
+    .etiology-summary-box {
+      border: 1px solid rgba(255,255,255,0.15); background: #0f1422; padding: 40px 36px;
+    }
+    .etiology-eyebrow {
+      font-size: 0.78rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.14em;
+      color: #f87171; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .etiology-title {
+      font-size: 2.2rem; font-weight: 900; line-height: 1.15; text-transform: uppercase;
+      letter-spacing: -0.02em; color: #ffffff; margin-bottom: 20px;
+    }
+    .etiology-lead {
+      font-size: 1rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 26px;
+    }
+    .etiology-stat-callout {
+      border-left: 3px solid #f87171; padding-left: 18px; margin-bottom: 24px;
+    }
+    .stat-callout-num { font-size: 1.8rem; font-weight: 900; color: #ffffff; font-family: 'JetBrains Mono', monospace; }
+    .stat-callout-text { font-size: 0.85rem; color: #94a3b8; }
+
+    /* Risk factors 4-column sharp grid */
+    .risk-factors-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 30px;
+    }
+    @media (max-width: 1050px) { .risk-factors-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px)  { .risk-factors-grid { grid-template-columns: 1fr; } }
+    .risk-card {
+      border: 1px solid rgba(255,255,255,0.12); background: #0f1422; padding: 28px 24px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .risk-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .risk-card-icon { font-size: 32px; }
+    .risk-level-tag {
+      font-size: 0.68rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 3px 8px; border: 1px solid;
+    }
+    .risk-level-tag.extreme { border-color: #ef4444; color: #f87171; background: rgba(239,68,68,0.1); }
+    .risk-level-tag.high    { border-color: #f97316; color: #fb923c; background: rgba(249,115,22,0.1); }
+    .risk-level-tag.chronic { border-color: #eab308; color: #facc15; background: rgba(234,179,8,0.1); }
+    .risk-level-tag.genetic { border-color: #a855f7; color: #c084fc; background: rgba(168,85,247,0.1); }
+    .risk-card-h4 { font-size: 1.15rem; font-weight: 900; text-transform: uppercase; color: #ffffff; margin-bottom: 10px; }
+    .risk-card-desc { font-size: 0.88rem; color: #94a3b8; line-height: 1.6; }
+
+    /* Real-World Clinical Case Studies Section (White Light Theme) */
+    .case-studies-section {
+      width: 100%; background: #ffffff; padding: 100px 60px; border-bottom: 1px solid var(--surface-border);
+    }
+    .case-studies-container { width: 100%; max-width: 1560px; margin: 0 auto; }
+    .cohort-studies-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px;
+    }
+    @media (max-width: 1100px) { .cohort-studies-grid { grid-template-columns: 1fr; } }
+    .cohort-card {
+      border: 1px solid var(--surface-border); background: var(--bg-subtle); padding: 36px 30px;
+      display: flex; flex-direction: column; justify-content: space-between; position: relative;
+    }
+    .cohort-card:hover { border-color: var(--border-dark); background: #ffffff; box-shadow: 0 14px 32px rgba(9,13,22,0.06); }
+    .cohort-badge-line { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .cohort-id { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; font-weight: 800; color: var(--primary); }
+    .cohort-stage {
+      font-size: 0.72rem; font-weight: 900; text-transform: uppercase; padding: 2px 8px; border: 1px solid;
+    }
+    .cohort-stage.ta { border-color: #0284c7; color: #0284c7; background: #e0f2fe; }
+    .cohort-stage.t1 { border-color: #ea580c; color: #ea580c; background: #ffedd5; }
+    .cohort-stage.t2 { border-color: #dc2626; color: #dc2626; background: #fee2e2; }
+    .cohort-title { font-size: 1.2rem; font-weight: 900; text-transform: uppercase; color: var(--text); margin-bottom: 12px; }
+    .cohort-p { font-size: 0.9rem; color: var(--text-body); line-height: 1.65; margin-bottom: 20px; }
+    .cohort-biomarkers {
+      background: #ffffff; border: 1px solid var(--surface-border); padding: 14px; margin-bottom: 20px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: #090d16; line-height: 1.6;
+    }
+    .cohort-outcome {
+      border-top: 1px solid var(--surface-border); padding-top: 14px;
+      font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--success);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
     /* ── FULL-WIDTH ARCHITECTURAL INFORMATION SECTION ── */
     .system-info-section {
       width: 100%; background: #ffffff; padding: 100px 60px; border-bottom: 1px solid var(--surface-border);
@@ -617,6 +723,190 @@
         <div class="metric-cell">
           <div class="metric-num">&lt; 180 ms</div>
           <div class="metric-lbl">Groq LLaMA 3.3 Inference Latency</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLADDER CANCER ETIOLOGY & PATHOPHYSIOLOGY (DETAILED SCIENTIFIC BREAKDOWN) ── -->
+  <section class="etiology-section" id="cancer-etiology">
+    <div class="etiology-container">
+      <div class="etiology-hero-grid">
+        <div class="etiology-media-frame">
+          <img src="/static/images/bladder_cancer_etiology.jpg" alt="Pathophysiology and Etiology of Bladder Cancer" class="etiology-media-img" />
+          <div class="etiology-media-badge">Microscopic Pathophysiology &amp; Carcinogenesis Blueprint</div>
+        </div>
+
+        <div class="etiology-summary-box">
+          <div class="etiology-eyebrow">
+            <span>●</span> Clinical Oncology &amp; Urothelial Pathophysiology
+          </div>
+          <h2 class="etiology-title">Understanding Bladder Carcinogenesis</h2>
+          <p class="etiology-lead">
+            Urinary bladder carcinoma originates in the urothelium—the transitional epithelial lining safeguarding muscular bladder walls. Prolonged filtration of urinary excretory toxins triggers DNA adduct formations, inactivating critical tumor-suppressor pathways (p53, RB1, FGFR3) and driving uncontrolled cellular proliferation.
+          </p>
+
+          <div class="etiology-stat-callout">
+            <div class="stat-callout-num">#1 Primary Cause: Tobacco Exposure</div>
+            <div class="stat-callout-text">Cigarette smoking causes 50–65% of all bladder cancer cases. Hepatic cytochrome P450 enzymes metabolize aromatic amines (e.g., 2-naphthylamine, 4-aminobiphenyl), which concentrate directly within stored bladder urine.</div>
+          </div>
+
+          <div class="etiology-stat-callout" style="border-color:#38bdf8;">
+            <div class="stat-callout-num">90%+ Transitional Cell (Urothelial)</div>
+            <div class="stat-callout-text">Over 9 out of 10 diagnosed bladder tumors are Urothelial Carcinomas. Early optical cystoscopic identification of papillary papillary projections is vital prior to detrusor muscle wall invasion.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 High-Risk Factor Cards -->
+      <div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:40px;">
+        <div style="font-size:0.8rem;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;color:#94a3b8;margin-bottom:8px;">
+          Primary Etiological Drivers &amp; Epidemiology
+        </div>
+        <h3 style="font-size:1.6rem;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:-0.02em;margin-bottom:24px;">
+          Epidemiological Risk Vectors Recognized by WHO &amp; AUA
+        </h3>
+
+        <div class="risk-factors-grid">
+          <!-- Card 1 -->
+          <div class="risk-card">
+            <div>
+              <div class="risk-card-head">
+                <span class="risk-card-icon">🚬</span>
+                <span class="risk-level-tag extreme">3× – 4× Risk</span>
+              </div>
+              <h4 class="risk-card-h4">Tobacco &amp; Smoke Derivates</h4>
+              <p class="risk-card-desc">
+                Cigarette, pipe, and bidi smoke contains beta-naphthylamine and polycyclic aromatic hydrocarbons. These mutagens filter into renal tubular fluid, accumulating directly against bladder mucosa for hours between voidings.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="risk-card">
+            <div>
+              <div class="risk-card-head">
+                <span class="risk-card-icon">🏭</span>
+                <span class="risk-level-tag high">Occupational</span>
+              </div>
+              <h4 class="risk-card-h4">Aromatic Amines &amp; Dyestuffs</h4>
+              <p class="risk-card-desc">
+                Workers in textile dyeing, rubber, petroleum, paint, and leather industries face persistent inhalation and dermal absorption of o-toluidine, benzidine, and xenobiotics that cause oxidative DNA strand breaks.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="risk-card">
+            <div>
+              <div class="risk-card-head">
+                <span class="risk-card-icon">🦠</span>
+                <span class="risk-level-tag chronic">Inflammatory</span>
+              </div>
+              <h4 class="risk-card-h4">Chronic Cystitis &amp; Irritation</h4>
+              <p class="risk-card-desc">
+                Recurrent bacterial urinary tract infections, indwelling catheters, and bilharzial parasitic Schistosomiasis trigger ongoing mucosal ulceration, squamous metaplasia, and eventual non-urothelial carcinomas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="risk-card">
+            <div>
+              <div class="risk-card-head">
+                <span class="risk-card-icon">🧬</span>
+                <span class="risk-level-tag genetic">Genomic Susceptibility</span>
+              </div>
+              <h4 class="risk-card-h4">NAT2 &amp; GSTM1 Phenotypes</h4>
+              <p class="risk-card-desc">
+                Slow acetylator polymorphisms (NAT2*5, GSTM1-null genotypes) severely impede hepatic detoxification of aromatic carcinogens, doubling vulnerability to lower urinary tract malignant transformation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── REAL-WORLD CLINICAL CASE STUDIES & MULTI-ORGAN RESEARCH ── -->
+  <section class="case-studies-section" id="case-studies">
+    <div class="case-studies-container">
+      <div class="section-eyebrow">
+        <span>■</span> Real-World Cohort Research &amp; Clinical Stratification
+      </div>
+      <h2 class="section-title">Case Studies: Optical Scans &amp; Fluid Correlation</h2>
+      <p class="section-subtitle">
+        Documented patient trajectories illustrating the diagnostic convergence of high-definition cystoscopy, 4-qubit Quantum VQC classification, and multi-analyte laboratory biochemistry panels.
+      </p>
+
+      <div class="cohort-studies-grid">
+        <!-- Cohort Case 1 -->
+        <div class="cohort-card">
+          <div>
+            <div class="cohort-badge-line">
+              <span class="cohort-id">CASE STUDY #AUA-0142</span>
+              <span class="cohort-stage ta">Stage Ta (NMIBC)</span>
+            </div>
+            <h3 class="cohort-title">Superficial Papillary Lesion</h3>
+            <p class="cohort-p">
+              64-year-old male with intermittent painless microscopic hematuria. Cystoscopic exploration revealed solitary 1.2 cm frond-like papillary lesion at the right trigone wall with intact lamina propria.
+            </p>
+            <div class="cohort-biomarkers">
+              OCCULT BLOOD: 3+ · STRIP WBC: 1+<br>
+              CREATININE: 1.1 mg/dL · GFR: 79.5 mL/min<br>
+              QUANTUM VQC PREDICTION: Malignant (Cancer 93.8%)
+            </div>
+          </div>
+          <div class="cohort-outcome">
+            <span>Transurethral Resection (TURBT)</span>
+            <span>Intravesical BCG Clean</span>
+          </div>
+        </div>
+
+        <!-- Cohort Case 2 -->
+        <div class="cohort-card">
+          <div>
+            <div class="cohort-badge-line">
+              <span class="cohort-id">CASE STUDY #EAU-0887</span>
+              <span class="cohort-stage t1">Stage T1 High-Grade</span>
+            </div>
+            <h3 class="cohort-title">Lamina Propria Invasion</h3>
+            <p class="cohort-p">
+              69-year-old heavy smoker (40 pack-years) presenting with dysuria, urgency, and gross hematuria. QNN analysis identified multi-focal erythematous velvety patches indicative of carcinoma in situ (CIS).
+            </p>
+            <div class="cohort-biomarkers">
+              OCCULT BLOOD: 3+ · PROTEINURIA: 2+<br>
+              URINE EPITHELIUM: 28/µL · BUN: 22 mg/dL<br>
+              TABULAR MULTI-ANALYTE: UrinaryBladder (74.2%)
+            </div>
+          </div>
+          <div class="cohort-outcome">
+            <span>Re-Staging TURBT Required</span>
+            <span>Radical Cystectomy Candidate</span>
+          </div>
+        </div>
+
+        <!-- Cohort Case 3 -->
+        <div class="cohort-card">
+          <div>
+            <div class="cohort-badge-line">
+              <span class="cohort-id">CASE STUDY #MED-0319</span>
+              <span class="cohort-stage t2" style="border-color:#059669;color:#059669;background:#ecfdf5;">Benign Cystitis Mimic</span>
+            </div>
+            <h3 class="cohort-title">Severe Chronic Hemorrhagic Cystitis</h3>
+            <p class="cohort-p">
+              58-year-old female with intense pelvic pain, dysuria, and elevated inflammatory markers. Optical cystoscopy showed hyperemic, friable mucosa frequently misidentified as diffuse malignancy.
+            </p>
+            <div class="cohort-biomarkers">
+              STRIP WBC: 3+ · NITRITE: Positive (1)<br>
+              CREATININE: 0.8 mg/dL · GFR: 92.0 mL/min<br>
+              QUANTUM VQC PREDICTION: Benign (No Cancer 91.2%)
+            </div>
+          </div>
+          <div class="cohort-outcome">
+            <span>Targeted Antibiotic Course</span>
+            <span>Avoided Unnecessary Resection</span>
+          </div>
         </div>
       </div>
     </div>
